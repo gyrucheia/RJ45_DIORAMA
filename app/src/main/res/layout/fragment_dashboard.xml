@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tea_green"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="24dp">
+
+        <!-- ===== HEADER ROW ===== -->
+        <ImageView
+            android:id="@+id/iv_dashboard_logo"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_leaf"
+            android:contentDescription="SanLo Logo"
+            app:tint="@color/sap_green"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_dashboard_header"
+            style="@style/SanLo.Text.Header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="SanLo Diorama"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/iv_dashboard_logo"
+            app:layout_constraintTop_toTopOf="@id/iv_dashboard_logo"
+            app:layout_constraintBottom_toBottomOf="@id/iv_dashboard_logo"
+            app:layout_constraintEnd_toStartOf="@id/tv_dash_status_online" />
+
+        <!-- ONLINE chip -->
+        <TextView
+            android:id="@+id/tv_dash_status_online"
+            style="@style/SanLo.Text.StatusChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_status_chip_green"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:text="● ONLINE"
+            android:textColor="@color/sap_green"
+            app:layout_constraintEnd_toStartOf="@id/tv_dash_status_ble"
+            app:layout_constraintTop_toTopOf="@id/iv_dashboard_logo"
+            app:layout_constraintBottom_toBottomOf="@id/iv_dashboard_logo" />
+
+        <!-- BLE chip -->
+        <TextView
+            android:id="@+id/tv_dash_status_ble"
+            style="@style/SanLo.Text.StatusChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_status_chip_blue"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:text="BLE LINKED"
+            android:textColor="@color/celestial_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_dashboard_logo"
+            app:layout_constraintBottom_toBottomOf="@id/iv_dashboard_logo" />
+
+        <!-- ===== LOCATION BAR ===== -->
+        <LinearLayout
+            android:id="@+id/layout_dash_location_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_location_bar"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_dashboard_logo">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="📍  Sector 01 · Colgante Station"
+                android:fontFamily="@font/inter_regular"
+                android:textColor="@color/text_dark"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_channel_badge"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:text="CONSOLE RT SYNC"
+                android:fontFamily="@font/roboto_mono_regular"
+                android:textColor="@color/channel_badge_text"
+                android:textSize="9sp" />
+        </LinearLayout>
+
+        <!-- Subtitle -->
+        <TextView
+            android:id="@+id/tv_dashboard_subtitle"
+            style="@style/SanLo.Text.SubHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Live Sensor Readings"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_dash_location_bar" />
+
+        <!-- =================== ROW 1 =================== -->
+        <!-- Temperature Card -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card_temperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_actuator_card"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/card_humidity"
+            app:layout_constraintTop_toBottomOf="@id/tv_dashboard_subtitle">
+
+            <!-- Channel badge -->
+            <TextView
+                android:id="@+id/tv_temp_ch"
+                style="@style/SanLo.Text.ChannelBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_channel_badge"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:text="AIN 01"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_temp_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_sensor_temp"
+                android:contentDescription="Temperature"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_temp_ch" />
+
+            <TextView
+                android:id="@+id/tv_temp_label"
+                style="@style/SanLo.Text.ChannelBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="TEMPERATURE"
+                android:letterSpacing="0.06"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_temp_icon" />
+
+            <TextView
+                android:id="@+id/tv_temp_value"
+                style="@style/SanLo.Text.SensorValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="28.4"
+                android:textSize="28sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_temp_label" />
+
+            <TextView
+                android:id="@+id/tv_temp_unit"
+                style="@style/SanLo.Text.CardLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginBottom="2dp"
+                android:text="°C"
+                app:layout_constraintStart_toEndOf="@id/tv_temp_value"
+                app:layout_constraintBottom_toBottomOf="@id/tv_temp_value" />
+
+            <TextView
+                android:id="@+id/tv_temp_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_pill_green"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:text="Normal"
+                android:textColor="@color/white"
+                android:fontFamily="@font/inter_regular"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_temp_value" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Humidity Card -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card_humidity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg_actuator_card"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_temperature"
+            app:layout_constraintTop_toBottomOf="@id/tv_dashboard_subtitle">
+
+            <TextView
+                android:id="@+id/tv_humidity_ch"
+                style="@style/SanLo.Text.ChannelBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_channel_badge"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:text="AIN 02"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_humidity_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_sensor_humidity"
+                android:contentDescription="Humidity"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_humidity_ch" />
+
+            <TextView
+                android:id="@+id/tv_humidity_label"
+                style="@style/SanLo.Text.ChannelBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="HUMIDITY"
+                android:letterSpacing="0.06"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_humidity_icon" />
+
+            <TextView
+                android:id="@+id/tv_humidity_value"
+                style="@style/SanLo.Text.SensorValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="64"
+                android:textSize="28sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_humidity_label" />
+
+            <TextView
+                android:id="@+id/tv_humidity_unit"
+                style="@style/SanLo.Text.CardLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginBottom="2dp"
+                android:text="%"
+                app:layout_constraintStart_toEndOf="@id/tv_humidity_value"
+                app:layout_constraintBottom_toBottomOf="@id/tv_humidity_value" />
+
+            <TextView
+                android:id="@+id/tv_humidity_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_pill_blue"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:text="Optimal"
+                android:textColor="@color/white"
+                android:fontFamily="@font/inter_regular"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_humidity_value" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- =================== ROW 2 =================== -->
+        <!-- Water Level Card -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card_water_level"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_actuator_card"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/card_visitors"
+            app:layout_constraintTop_toBottomOf="@id/card_temperature">
+
+            <TextView
+                android:id="@+id/tv_water_ch"
+                style="@style/SanLo.Text.ChannelBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_channel_badge"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:text="AIN 03"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_water_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_sensor_water"
+                android:contentDescription="Water Level"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_water_ch" />
+
+            <TextView
+                android:id="@+id/tv_water_label"
+                style="@style/SanLo.Text.ChannelBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="RIVER LEVEL"
+                android:letterSpacing="0.06"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_water_icon" />
+
+            <TextView
+                android:id="@+id/tv_water_value"
+                style="@style/SanLo.Text.SensorValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="1.2"
+                android:textSize="28sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_water_label" />
+
+            <TextView
+                android:id="@+id/tv_water_unit"
+                style="@style/SanLo.Text.CardLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginBottom="2dp"
+                android:text="m"
+                app:layout_constraintStart_toEndOf="@id/tv_water_value"
+                app:layout_constraintBottom_toBottomOf="@id/tv_water_value" />
+
+            <TextView
+                android:id="@+id/tv_water_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_pill_green"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:text="Safe"
+                android:textColor="@color/white"
+                android:fontFamily="@font/inter_regular"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_water_value" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- AI Visitor Count Card -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card_visitors"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg_actuator_card"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_water_level"
+            app:layout_constraintTop_toBottomOf="@id/card_humidity">
+
+            <TextView
+                android:id="@+id/tv_visitors_ch"
+                style="@style/SanLo.Text.ChannelBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_channel_badge"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:text="CAM AI"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_visitors_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_sensor_visitors"
+                android:contentDescription="AI Visitors"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_visitors_ch" />
+
+            <TextView
+                android:id="@+id/tv_visitors_label"
+                style="@style/SanLo.Text.ChannelBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="AI VISITORS"
+                android:letterSpacing="0.06"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_visitors_icon" />
+
+            <TextView
+                android:id="@+id/tv_visitors_value"
+                style="@style/SanLo.Text.SensorValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="14"
+                android:textSize="28sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_visitors_label" />
+
+            <TextView
+                android:id="@+id/tv_visitors_unit"
+                style="@style/SanLo.Text.CardLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginBottom="2dp"
+                android:text="pax"
+                app:layout_constraintStart_toEndOf="@id/tv_visitors_value"
+                app:layout_constraintBottom_toBottomOf="@id/tv_visitors_value" />
+
+            <TextView
+                android:id="@+id/tv_visitors_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_pill_yellow"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:text="Active"
+                android:textColor="@color/bitter_lemon_text"
+                android:fontFamily="@font/inter_regular"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_visitors_value" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Last Updated label -->
+        <TextView
+            android:id="@+id/tv_last_updated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/roboto_mono_regular"
+            android:textColor="@color/text_muted"
+            android:textSize="11sp"
+            android:text="Updated: --:--:--"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_water_level" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

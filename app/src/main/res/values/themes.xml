@@ -1,0 +1,38 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.SanLoMobApp" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/sap_green</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/tea_green</item>
+        <item name="colorOnPrimaryContainer">@color/myrtle_green</item>
+        <item name="colorSecondary">@color/celestial_blue</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorTertiary">@color/bitter_lemon</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/text_dark</item>
+        <item name="colorError">@color/alert_red</item>
+        <item name="android:colorBackground">@color/tea_green</item>
+        <item name="bottomNavigationStyle">@style/Widget.SanLo.BottomNavigation</item>
+        <item name="floatingActionButtonStyle">@style/Widget.SanLo.FAB</item>
+    </style>
+
+    <style name="Theme.SanLoMobApp" parent="Base.Theme.SanLoMobApp" />
+
+    <style name="Widget.SanLo.BottomNavigation" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemIconTint">@color/nav_item_color</item>
+        <item name="itemTextColor">@color/nav_item_color</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.SanLo.NavLabel</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.SanLo.NavLabel</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="Widget.SanLo.FAB" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/sap_green</item>
+        <item name="tint">@color/white</item>
+    </style>
+
+    <style name="TextAppearance.SanLo.NavLabel" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textSize">10sp</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+</resources>

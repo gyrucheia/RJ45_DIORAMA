@@ -1,0 +1,58 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Track rail left -->
+    <path
+        android:fillColor="#1B3A1A"
+        android:pathData="M4,36 L4,40 L8,40 L8,36 Z" />
+    <!-- Track rail right -->
+    <path
+        android:fillColor="#1B3A1A"
+        android:pathData="M40,36 L40,40 L44,40 L44,36 Z" />
+    <!-- Track ties -->
+    <path
+        android:fillColor="#5A7A5A"
+        android:pathData="M4,37 L44,37 L44,39 L4,39 Z" />
+    <path
+        android:fillColor="#1B3A1A"
+        android:pathData="M10,35 L14,35 L14,41 L10,41 Z" />
+    <path
+        android:fillColor="#1B3A1A"
+        android:pathData="M22,35 L26,35 L26,41 L22,41 Z" />
+    <path
+        android:fillColor="#1B3A1A"
+        android:pathData="M34,35 L38,35 L38,41 L34,41 Z" />
+    <!-- Tram body -->
+    <path
+        android:fillColor="#3A7D28"
+        android:pathData="M10,18 L38,18 C39.1,18 40,18.9 40,20 L40,34 C40,35.1 39.1,36 38,36 L10,36 C8.9,36 8,35.1 8,34 L8,20 C8,18.9 8.9,18 10,18 Z" />
+    <!-- Tram roof accent -->
+    <path
+        android:fillColor="#1B3A1A"
+        android:pathData="M10,18 L38,18 L38,22 L10,22 Z" />
+    <!-- Tram windows -->
+    <path
+        android:fillColor="#C8E6C9"
+        android:pathData="M13,23 L21,23 L21,30 L13,30 Z" />
+    <path
+        android:fillColor="#C8E6C9"
+        android:pathData="M27,23 L35,23 L35,30 L27,30 Z" />
+    <!-- Pantograph / overhead connector -->
+    <path
+        android:strokeColor="#1B3A1A"
+        android:strokeWidth="2"
+        android:fillColor="#00000000"
+        android:pathData="M18,18 L22,10 L26,10 L30,18" />
+    <path
+        android:fillColor="#1B3A1A"
+        android:pathData="M14,8 L34,8 L34,11 L14,11 Z" />
+    <!-- Wheels -->
+    <path
+        android:fillColor="#1B3A1A"
+        android:pathData="M14,34 C14,32.34 15.34,31 17,31 C18.66,31 20,32.34 20,34 C20,35.66 18.66,37 17,37 C15.34,37 14,35.66 14,34 Z" />
+    <path
+        android:fillColor="#1B3A1A"
+        android:pathData="M28,34 C28,32.34 29.34,31 31,31 C32.66,31 34,32.34 34,34 C34,35.66 32.66,37 31,37 C29.34,37 28,35.66 28,34 Z" />
+</vector>

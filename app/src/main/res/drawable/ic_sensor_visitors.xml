@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Person body -->
+    <path
+        android:fillColor="#1B3A1A"
+        android:pathData="M24,26 C19,26 10,28.5 10,34 L10,40 L38,40 L38,34 C38,28.5 29,26 24,26 Z" />
+    <!-- Person head -->
+    <path
+        android:fillColor="#1B3A1A"
+        android:pathData="M24,24 C27.31,24 30,21.31 30,18 C30,14.69 27.31,12 24,12 C20.69,12 18,14.69 18,18 C18,21.31 20.69,24 24,24 Z" />
+    <!-- AI scan ring -->
+    <path
+        android:strokeColor="#3A7D28"
+        android:strokeWidth="2.5"
+        android:fillColor="#00000000"
+        android:pathData="M24,4 C33.94,4 42,10.27 42,18 C42,25.73 33.94,32 24,32 C14.06,32 6,25.73 6,18 C6,10.27 14.06,4 24,4 Z" />
+    <!-- AI node dots -->
+    <path
+        android:fillColor="#3A7D28"
+        android:pathData="M24,6 C25.1,6 26,6.9 26,8 C26,9.1 25.1,10 24,10 C22.9,10 22,9.1 22,8 C22,6.9 22.9,6 24,6 Z" />
+    <path
+        android:fillColor="#3A7D28"
+        android:pathData="M40,18 C41.1,18 42,18.9 42,20 C42,21.1 41.1,22 40,22 C38.9,22 38,21.1 38,20 C38,18.9 38.9,18 40,18 Z" />
+    <path
+        android:fillColor="#3A7D28"
+        android:pathData="M8,18 C9.1,18 10,18.9 10,20 C10,21.1 9.1,22 8,22 C6.9,22 6,21.1 6,20 C6,18.9 6.9,18 8,18 Z" />
+</vector>

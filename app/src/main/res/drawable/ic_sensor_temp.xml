@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Thermometer bulb -->
+    <path
+        android:fillColor="#3A7D28"
+        android:pathData="M24,4 C21.24,4 19,6.24 19,9 L19,28.5 C17.18,29.84 16,31.91 16,34 C16,37.87 19.13,41 23,41 L25,41 C28.87,41 32,37.87 32,34 C32,31.91 30.82,29.84 29,28.5 L29,9 C29,6.24 26.76,4 24,4 Z" />
+    <!-- Inner mercury -->
+    <path
+        android:fillColor="#C8E6C9"
+        android:pathData="M23,9 C22.45,9 22,9.45 22,10 L22,29.8 C20.22,30.64 19,32.44 19,34.5 C19,36.71 20.79,38.5 23,38.5 L25,38.5 C27.21,38.5 29,36.71 29,34.5 C29,32.44 27.78,30.64 26,29.8 L26,10 C26,9.45 25.55,9 25,9 Z" />
+    <!-- Mercury fill -->
+    <path
+        android:fillColor="#3A7D28"
+        android:pathData="M23,24 L25,24 L25,30 C26.78,30.64 28,32.2 28,34 C28,36.21 26.21,38 24,38 C21.79,38 20,36.21 20,34 C20,32.2 21.22,30.64 23,30 Z" />
+    <!-- Tick marks -->
+    <path
+        android:fillColor="#3A7D28"
+        android:pathData="M26,13 L28,13 M26,16 L28,16 M26,19 L28,19 M26,22 L28,22" />
+</vector>

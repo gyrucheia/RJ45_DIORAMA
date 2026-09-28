@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- SanLo MobApp Palette -->
+    <color name="tea_green">#A8C8AA</color>
+    <color name="sap_green">#1E6B18</color>
+    <color name="myrtle_green">#0F2B0E</color>
+    <color name="bitter_lemon">#C6D600</color>
+    <color name="celestial_blue">#2E86C1</color>
+    <color name="alert_red">#C62828</color>
+
+    <!-- Utility Colors -->
+    <color name="card_white">#FFFFFF</color>
+    <color name="text_dark">#0F2B0E</color>
+    <color name="text_muted">#3D6B3D</color>
+    <color name="divider_line">#8FBF91</color>
+    <color name="nav_inactive">#5E8F5E</color>
+    <color name="card_bg">#EEF7EE</color>
+    <color name="status_ok">#1E6B18</color>
+    <color name="status_warn">#E65100</color>
+    <color name="status_alert">#C62828</color>
+    <color name="bitter_lemon_text">#4A5000</color>
+
+    <!-- Reference Design — New Tokens -->
+    <color name="gesture_orange">#E65100</color>
+    <color name="gesture_orange_bg">#FFF3E0</color>
+    <color name="gesture_orange_border">#FFCC80</color>
+    <color name="kill_switch_red">#B71C1C</color>
+    <color name="kill_switch_red_bg">#FFEBEE</color>
+    <color name="status_chip_online">#D4EDD5</color>
+    <color name="status_chip_ble">#DDEEF8</color>
+    <color name="location_bar_bg">#C8E8CA</color>
+    <color name="cam_overlay_bg">#99000000</color>
+    <color name="channel_badge_bg">#C8E8CA</color>
+    <color name="channel_badge_text">#1A5C1A</color>
+    <color name="footer_bar_bg">#C8E8CA</color>
+    <color name="quick_pill_bg">#FFFFFF</color>
+    <color name="teal_pump">#00796B</color>
+    <color name="orange_audio">#E65100</color>
+</resources>

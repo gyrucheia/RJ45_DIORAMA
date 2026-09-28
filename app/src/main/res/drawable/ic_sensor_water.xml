@@ -1,0 +1,32 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- River bed -->
+    <path
+        android:fillColor="#C8E6C9"
+        android:pathData="M4,36 L44,36 L44,44 L4,44 Z" />
+    <!-- Water surface layer 1 -->
+    <path
+        android:fillColor="#2E86C1"
+        android:pathData="M4,28 Q10,24 16,28 Q22,32 28,28 Q34,24 40,28 Q42,29 44,28 L44,44 L4,44 Z" />
+    <!-- Water surface layer 2 (lighter) -->
+    <path
+        android:fillColor="#5BA3C9"
+        android:pathData="M4,30 Q10,26 16,30 Q22,34 28,30 Q34,26 40,30 Q42,31 44,30 L44,34 Q42,33 40,34 Q34,38 28,34 Q22,30 16,34 Q10,38 4,34 Z" />
+    <!-- River banks -->
+    <path
+        android:fillColor="#3A7D28"
+        android:pathData="M4,26 L4,30 Q10,24 16,28 Q22,32 28,28 Q34,24 40,28 L44,26 L44,22 L4,22 Z" />
+    <!-- Level gauge line -->
+    <path
+        android:fillColor="#C62828"
+        android:strokeColor="#C62828"
+        android:strokeWidth="2"
+        android:pathData="M6,20 L42,20" />
+    <!-- Level marker triangle -->
+    <path
+        android:fillColor="#C62828"
+        android:pathData="M6,16 L10,20 L6,24 Z" />
+</vector>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_actuator_card"
+    android:clipChildren="true"
+    android:clipToPadding="true">
+
+    <!-- Colored left accent bar — color set programmatically by adapter -->
+    <View
+        android:id="@+id/view_accent_bar"
+        android:layout_width="5dp"
+        android:layout_height="0dp"
+        android:background="@color/celestial_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Type icon -->
+    <ImageView
+        android:id="@+id/iv_log_icon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_log_pir"
+        android:contentDescription="Log Type Icon"
+        app:layout_constraintStart_toEndOf="@id/view_accent_bar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Event type chip -->
+    <TextView
+        android:id="@+id/tv_log_event_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_pill_blue"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="10sp"
+        android:textColor="@color/white"
+        android:text="PIR Motion"
+        app:layout_constraintStart_toEndOf="@id/iv_log_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_log_description" />
+
+    <!-- Timestamp -->
+    <TextView
+        android:id="@+id/tv_log_timestamp"
+        style="@style/SanLo.Text.LogTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:layout_marginTop="16dp"
+        android:text="00:00:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Event description -->
+    <TextView
+        android:id="@+id/tv_log_description"
+        style="@style/SanLo.Text.LogBody"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="16dp"
+        android:text="Motion detected — Zone A"
+        app:layout_constraintStart_toEndOf="@id/view_accent_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_log_event_type"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

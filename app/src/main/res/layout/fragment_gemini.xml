@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tea_green">
+
+    <!-- ===== HEADER ROW ===== -->
+    <ImageView
+        android:id="@+id/iv_gemini_logo"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_mic"
+        android:contentDescription="Gemini AI"
+        app:tint="@color/sap_green"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_gemini_header"
+        style="@style/SanLo.Text.Header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Gemini AI"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/iv_gemini_logo"
+        app:layout_constraintTop_toTopOf="@id/iv_gemini_logo"
+        app:layout_constraintBottom_toBottomOf="@id/iv_gemini_logo"
+        app:layout_constraintEnd_toStartOf="@id/tv_gemini_status_online" />
+
+    <!-- ONLINE chip -->
+    <TextView
+        android:id="@+id/tv_gemini_status_online"
+        style="@style/SanLo.Text.StatusChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:background="@drawable/bg_status_chip_green"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:text="● ONLINE"
+        android:textColor="@color/sap_green"
+        app:layout_constraintEnd_toStartOf="@id/tv_gemini_status_ble"
+        app:layout_constraintTop_toTopOf="@id/iv_gemini_logo"
+        app:layout_constraintBottom_toBottomOf="@id/iv_gemini_logo" />
+
+    <!-- BLE chip -->
+    <TextView
+        android:id="@+id/tv_gemini_status_ble"
+        style="@style/SanLo.Text.StatusChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_status_chip_blue"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:text="BLE LINKED"
+        android:textColor="@color/celestial_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_gemini_logo"
+        app:layout_constraintBottom_toBottomOf="@id/iv_gemini_logo" />
+
+    <!-- ===== LOCATION BAR ===== -->
+    <LinearLayout
+        android:id="@+id/layout_gemini_location_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_location_bar"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_gemini_logo">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📍  Sector 01 · Colgante Station"
+            android:fontFamily="@font/inter_regular"
+            android:textColor="@color/text_dark"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_channel_badge"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="GEMINI 1.5 FLASH"
+            android:fontFamily="@font/roboto_mono_regular"
+            android:textColor="@color/channel_badge_text"
+            android:textSize="9sp" />
+    </LinearLayout>
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/tv_gemini_subtitle"
+        style="@style/SanLo.Text.SubHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="10dp"
+        android:text="Ask Gemini — diorama speaks the answer"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_gemini_location_bar" />
+
+    <!-- ===== CHAT LIST ===== -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_chat"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="10dp"
+        android:clipToPadding="false"
+        android:paddingBottom="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_gemini_subtitle"
+        app:layout_constraintBottom_toTopOf="@id/layout_voice_mode_card" />
+
+    <!-- ===== VOICE MODE PILL CARD ===== -->
+    <LinearLayout
+        android:id="@+id/layout_voice_mode_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_actuator_card"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layout_chat_input_row">
+
+        <!-- Mic button -->
+        <FrameLayout
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_circle_green">
+            <ImageView
+                android:id="@+id/btn_mic"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_mic"
+                android:contentDescription="Voice Input"
+                app:tint="@color/white" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Voice Mode"
+                android:fontFamily="@font/poppins_regular"
+                android:textStyle="bold"
+                android:textColor="@color/text_dark"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/tv_voice_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap mic to speak to diorama"
+                android:fontFamily="@font/inter_regular"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_voice_badge"
+            style="@style/SanLo.Text.StatusChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_status_chip_green"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:text="READY"
+            android:textColor="@color/sap_green" />
+
+    </LinearLayout>
+
+    <!-- ===== CHAT INPUT ROW ===== -->
+    <LinearLayout
+        android:id="@+id/layout_chat_input_row"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <EditText
+            android:id="@+id/et_ai_question"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_input_rounded"
+            android:fontFamily="@font/inter_regular"
+            android:hint="Ask about the diorama…"
+            android:textColorHint="@color/nav_inactive"
+            android:textColor="@color/text_dark"
+            android:textSize="13sp"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:inputType="text"
+            android:imeOptions="actionSend"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/btn_ask_ai"
+            style="@style/SanLo.Button.Pill.Green"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Ask"
+            android:textSize="13sp"
+            android:minHeight="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

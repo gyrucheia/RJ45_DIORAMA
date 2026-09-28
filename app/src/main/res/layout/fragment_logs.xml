@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tea_green">
+
+    <!-- ===== HEADER ROW ===== -->
+    <ImageView
+        android:id="@+id/iv_logs_logo"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_history"
+        android:contentDescription="Logs"
+        app:tint="@color/sap_green"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_logs_header"
+        style="@style/SanLo.Text.Header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Event Logs"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/iv_logs_logo"
+        app:layout_constraintTop_toTopOf="@id/iv_logs_logo"
+        app:layout_constraintBottom_toBottomOf="@id/iv_logs_logo"
+        app:layout_constraintEnd_toStartOf="@id/tv_logs_status_online" />
+
+    <!-- ONLINE chip -->
+    <TextView
+        android:id="@+id/tv_logs_status_online"
+        style="@style/SanLo.Text.StatusChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:background="@drawable/bg_status_chip_green"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:text="● ONLINE"
+        android:textColor="@color/sap_green"
+        app:layout_constraintEnd_toStartOf="@id/btn_clear_logs"
+        app:layout_constraintTop_toTopOf="@id/iv_logs_logo"
+        app:layout_constraintBottom_toBottomOf="@id/iv_logs_logo" />
+
+    <!-- Clear button -->
+    <Button
+        android:id="@+id/btn_clear_logs"
+        style="@style/SanLo.Button.Actuator.Red"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginEnd="16dp"
+        android:text="Clear"
+        android:textSize="11sp"
+        android:minHeight="0dp"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_logs_logo"
+        app:layout_constraintBottom_toBottomOf="@id/iv_logs_logo" />
+
+    <!-- ===== LOCATION BAR ===== -->
+    <LinearLayout
+        android:id="@+id/layout_logs_location_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_location_bar"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_logs_logo">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📍  Sector 01 · Colgante Station"
+            android:fontFamily="@font/inter_regular"
+            android:textColor="@color/text_dark"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_channel_badge"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="CONSOLE RT SYNC"
+            android:fontFamily="@font/roboto_mono_regular"
+            android:textColor="@color/channel_badge_text"
+            android:textSize="9sp" />
+    </LinearLayout>
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/tv_logs_subtitle"
+        style="@style/SanLo.Text.SubHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:text="PIR Events &amp; Automated Actions"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_logs_location_bar" />
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_logs"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_logs_subtitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

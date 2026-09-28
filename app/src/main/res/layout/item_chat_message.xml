@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp">
+
+    <!-- Gemini bubble (left-aligned) — shown/hidden by adapter -->
+    <LinearLayout
+        android:id="@+id/layout_gemini_bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:background="@drawable/bg_chat_gemini"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🤖  Gemini"
+            android:fontFamily="@font/poppins_regular"
+            android:textStyle="bold"
+            android:textSize="10sp"
+            android:textColor="@color/celestial_blue"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tv_gemini_msg"
+            style="@style/SanLo.Text.LogBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" />
+    </LinearLayout>
+
+    <!-- User bubble (right-aligned) — shown/hidden by adapter -->
+    <LinearLayout
+        android:id="@+id/layout_user_bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginStart="48dp"
+        android:background="@drawable/bg_chat_user"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You"
+            android:fontFamily="@font/poppins_regular"
+            android:textStyle="bold"
+            android:textSize="10sp"
+            android:textColor="@color/sap_green"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tv_user_msg"
+            style="@style/SanLo.Text.LogBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" />
+    </LinearLayout>
+
+</LinearLayout>

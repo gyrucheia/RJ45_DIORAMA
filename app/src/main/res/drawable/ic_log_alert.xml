@@ -1,0 +1,18 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Alert triangle -->
+    <path
+        android:fillColor="#C62828"
+        android:pathData="M1,21 L12,2 L23,21 Z" />
+    <!-- Exclamation mark vertical bar -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M11,9 L13,9 L12.5,16 L11.5,16 Z" />
+    <!-- Exclamation dot -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,17.5 C12.55,17.5 13,17.95 13,18.5 C13,19.05 12.55,19.5 12,19.5 C11.45,19.5 11,19.05 11,18.5 C11,17.95 11.45,17.5 12,17.5 Z" />
+</vector>

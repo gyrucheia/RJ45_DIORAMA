@@ -1,0 +1,21 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Outer drop shape -->
+    <path
+        android:fillColor="#2E86C1"
+        android:pathData="M24,6 C24,6 10,22 10,30 C10,37.73 16.27,44 24,44 C31.73,44 38,37.73 38,30 C38,22 24,6 24,6 Z" />
+    <!-- Inner highlight -->
+    <path
+        android:fillColor="#90CAF9"
+        android:pathData="M19,26 C18,28 18,30 19,32 C19.5,33 20.5,33.5 21,33 C21.5,32.5 21,31.5 20.5,30.5 C20,28.5 20.5,27 21,26 C21.5,25 20,24.5 19,26 Z" />
+    <!-- Wave detail inside -->
+    <path
+        android:fillColor="#1A6FA0"
+        android:strokeColor="#00000000"
+        android:pathData="M15,32 Q18,29 21,32 Q24,35 27,32 Q30,29 33,32"
+        android:strokeWidth="2"
+        android:fillType="evenOdd" />
+</vector>

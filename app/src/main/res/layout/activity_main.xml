@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tea_green"
+    tools:context=".MainActivity">
+
+    <!-- Fragment content area -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="88dp" />
+
+    <!-- Floating pill bar — MaterialCardView clips shadow to pill shape -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bottom_nav_card"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="36dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="@color/white"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="6dp">
+
+            <!-- Sensors -->
+            <LinearLayout
+                android:id="@+id/nav_item_sensors"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless">
+
+                <FrameLayout
+                    android:id="@+id/nav_bg_sensors"
+                    android:layout_width="48dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/bg_nav_active_pill">
+                    <ImageView
+                        android:id="@+id/nav_icon_sensors"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_leaf"
+                        android:contentDescription="Sensors" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/nav_label_sensors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Sensors"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="9sp"
+                    android:textColor="@color/sap_green" />
+            </LinearLayout>
+
+            <!-- Controls -->
+            <LinearLayout
+                android:id="@+id/nav_item_controls"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless">
+
+                <FrameLayout
+                    android:id="@+id/nav_bg_controls"
+                    android:layout_width="48dp"
+                    android:layout_height="28dp">
+                    <ImageView
+                        android:id="@+id/nav_icon_controls"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_controls"
+                        android:contentDescription="Controls" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/nav_label_controls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Controls"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="9sp"
+                    android:textColor="@color/nav_inactive" />
+            </LinearLayout>
+
+            <!-- Gemini AI — circular mic button inside the bar -->
+            <LinearLayout
+                android:id="@+id/nav_item_gemini"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless">
+
+                <FrameLayout
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_circle_green">
+                    <ImageView
+                        android:id="@+id/fab_voice_guide"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_mic"
+                        android:contentDescription="Gemini AI"
+                        app:tint="@color/white" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/nav_label_gemini"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Gemini AI"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="9sp"
+                    android:textColor="@color/sap_green" />
+            </LinearLayout>
+
+            <!-- RGB Light -->
+            <LinearLayout
+                android:id="@+id/nav_item_rgb"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless">
+
+                <FrameLayout
+                    android:id="@+id/nav_bg_rgb"
+                    android:layout_width="48dp"
+                    android:layout_height="28dp">
+                    <ImageView
+                        android:id="@+id/nav_icon_rgb"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_rgb_light"
+                        android:contentDescription="RGB Light" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/nav_label_rgb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="RGB Light"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="9sp"
+                    android:textColor="@color/nav_inactive" />
+            </LinearLayout>
+
+            <!-- Logs -->
+            <LinearLayout
+                android:id="@+id/nav_item_logs"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless">
+
+                <FrameLayout
+                    android:id="@+id/nav_bg_logs"
+                    android:layout_width="48dp"
+                    android:layout_height="28dp">
+                    <ImageView
+                        android:id="@+id/nav_icon_logs"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_history"
+                        android:contentDescription="Logs" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/nav_label_logs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Logs"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="9sp"
+                    android:textColor="@color/nav_inactive" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

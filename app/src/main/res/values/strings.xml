@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SanLo MobApp</string>
+    <string name="nav_sensors">Sensors</string>
+    <string name="nav_controls">Controls</string>
+    <string name="nav_logs">Logs</string>
+    <string name="fab_voice_guide">Ask Ready?</string>
+    <string name="dashboard_header">SanLo Diorama</string>
+    <string name="dashboard_subtitle">Live Sensor Readings</string>
+    <string name="label_temperature">TEMPERATURE</string>
+    <string name="label_humidity">HUMIDITY</string>
+    <string name="label_water_level">RIVER LEVEL</string>
+    <string name="label_visitors">AI VISITORS</string>
+    <string name="controls_header">Controls</string>
+    <string name="controls_subtitle">Diorama Actuators</string>
+    <string name="btn_start_tram">▶  Start Tram</string>
+    <string name="btn_return_tram">◀  Return Tram</string>
+    <string name="btn_lights">☀  Lights</string>
+    <string name="btn_sound">♪  Sound</string>
+    <string name="btn_reset">⚠  Reset All</string>
+    <string name="logs_header">Event Logs</string>
+    <string name="logs_subtitle">PIR Events &amp; Automated Actions</string>
+    <string name="btn_clear">Clear</string>
+</resources>
