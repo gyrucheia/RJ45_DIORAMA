@@ -4,213 +4,423 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tea_green">
+    android:background="@color/card_bg">
 
-    <!-- ===== HEADER ROW ===== -->
-    <ImageView
-        android:id="@+id/iv_gemini_logo"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_mic"
-        android:contentDescription="Gemini AI"
-        app:tint="@color/sap_green"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_gemini_header"
-        style="@style/SanLo.Text.Header"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="Gemini AI"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@id/iv_gemini_logo"
-        app:layout_constraintTop_toTopOf="@id/iv_gemini_logo"
-        app:layout_constraintBottom_toBottomOf="@id/iv_gemini_logo"
-        app:layout_constraintEnd_toStartOf="@id/tv_gemini_status_online" />
-
-    <!-- ONLINE chip -->
-    <TextView
-        android:id="@+id/tv_gemini_status_online"
-        style="@style/SanLo.Text.StatusChip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="6dp"
-        android:background="@drawable/bg_status_chip_green"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:paddingTop="3dp"
-        android:paddingBottom="3dp"
-        android:text="● ONLINE"
-        android:textColor="@color/sap_green"
-        app:layout_constraintEnd_toStartOf="@id/tv_gemini_status_ble"
-        app:layout_constraintTop_toTopOf="@id/iv_gemini_logo"
-        app:layout_constraintBottom_toBottomOf="@id/iv_gemini_logo" />
-
-    <!-- BLE chip -->
-    <TextView
-        android:id="@+id/tv_gemini_status_ble"
-        style="@style/SanLo.Text.StatusChip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/bg_status_chip_blue"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:paddingTop="3dp"
-        android:paddingBottom="3dp"
-        android:text="BLE LINKED"
-        android:textColor="@color/celestial_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/iv_gemini_logo"
-        app:layout_constraintBottom_toBottomOf="@id/iv_gemini_logo" />
-
-    <!-- ===== LOCATION BAR ===== -->
+    <!-- ===== HEADER ===== -->
     <LinearLayout
-        android:id="@+id/layout_gemini_location_bar"
+        android:id="@+id/layout_guide_header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_location_bar"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_gemini_logo">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <!-- Back arrow -->
+        <FrameLayout
+            android:id="@+id/btn_back_guide"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_tram_return_btn"
+            android:layout_marginEnd="12dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="‹"
+                android:textColor="@color/text_dark"
+                android:textSize="22sp" />
+        </FrameLayout>
+
+        <!-- Title + subtitle -->
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="📍  Sector 01 · Colgante Station"
-            android:fontFamily="@font/inter_regular"
-            android:textColor="@color/text_dark"
-            android:textSize="11sp" />
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SANLO DIORAMA"
+                android:textColor="@color/sap_green"
+                android:textSize="11sp"
+                android:letterSpacing="0.06"
+                android:fontFamily="@font/inter_regular"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SanLo Guide"
+                android:textColor="@color/text_dark"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your nature and tramline companion."
+                android:textColor="@color/text_muted"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter_regular" />
+        </LinearLayout>
+
+        <!-- SL Avatar -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_channel_badge"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            android:text="GEMINI 1.5 FLASH"
-            android:fontFamily="@font/roboto_mono_regular"
-            android:textColor="@color/channel_badge_text"
-            android:textSize="9sp" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="SL"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/bg_circle_green"
+            android:fontFamily="@font/inter_regular" />
+
     </LinearLayout>
 
-    <!-- Subtitle -->
-    <TextView
-        android:id="@+id/tv_gemini_subtitle"
-        style="@style/SanLo.Text.SubHeader"
+    <!-- ===== GUIDE INTRO CARD ===== -->
+    <LinearLayout
+        android:id="@+id/layout_guide_intro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="10dp"
-        android:text="Ask Gemini — diorama speaks the answer"
-        android:textSize="11sp"
+        android:orientation="horizontal"
+        android:gravity="top"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_gemini_location_bar" />
+        app:layout_constraintTop_toBottomOf="@id/layout_guide_header">
 
-    <!-- ===== CHAT LIST ===== -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_chat"
+        <!-- Green icon square -->
+        <FrameLayout
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_explore_card_green"
+            android:layout_marginEnd="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_onboard_sun"
+                    android:tint="@color/white"
+                    android:contentDescription="SanLo Guide" />
+
+                <!-- Three small dots below icon -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp">
+                    <View android:layout_width="4dp" android:layout_height="4dp"
+                        android:background="@drawable/bg_circle_orange"
+                        android:layout_marginEnd="2dp" />
+                    <View android:layout_width="4dp" android:layout_height="4dp"
+                        android:background="@drawable/bg_circle_orange"
+                        android:layout_marginEnd="2dp" />
+                    <View android:layout_width="4dp" android:layout_height="4dp"
+                        android:background="@drawable/bg_circle_orange" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Intro text -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="YOUR SANLO GUIDE"
+                android:textColor="@color/sap_green"
+                android:textSize="10sp"
+                android:letterSpacing="0.08"
+                android:fontFamily="@font/inter_regular" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Mabuhay, explorer!"
+                android:textColor="@color/text_dark"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Ask me about the San Lorenzo Ruiz Tramline, the river, or how the diorama works."
+                android:textColor="@color/text_muted"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter_regular" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ===== TRY ASKING CARD ===== -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_try_asking"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="10dp"
-        android:clipToPadding="false"
-        android:paddingBottom="12dp"
+        android:layout_marginTop="14dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/card_white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_gemini_subtitle"
-        app:layout_constraintBottom_toTopOf="@id/layout_voice_mode_card" />
+        app:layout_constraintTop_toBottomOf="@id/layout_guide_intro"
+        app:layout_constraintBottom_toTopOf="@id/layout_voice_card">
 
-    <!-- ===== VOICE MODE PILL CARD ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="TRY ASKING"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp"
+                android:letterSpacing="0.1"
+                android:fontFamily="@font/inter_regular" />
+
+            <!-- Chat RecyclerView for messages -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_chat"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:paddingBottom="4dp"
+                android:visibility="gone" />
+
+            <!-- Suggestion rows -->
+            <LinearLayout
+                android:id="@+id/layout_suggestions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Suggestion 1 -->
+                <LinearLayout
+                    android:id="@+id/suggestion_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_gesture_dir_pill"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:layout_marginBottom="6dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="What is the Colgante River?"
+                        android:textColor="@color/text_dark"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_regular" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="→"
+                        android:textColor="@color/text_muted"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <!-- Suggestion 2 -->
+                <LinearLayout
+                    android:id="@+id/suggestion_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_gesture_dir_pill"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:layout_marginBottom="6dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="How does the tram work?"
+                        android:textColor="@color/text_dark"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_regular" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="→"
+                        android:textColor="@color/text_muted"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <!-- Suggestion 3 -->
+                <LinearLayout
+                    android:id="@+id/suggestion_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_gesture_dir_pill"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:layout_marginBottom="6dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="What sensors are being used?"
+                        android:textColor="@color/text_dark"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_regular" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="→"
+                        android:textColor="@color/text_muted"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <!-- Suggestion 4 -->
+                <LinearLayout
+                    android:id="@+id/suggestion_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_gesture_dir_pill"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tell me about the river level."
+                        android:textColor="@color/text_dark"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_regular" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="→"
+                        android:textColor="@color/text_muted"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- ===== VOICE-ACTIVATED MOMENT CARD ===== -->
     <LinearLayout
-        android:id="@+id/layout_voice_mode_card"
+        android:id="@+id/layout_voice_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/bg_actuator_card"
+        android:background="@drawable/bg_tram_status_card"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="12dp"
+        android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/layout_chat_input_row">
 
-        <!-- Mic button -->
+        <!-- Orange tram icon circle -->
+        <FrameLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_icon_circle_orange">
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_tram"
+                android:tint="@color/white"
+                android:contentDescription="Tram" />
+        </FrameLayout>
+
+        <!-- Text block -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VOICE-ACTIVATED MOMENT"
+                android:textColor="@color/gesture_orange"
+                android:textSize="9sp"
+                android:letterSpacing="0.08"
+                android:fontFamily="@font/inter_regular" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Ready for the tram?"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text='Ask "Are you ready?" and a "Yes" can begin the tram sequence.'
+                android:textColor="#80FFFFFF"
+                android:textSize="11sp"
+                android:fontFamily="@font/inter_regular" />
+        </LinearLayout>
+
+        <!-- White mic circle -->
         <FrameLayout
             android:layout_width="44dp"
             android:layout_height="44dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/bg_circle_green">
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_circle_white">
             <ImageView
                 android:id="@+id/btn_mic"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_mic"
-                android:contentDescription="Voice Input"
-                app:tint="@color/white" />
+                android:tint="@color/text_dark"
+                android:contentDescription="Voice Input" />
         </FrameLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Voice Mode"
-                android:fontFamily="@font/poppins_regular"
-                android:textStyle="bold"
-                android:textColor="@color/text_dark"
-                android:textSize="12sp" />
-            <TextView
-                android:id="@+id/tv_voice_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tap mic to speak to diorama"
-                android:fontFamily="@font/inter_regular"
-                android:textColor="@color/text_muted"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_voice_badge"
-            style="@style/SanLo.Text.StatusChip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_status_chip_green"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"
-            android:text="READY"
-            android:textColor="@color/sap_green" />
 
     </LinearLayout>
 
-    <!-- ===== CHAT INPUT ROW ===== -->
+    <!-- ===== CHAT INPUT BAR ===== -->
     <LinearLayout
         android:id="@+id/layout_chat_input_row"
         android:layout_width="0dp"
@@ -224,36 +434,55 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
+        <!-- Input field -->
         <EditText
             android:id="@+id/et_ai_question"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_input_rounded"
             android:fontFamily="@font/inter_regular"
-            android:hint="Ask about the diorama…"
+            android:hint="Ask SanLo anything..."
             android:textColorHint="@color/nav_inactive"
             android:textColor="@color/text_dark"
             android:textSize="13sp"
-            android:paddingStart="14dp"
+            android:paddingStart="18dp"
             android:paddingEnd="14dp"
             android:inputType="text"
             android:imeOptions="actionSend"
             android:singleLine="true" />
 
-        <Button
+        <!-- Mic icon button -->
+        <FrameLayout
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_circle_white">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_mic"
+                android:tint="@color/text_muted"
+                android:contentDescription="Voice" />
+        </FrameLayout>
+
+        <!-- Send button -->
+        <FrameLayout
             android:id="@+id/btn_ask_ai"
-            style="@style/SanLo.Button.Pill.Green"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="Ask"
-            android:textSize="13sp"
-            android:minHeight="0dp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp" />
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_send_btn">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_controls"
+                android:tint="@color/white"
+                android:contentDescription="Send"
+                android:rotation="90" />
+        </FrameLayout>
 
     </LinearLayout>
 

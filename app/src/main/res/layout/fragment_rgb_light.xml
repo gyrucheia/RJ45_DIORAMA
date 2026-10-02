@@ -1,534 +1,633 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/tea_green"
-    android:fillViewport="true">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="32dp">
+        android:layout_height="match_parent"
+        android:background="@color/card_bg"
+        android:fillViewport="true">
 
-        <!-- ===== HEADER ROW ===== -->
-        <ImageView
-            android:id="@+id/iv_rgb_logo"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_rgb_light"
-            android:contentDescription="RGB Light"
-            app:tint="@color/sap_green"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_rgb_header"
-            style="@style/SanLo.Text.Header"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="RGB Light"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/iv_rgb_logo"
-            app:layout_constraintTop_toTopOf="@id/iv_rgb_logo"
-            app:layout_constraintBottom_toBottomOf="@id/iv_rgb_logo"
-            app:layout_constraintEnd_toStartOf="@id/tv_rgb_status_online" />
-
-        <TextView
-            android:id="@+id/tv_rgb_status_online"
-            style="@style/SanLo.Text.StatusChip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
-            android:background="@drawable/bg_status_chip_green"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"
-            android:text="● ONLINE"
-            android:textColor="@color/sap_green"
-            app:layout_constraintEnd_toStartOf="@id/tv_rgb_status_ble"
-            app:layout_constraintTop_toTopOf="@id/iv_rgb_logo"
-            app:layout_constraintBottom_toBottomOf="@id/iv_rgb_logo" />
-
-        <TextView
-            android:id="@+id/tv_rgb_status_ble"
-            style="@style/SanLo.Text.StatusChip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_status_chip_blue"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"
-            android:text="BLE LINKED"
-            android:textColor="@color/celestial_blue"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/iv_rgb_logo"
-            app:layout_constraintBottom_toBottomOf="@id/iv_rgb_logo" />
-
-        <!-- Location bar -->
         <LinearLayout
-            android:id="@+id/layout_rgb_location_bar"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_location_bar"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_rgb_logo">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="📍  Sector 01 · Colgante Station"
-                android:fontFamily="@font/inter_regular"
-                android:textColor="@color/text_dark"
-                android:textSize="11sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_channel_badge"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
-                android:text="LED STRIP · AUX 2"
-                android:fontFamily="@font/roboto_mono_regular"
-                android:textColor="@color/channel_badge_text"
-                android:textSize="9sp" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_rgb_sub"
-            style="@style/SanLo.Text.SubHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:text="LED Color Control"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_rgb_location_bar" />
-
-        <!-- ===== COLOR PREVIEW CARD ===== -->
-        <LinearLayout
-            android:id="@+id/layout_color_preview_card"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/bg_actuator_card"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:padding="18dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_rgb_sub">
-
-            <!-- Large color swatch circle -->
-            <View
-                android:id="@+id/view_color_swatch"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:background="@drawable/bg_color_circle"
-                android:layout_marginEnd="18dp" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Current Color"
-                    android:fontFamily="@font/inter_regular"
-                    android:textColor="@color/text_muted"
-                    android:textSize="11sp" />
-
-                <TextView
-                    android:id="@+id/tv_color_hex"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/roboto_mono_regular"
-                    android:textColor="@color/myrtle_green"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:text="#FF0000" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="RGB (255, 0, 0)"
-                    android:fontFamily="@font/roboto_mono_regular"
-                    android:textColor="@color/text_muted"
-                    android:textSize="11sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- ===== RGB SLIDERS CARD ===== -->
-        <LinearLayout
-            android:id="@+id/layout_rgb_sliders"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/bg_actuator_card"
             android:orientation="vertical"
-            android:padding="18dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_color_preview_card">
+            android:paddingTop="20dp"
+            android:paddingBottom="120dp">
 
-            <!-- R -->
+            <!-- ===== HEADER ===== -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="14dp">
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
 
-                <TextView
-                    android:layout_width="16dp"
-                    android:layout_height="wrap_content"
-                    android:text="R"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textStyle="bold"
-                    android:textColor="#E53935"
-                    android:textSize="13sp" />
-
-                <SeekBar
-                    android:id="@+id/seekbar_red"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:max="255"
-                    android:progress="255"
-                    android:progressTint="#E53935"
-                    android:thumbTint="#E53935" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SANLO DIORAMA"
+                        android:textColor="@color/sap_green"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.06"
+                        android:fontFamily="@font/inter_regular"
+                        android:textAllCaps="true" />
+
+                    <TextView
+                        android:id="@+id/tv_rgb_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="River Light Studio"
+                        android:textColor="@color/text_dark"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_regular" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Change the mood of your miniature world."
+                        android:textColor="@color/text_muted"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_regular" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/tv_red_value"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:text="255"
-                    android:fontFamily="@font/roboto_mono_regular"
-                    android:textColor="@color/text_dark"
-                    android:textSize="11sp" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="SL"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="@drawable/bg_circle_green"
+                    android:fontFamily="@font/inter_regular" />
             </LinearLayout>
 
-            <!-- G -->
-            <LinearLayout
+            <!-- ===== HERO CARD (landscape preview) ===== -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_rgb_hero"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#C8DFC8">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_onboard_landscape"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Diorama preview" />
+
+                    <!-- LIVE PREVIEW chip at bottom -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="14dp"
+                        android:paddingBottom="12dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="● LIVE PREVIEW"
+                            android:textColor="@color/sap_green"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.06"
+                            android:fontFamily="@font/inter_regular"
+                            android:background="@drawable/bg_pill_white"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:id="@+id/tv_brightness_pct_hero"
+                            android:text="72%"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_regular" />
+                    </LinearLayout>
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ===== CHOOSE A COLOR CARD ===== -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="14dp">
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/card_white">
 
-                <TextView
-                    android:layout_width="16dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="G"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textStyle="bold"
-                    android:textColor="@color/sap_green"
-                    android:textSize="13sp" />
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <SeekBar
-                    android:id="@+id/seekbar_green"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:max="255"
-                    android:progress="0"
-                    android:progressTint="@color/sap_green"
-                    android:thumbTint="@color/sap_green" />
+                    <!-- Header row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
 
-                <TextView
-                    android:id="@+id/tv_green_value"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:fontFamily="@font/roboto_mono_regular"
-                    android:textColor="@color/text_dark"
-                    android:textSize="11sp" />
-            </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-            <!-- B -->
-            <LinearLayout
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="CHOOSE A COLOR"
+                                android:textColor="@color/text_muted"
+                                android:textSize="10sp"
+                                android:letterSpacing="0.08"
+                                android:fontFamily="@font/inter_regular" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Set the river glow"
+                                android:textColor="@color/text_dark"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_regular" />
+                        </LinearLayout>
+
+                        <!-- Color swatch preview chip -->
+                        <View
+                            android:id="@+id/view_color_swatch"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_color_circle" />
+                    </LinearLayout>
+
+                    <!-- Large circle + HEX/RGB info row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="14dp">
+
+                        <!-- Big color circle -->
+                        <View
+                            android:id="@+id/view_color_swatch_large"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="@drawable/bg_color_circle"
+                            android:layout_marginEnd="16dp" />
+
+                        <!-- HEX + RGB labels -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/bg_gesture_dir_pill"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:layout_marginBottom="6dp">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="HEX"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="11sp"
+                                    android:fontFamily="@font/inter_regular" />
+
+                                <TextView
+                                    android:id="@+id/tv_color_hex"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="#47AFC3"
+                                    android:textColor="@color/text_dark"
+                                    android:textSize="13sp"
+                                    android:fontFamily="@font/roboto_mono_regular" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/bg_gesture_dir_pill"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="RGB"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="11sp"
+                                    android:fontFamily="@font/inter_regular" />
+
+                                <TextView
+                                    android:id="@+id/tv_rgb_values"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="71, 175, 195"
+                                    android:textColor="@color/text_dark"
+                                    android:textSize="13sp"
+                                    android:fontFamily="@font/roboto_mono_regular" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Brightness row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="16dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_onboard_sun"
+                            android:tint="@color/text_muted"
+                            android:contentDescription="Brightness"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Brightness"
+                            android:textColor="@color/text_dark"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:id="@+id/tv_brightness_pct"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="72%"
+                            android:textColor="@color/text_muted"
+                            android:textSize="13sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                    <SeekBar
+                        android:id="@+id/seekbar_brightness"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:progress="72"
+                        android:max="100"
+                        android:progressTint="@color/sap_green"
+                        android:thumbTint="@color/sap_green" />
+
+                    <!-- MOOD PRESETS label -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="MOOD PRESETS"
+                        android:textColor="@color/text_muted"
+                        android:textSize="10sp"
+                        android:letterSpacing="0.08"
+                        android:fontFamily="@font/inter_regular" />
+
+                    <!-- Mood preset circles row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- Daylight -->
+                        <LinearLayout
+                            android:id="@+id/btn_preset_warm"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+                            <View
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:background="@drawable/bg_color_circle" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Daylight"
+                                android:textColor="@color/text_muted"
+                                android:textSize="9sp"
+                                android:fontFamily="@font/inter_regular" />
+                        </LinearLayout>
+
+                        <!-- Sunset -->
+                        <LinearLayout
+                            android:id="@+id/btn_preset_sunset"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+                            <View
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:background="@drawable/bg_icon_circle_orange" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Sunset"
+                                android:textColor="@color/text_muted"
+                                android:textSize="9sp"
+                                android:fontFamily="@font/inter_regular" />
+                        </LinearLayout>
+
+                        <!-- River (teal, active) -->
+                        <LinearLayout
+                            android:id="@+id/btn_preset_cool"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+                            <View
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:background="@drawable/bg_icon_circle_explore" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="River"
+                                android:textColor="@color/sap_green"
+                                android:textSize="9sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/inter_regular" />
+                        </LinearLayout>
+
+                        <!-- Forest -->
+                        <LinearLayout
+                            android:id="@+id/btn_preset_nature"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+                            <View
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:background="@drawable/bg_explore_card_green" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Forest"
+                                android:textColor="@color/text_muted"
+                                android:textSize="9sp"
+                                android:fontFamily="@font/inter_regular" />
+                        </LinearLayout>
+
+                        <!-- Night -->
+                        <LinearLayout
+                            android:id="@+id/btn_preset_alert"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+                            <View
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:background="@drawable/bg_icon_circle_coral" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Night"
+                                android:textColor="@color/text_muted"
+                                android:textSize="9sp"
+                                android:fontFamily="@font/inter_regular" />
+                        </LinearLayout>
+
+                        <!-- Alert -->
+                        <LinearLayout
+                            android:id="@+id/btn_preset_off"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+                            <View
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:background="@drawable/bg_icon_circle_salmon" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Alert"
+                                android:textColor="@color/text_muted"
+                                android:textSize="9sp"
+                                android:fontFamily="@font/inter_regular" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ===== COLOR SENSOR CARD ===== -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#E0F4F4">
 
-                <TextView
-                    android:layout_width="16dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="B"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textStyle="bold"
-                    android:textColor="@color/celestial_blue"
-                    android:textSize="13sp" />
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <SeekBar
-                    android:id="@+id/seekbar_blue"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:max="255"
-                    android:progress="0"
-                    android:progressTint="@color/celestial_blue"
-                    android:thumbTint="@color/celestial_blue" />
+                    <!-- Header row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
 
-                <TextView
-                    android:id="@+id/tv_blue_value"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:fontFamily="@font/roboto_mono_regular"
-                    android:textColor="@color/text_dark"
-                    android:textSize="11sp" />
-            </LinearLayout>
+                        <FrameLayout
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:background="@drawable/bg_icon_circle_teal">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_sensor_water"
+                                android:tint="#00796B"
+                                android:contentDescription="Color Sensor" />
+                        </FrameLayout>
 
-        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="12dp">
 
-        <!-- ===== PRESETS SECTION ===== -->
-        <TextView
-            android:id="@+id/tv_presets_label"
-            style="@style/SanLo.Text.SectionLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:text="Quick Presets"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_rgb_sliders" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="COLOR SENSOR"
+                                android:textColor="#00796B"
+                                android:textSize="10sp"
+                                android:letterSpacing="0.08"
+                                android:fontFamily="@font/inter_regular" />
 
-        <!-- Preset chips row 1 -->
-        <LinearLayout
-            android:id="@+id/layout_presets_row1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_presets_label">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Match a Real Object"
+                                android:textColor="@color/text_dark"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_regular" />
 
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Place a colored object near the diorama and let the river copy its color."
+                                android:textColor="@color/text_muted"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/inter_regular" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Scan button -->
+                    <Button
+                        android:id="@+id/btn_color_match"
+                        style="@style/Widget.Material3.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="14dp"
+                        android:background="@drawable/bg_tram_return_btn"
+                        android:text="Scan Object Color"
+                        android:textColor="@color/text_dark"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:stateListAnimator="@null"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:minHeight="0dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ===== APPLY TO DIORAMA BUTTON ===== -->
             <Button
-                android:id="@+id/btn_preset_warm"
+                android:id="@+id/btn_apply_color"
                 style="@style/Widget.Material3.Button"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="6dp"
-                android:background="@drawable/bg_quick_pill"
-                android:text="☀ Warm"
-                android:textColor="@color/text_dark"
-                android:fontFamily="@font/inter_regular"
-                android:textSize="11sp"
-                android:stateListAnimator="@null"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:minHeight="0dp" />
-
-            <Button
-                android:id="@+id/btn_preset_cool"
-                style="@style/Widget.Material3.Button"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="6dp"
-                android:background="@drawable/bg_quick_pill"
-                android:text="❄ Cool"
-                android:textColor="@color/text_dark"
-                android:fontFamily="@font/inter_regular"
-                android:textSize="11sp"
-                android:stateListAnimator="@null"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:minHeight="0dp" />
-
-            <Button
-                android:id="@+id/btn_preset_nature"
-                style="@style/Widget.Material3.Button"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_quick_pill"
-                android:text="🌿 Nature"
-                android:textColor="@color/text_dark"
-                android:fontFamily="@font/inter_regular"
-                android:textSize="11sp"
-                android:stateListAnimator="@null"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:minHeight="0dp" />
-        </LinearLayout>
-
-        <!-- Preset chips row 2 -->
-        <LinearLayout
-            android:id="@+id/layout_presets_row2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_presets_row1">
-
-            <Button
-                android:id="@+id/btn_preset_sunset"
-                style="@style/Widget.Material3.Button"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="6dp"
-                android:background="@drawable/bg_quick_pill"
-                android:text="🌅 Sunset"
-                android:textColor="@color/text_dark"
-                android:fontFamily="@font/inter_regular"
-                android:textSize="11sp"
-                android:stateListAnimator="@null"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:minHeight="0dp" />
-
-            <Button
-                android:id="@+id/btn_preset_alert"
-                style="@style/Widget.Material3.Button"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="6dp"
-                android:background="@drawable/bg_quick_pill"
-                android:text="🚨 Alert"
-                android:textColor="@color/text_dark"
-                android:fontFamily="@font/inter_regular"
-                android:textSize="11sp"
-                android:stateListAnimator="@null"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:minHeight="0dp" />
-
-            <Button
-                android:id="@+id/btn_preset_off"
-                style="@style/Widget.Material3.Button"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_quick_pill"
-                android:text="⚫ Off"
-                android:textColor="@color/text_dark"
-                android:fontFamily="@font/inter_regular"
-                android:textSize="11sp"
-                android:stateListAnimator="@null"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:minHeight="0dp" />
-        </LinearLayout>
-
-        <!-- ===== ACTION BUTTONS ===== -->
-        <Button
-            android:id="@+id/btn_color_match"
-            style="@style/SanLo.Button.Pill.Yellow"
-            android:layout_width="0dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="14dp"
-            android:text="📷  Match Object Color"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_presets_row2" />
-
-        <Button
-            android:id="@+id/btn_apply_color"
-            style="@style/SanLo.Button.Pill.Green"
-            android:layout_width="0dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="10dp"
-            android:text="✓  Apply Color to LEDs"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_color_match" />
-
-        <!-- Footer -->
-        <LinearLayout
-            android:id="@+id/layout_rgb_footer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:background="@drawable/bg_footer_bar"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="14dp"
-            android:paddingEnd="14dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_apply_color">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="WS2812B LED Strip"
-                    android:fontFamily="@font/roboto_mono_regular"
-                    android:textColor="@color/text_dark"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SPI · 60 LEDs · AUX 2"
-                    android:fontFamily="@font/roboto_mono_regular"
-                    android:textColor="@color/text_muted"
-                    android:textSize="9sp" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btn_rgb_self_test"
-                style="@style/Widget.Material3.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="34dp"
-                android:background="@drawable/bg_pill_white"
-                android:text="Self Test"
-                android:textColor="@color/sap_green"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_tram_status_card"
+                android:text="☀  Apply to Diorama"
+                android:textColor="@color/white"
                 android:fontFamily="@font/poppins_regular"
-                android:textSize="11sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 android:stateListAnimator="@null"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                android:minHeight="0dp"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp" />
+                android:minHeight="0dp" />
+
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-</ScrollView>
+    <!-- ===== ASK SANLO FLOATING BUTTON ===== -->
+    <LinearLayout
+        android:id="@+id/btn_ask_sanlo_rgb"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_ask_sanlo_fab"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:elevation="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="✦"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:layout_marginEnd="6dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ask SanLo"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_regular" />
+    </LinearLayout>
+
+</FrameLayout>

@@ -5,6 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,42 +29,73 @@ public class ControlsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btnDeployZipline = view.findViewById(R.id.btn_deploy_zipline);
-        Button btnTraverseSpan  = view.findViewById(R.id.btn_traverse_span);
-        Button btnPuffFog       = view.findViewById(R.id.btn_puff_fog);
-        Button btnChirpStream   = view.findViewById(R.id.btn_chirp_stream);
+        Button btnStartTram     = view.findViewById(R.id.btn_start_tram);
+        Button btnReturnTram    = view.findViewById(R.id.btn_return_tram);
         Button btnEmergencyStop = view.findViewById(R.id.btn_emergency_stop);
-        Button btnSelfTest      = view.findViewById(R.id.btn_self_test);
-        Button btnRgbPreset     = view.findViewById(R.id.btn_rgb_preset);
-        Button btnGeminiSpeaker = view.findViewById(R.id.btn_gemini_speaker);
-        Button btnModulatePump  = view.findViewById(R.id.btn_modulate_pump);
+        LinearLayout layoutEmergency = view.findViewById(R.id.layout_emergency_stop);
+        LinearLayout btnTryGesture   = view.findViewById(R.id.btn_try_gesture);
 
-        btnDeployZipline.setOnClickListener(v ->
-                showFeedback("Zipline deployed → Pulley link engaged"));
+        Switch switchRiver  = view.findViewById(R.id.switch_river_flow);
+        Switch switchSounds = view.findViewById(R.id.switch_nature_sounds);
+        Switch switchLights = view.findViewById(R.id.switch_ambient_lights);
 
-        btnTraverseSpan.setOnClickListener(v ->
-                showFeedback("Cable car traversing span →"));
+        SeekBar seekWind    = view.findViewById(R.id.seekbar_wind);
+        TextView tvWindLvl  = view.findViewById(R.id.tv_wind_level);
 
-        btnPuffFog.setOnClickListener(v ->
-                showFeedback("Canopy mist activated — puffing fog"));
+        LinearLayout pillRight = view.findViewById(R.id.gesture_pill_right);
+        LinearLayout pillLeft  = view.findViewById(R.id.gesture_pill_left);
+        LinearLayout pillUp    = view.findViewById(R.id.gesture_pill_up);
+        LinearLayout pillDown  = view.findViewById(R.id.gesture_pill_down);
 
-        btnChirpStream.setOnClickListener(v ->
-                showFeedback("Forest audio stream started ♪"));
+        btnStartTram.setOnClickListener(v -> showFeedback("Tram departing → At Start Station"));
+        btnReturnTram.setOnClickListener(v -> showFeedback("Tram returning ← to Start Station"));
 
-        btnModulatePump.setOnClickListener(v ->
-                showFeedback("River pump modulating at 62%"));
-
-        btnEmergencyStop.setOnClickListener(v ->
+        btnEmergencyStop.setOnClickListener(v -> showFeedback("⚠ EMERGENCY STOP — all motors halted"));
+        if (layoutEmergency != null) layoutEmergency.setOnClickListener(v ->
                 showFeedback("⚠ EMERGENCY STOP — all motors halted"));
 
-        btnSelfTest.setOnClickListener(v ->
-                showFeedback("Self test initiated — checking all channels"));
+        if (switchRiver != null) switchRiver.setOnCheckedChangeListener((btn, checked) ->
+                showFeedback("River Flow " + (checked ? "ON" : "OFF")));
+        if (switchSounds != null) switchSounds.setOnCheckedChangeListener((btn, checked) ->
+                showFeedback("Nature Sounds " + (checked ? "ON" : "OFF")));
+        if (switchLights != null) switchLights.setOnCheckedChangeListener((btn, checked) ->
+                showFeedback("Ambient Lights " + (checked ? "ON" : "OFF")));
 
-        btnRgbPreset.setOnClickListener(v ->
-                showFeedback("RGB glow preset applied"));
+        if (seekWind != null && tvWindLvl != null) {
+            seekWind.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override public void onProgressChanged(SeekBar s, int p, boolean fromUser) {
+                    String label = p < 20 ? "Calm" : p < 40 ? "Low" : p < 65 ? "Moderate" : p < 85 ? "Strong" : "Max";
+                    tvWindLvl.setText(label + " · " + p + "%");
+                }
+                @Override public void onStartTrackingTouch(SeekBar s) {}
+                @Override public void onStopTrackingTouch(SeekBar s) {}
+            });
+        }
 
-        btnGeminiSpeaker.setOnClickListener(v ->
-                showFeedback("Gemini speaker activated"));
+        if (pillRight != null) pillRight.setOnClickListener(v -> {
+            showFeedback("Gesture RIGHT → Tram Start");
+            btnStartTram.performClick();
+        });
+        if (pillLeft != null) pillLeft.setOnClickListener(v -> {
+            showFeedback("Gesture LEFT ← Tram Return");
+            btnReturnTram.performClick();
+        });
+        if (pillUp != null) pillUp.setOnClickListener(v -> {
+            showFeedback("Gesture UP ↑ → Lights");
+            if (getActivity() instanceof MainActivity) {
+                ((MainActivity) getActivity()).showNav(true);
+                ((MainActivity) getActivity()).loadFragment(new RgbLightFragment());
+                ((MainActivity) getActivity()).setActiveNav("rgb");
+            }
+        });
+        if (pillDown != null) pillDown.setOnClickListener(v -> {
+            boolean isOn = switchRiver != null && switchRiver.isChecked();
+            if (switchRiver != null) switchRiver.setChecked(!isOn);
+            showFeedback("Gesture DOWN ↓ → Pump " + (!isOn ? "ON" : "OFF"));
+        });
+
+        if (btnTryGesture != null) btnTryGesture.setOnClickListener(v ->
+                showFeedback("Wave a gesture near the sensor to control the diorama"));
     }
 
     private void showFeedback(String message) {

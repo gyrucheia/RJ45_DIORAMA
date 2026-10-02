@@ -1,82 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:background="@drawable/bg_actuator_card"
-    android:clipChildren="true"
-    android:clipToPadding="true">
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp">
 
-    <!-- Colored left accent bar — color set programmatically by adapter -->
-    <View
-        android:id="@+id/view_accent_bar"
-        android:layout_width="5dp"
-        android:layout_height="0dp"
-        android:background="@color/celestial_blue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Type icon -->
-    <ImageView
-        android:id="@+id/iv_log_icon"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_log_pir"
-        android:contentDescription="Log Type Icon"
-        app:layout_constraintStart_toEndOf="@id/view_accent_bar"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Event type chip -->
-    <TextView
-        android:id="@+id/tv_log_event_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_pill_blue"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:paddingTop="3dp"
-        android:paddingBottom="3dp"
-        android:fontFamily="@font/inter_regular"
-        android:textSize="10sp"
-        android:textColor="@color/white"
-        android:text="PIR Motion"
-        app:layout_constraintStart_toEndOf="@id/iv_log_icon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tv_log_description" />
-
-    <!-- Timestamp -->
+    <!-- Timestamp (left) -->
     <TextView
         android:id="@+id/tv_log_timestamp"
-        style="@style/SanLo.Text.LogTimestamp"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:text="11:17 PM"
+        android:textColor="@color/text_muted"
+        android:textSize="10sp"
+        android:fontFamily="@font/inter_regular"
+        android:layout_marginEnd="10dp" />
+
+    <!-- Vertical connector line + icon -->
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="14dp"
-        android:layout_marginTop="16dp"
-        android:text="00:00:00"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginEnd="12dp">
 
-    <!-- Event description -->
-    <TextView
-        android:id="@+id/tv_log_description"
-        style="@style/SanLo.Text.LogBody"
+        <FrameLayout
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_icon_circle_orange">
+
+            <ImageView
+                android:id="@+id/iv_log_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_tram"
+                android:tint="@color/white"
+                android:contentDescription="Event icon" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Title + subtitle -->
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="16dp"
-        android:text="Motion detected — Zone A"
-        app:layout_constraintStart_toEndOf="@id/view_accent_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_log_event_type"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_log_event_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tram started"
+            android:textColor="@color/text_dark"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/inter_regular" />
+
+        <TextView
+            android:id="@+id/tv_log_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Gesture · RIGHT"
+            android:textColor="@color/text_muted"
+            android:textSize="11sp"
+            android:fontFamily="@font/inter_regular" />
+    </LinearLayout>
+
+    <!-- NEW badge (shown only for recent/new items) -->
+    <TextView
+        android:id="@+id/tv_log_new_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_explore_card_teal"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:text="NEW"
+        android:textColor="#00796B"
+        android:textSize="9sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/inter_regular"
+        android:visibility="gone" />
+
+</LinearLayout>

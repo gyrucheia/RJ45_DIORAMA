@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/card_bg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="100dp">
+
+            <!-- ===== HEADER ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SANLO DIORAMA"
+                        android:textColor="@color/sap_green"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.06"
+                        android:fontFamily="@font/inter_regular"
+                        android:textAllCaps="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Live Environment"
+                        android:textColor="@color/text_dark"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_regular" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="A living view of the diorama."
+                        android:textColor="@color/text_muted"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_regular" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="SL"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="@drawable/bg_circle_green"
+                    android:fontFamily="@font/inter_regular" />
+            </LinearLayout>
+
+            <!-- ===== HERO CARD (Temperature + Water visual) ===== -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_hero_explore">
+
+                <!-- Temperature display (top center) -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center_horizontal"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_sensor_temp"
+                        android:tint="#F4A261"
+                        android:contentDescription="Temperature" />
+
+                    <TextView
+                        android:id="@+id/tv_explore_temp_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="29°c"
+                        android:textColor="@color/text_dark"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_regular" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Temperature"
+                        android:textColor="@color/text_dark"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/inter_regular" />
+
+                    <TextView
+                        android:id="@+id/tv_explore_temp_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Comfortably warm"
+                        android:textColor="@color/text_muted"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/inter_regular" />
+                </LinearLayout>
+
+                <!-- Water drop + river level (bottom left) -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|start"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginBottom="14dp">
+
+                    <FrameLayout
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_circle_white">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_sensor_water"
+                            android:tint="#26A69A"
+                            android:contentDescription="Water level" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <!-- Teal water fill at bottom right -->
+                <View
+                    android:layout_width="140dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="bottom|end"
+                    android:background="@drawable/bg_river_card"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="0dp" />
+            </FrameLayout>
+
+            <!-- ===== RIVER STATUS CARD ===== -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/card_white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Header row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="4dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="RIVER STATUS"
+                                android:textColor="@color/sap_green"
+                                android:textSize="10sp"
+                                android:letterSpacing="0.08"
+                                android:fontFamily="@font/inter_regular" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Colgante River"
+                                android:textColor="@color/text_dark"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_regular" />
+                        </LinearLayout>
+
+                        <!-- SAFE chip -->
+                        <TextView
+                            android:id="@+id/tv_river_safe_chip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_safe_chip"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:text="✓  SAFE"
+                            android:textColor="@color/sap_green"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                    <!-- Water level visualization -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_river_card">
+
+                        <!-- Level markers (right side) -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="end"
+                            android:orientation="vertical"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp">
+
+                            <!-- High 2.5m -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+                                <View
+                                    android:layout_width="6dp"
+                                    android:layout_height="6dp"
+                                    android:background="@drawable/bg_circle_orange"
+                                    android:layout_marginEnd="4dp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="High · 2.5 m"
+                                    android:textColor="@color/white"
+                                    android:textSize="10sp"
+                                    android:fontFamily="@font/inter_regular" />
+                            </LinearLayout>
+
+                            <!-- Elevated 1.8m -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+                                <View
+                                    android:layout_width="6dp"
+                                    android:layout_height="6dp"
+                                    android:background="@drawable/bg_icon_circle_amber"
+                                    android:layout_marginEnd="4dp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Elevated · 1.8 m"
+                                    android:textColor="@color/white"
+                                    android:textSize="10sp"
+                                    android:fontFamily="@font/inter_regular" />
+                            </LinearLayout>
+
+                            <!-- Normal 0.5m -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+                                <View
+                                    android:layout_width="6dp"
+                                    android:layout_height="6dp"
+                                    android:background="@drawable/bg_circle_orange"
+                                    android:layout_marginEnd="4dp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Normal · 0.5 m"
+                                    android:textColor="#B2DFDB"
+                                    android:textSize="10sp"
+                                    android:fontFamily="@font/inter_regular" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Current level text (bottom left) -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|start"
+                            android:orientation="horizontal"
+                            android:gravity="bottom"
+                            android:paddingStart="14dp"
+                            android:paddingBottom="12dp">
+
+                            <TextView
+                                android:id="@+id/tv_river_level_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1.2"
+                                android:textColor="@color/white"
+                                android:textSize="40sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_regular" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginBottom="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="m"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp"
+                                    android:fontFamily="@font/inter_regular" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Current river level"
+                                    android:textColor="#CCE0FF"
+                                    android:textSize="10sp"
+                                    android:fontFamily="@font/inter_regular" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </FrameLayout>
+
+                    <!-- Last 6 hours section -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="Last 6 hours"
+                        android:textColor="@color/text_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/inter_regular" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Stable conditions"
+                        android:textColor="@color/text_muted"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/inter_regular" />
+
+                    <!-- Wave chart placeholder -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_sensor_detail_cell">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_onboard_waves"
+                            android:tint="#26A69A"
+                            android:scaleType="fitCenter"
+                            android:contentDescription="River level chart"
+                            android:alpha="0.5" />
+                    </FrameLayout>
+
+                    <!-- Preview high-water alert link -->
+                    <TextView
+                        android:id="@+id/btn_preview_alert"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="4dp"
+                        android:gravity="center"
+                        android:text="Preview high-water safety alert"
+                        android:textColor="#E53935"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_regular" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ===== STAT MINI CARDS ROW ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginTop="10dp">
+
+                <!-- Wind Activity -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/card_white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="6dp">
+
+                            <FrameLayout
+                                android:layout_width="34dp"
+                                android:layout_height="34dp"
+                                android:background="@drawable/bg_sensor_detail_cell"
+                                android:layout_marginEnd="8dp">
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_fog"
+                                    android:tint="#546E7A"
+                                    android:contentDescription="Wind" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="WIND ACTIVITY"
+                                android:textColor="@color/text_muted"
+                                android:textSize="9sp"
+                                android:letterSpacing="0.06"
+                                android:fontFamily="@font/inter_regular" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_wind_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="34%"
+                            android:textColor="@color/text_dark"
+                            android:textSize="26sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_regular" />
+
+                        <TextView
+                            android:id="@+id/tv_wind_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gentle breeze"
+                            android:textColor="@color/text_muted"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Visitors Today -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/card_white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="6dp">
+
+                            <FrameLayout
+                                android:layout_width="34dp"
+                                android:layout_height="34dp"
+                                android:background="@drawable/bg_icon_circle_salmon"
+                                android:layout_marginEnd="8dp">
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_sensor_visitors"
+                                    android:tint="@color/white"
+                                    android:contentDescription="Visitors" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="VISITORS TODAY"
+                                android:textColor="@color/text_muted"
+                                android:textSize="9sp"
+                                android:letterSpacing="0.06"
+                                android:fontFamily="@font/inter_regular" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_visitors_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="14"
+                            android:textColor="@color/text_dark"
+                            android:textSize="26sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_regular" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Active now"
+                            android:textColor="@color/text_muted"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- ===== SENSOR DETAILS CARD ===== -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/card_white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Header row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_onboard_sliders"
+                            android:tint="@color/text_dark"
+                            android:contentDescription="Sensors"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Sensor Details"
+                            android:textColor="@color/text_dark"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:id="@+id/tv_sensor_toggle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hide  ›"
+                            android:textColor="@color/text_muted"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                    <!-- Separator -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider_line"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- 2x2 detail grid -->
+                    <LinearLayout
+                        android:id="@+id/sensor_detail_grid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="8dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="6dp"
+                            android:background="@drawable/bg_sensor_detail_cell"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Temperature"
+                                android:textColor="@color/text_dark"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/inter_regular" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="DHT11 · GPIO 4"
+                                android:textColor="@color/text_muted"
+                                android:textSize="10sp"
+                                android:fontFamily="@font/roboto_mono_regular" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"
+                            android:background="@drawable/bg_sensor_detail_cell"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="River level"
+                                android:textColor="@color/text_dark"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/inter_regular" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="AIN 03 · 612 ADC"
+                                android:textColor="@color/text_muted"
+                                android:textSize="10sp"
+                                android:fontFamily="@font/roboto_mono_regular" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="6dp"
+                            android:background="@drawable/bg_sensor_detail_cell"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Visitors"
+                                android:textColor="@color/text_dark"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/inter_regular" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="PIR · GPIO 14"
+                                android:textColor="@color/text_muted"
+                                android:textSize="10sp"
+                                android:fontFamily="@font/roboto_mono_regular" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"
+                            android:background="@drawable/bg_sensor_detail_cell"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Wind activity"
+                                android:textColor="@color/text_dark"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/inter_regular" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Flex · AIN 01"
+                                android:textColor="@color/text_muted"
+                                android:textSize="10sp"
+                                android:fontFamily="@font/roboto_mono_regular" />
+                        </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

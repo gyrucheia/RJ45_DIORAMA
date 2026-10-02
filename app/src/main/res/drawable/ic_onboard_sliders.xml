@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Top slider rail -->
+    <path
+        android:fillColor="#CBD9CB"
+        android:pathData="M8,16 A3,3 0 0,1 11,13 L37,13 A3,3 0 0,1 40,16 A3,3 0 0,1 37,19 L11,19 A3,3 0 0,1 8,16 Z" />
+    <!-- Top slider knob (left position, arrow left) -->
+    <path
+        android:fillColor="#D94E1F"
+        android:pathData="M14,13 A3,3 0 0,0 14,19 A3,3 0 0,0 14,13 Z" />
+    <!-- Arrow left on top knob -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M16,16 L13,14 L13,18 Z" />
+    <!-- Bottom slider rail -->
+    <path
+        android:fillColor="#CBD9CB"
+        android:pathData="M8,32 A3,3 0 0,1 11,29 L37,29 A3,3 0 0,1 40,32 A3,3 0 0,1 37,35 L11,35 A3,3 0 0,1 8,32 Z" />
+    <!-- Bottom slider knob (right position, arrow right) -->
+    <path
+        android:fillColor="#D94E1F"
+        android:pathData="M34,29 A3,3 0 0,0 34,35 A3,3 0 0,0 34,29 Z" />
+    <!-- Arrow right on bottom knob -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,32 L35,30 L35,34 Z" />
+</vector>

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tea_green"
+    android:background="@color/card_bg"
     tools:context=".MainActivity">
 
     <!-- Fragment content area -->
@@ -15,17 +15,17 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="88dp" />
 
-    <!-- Floating pill bar — MaterialCardView clips shadow to pill shape -->
+    <!-- Floating bottom nav bar -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/bottom_nav_card"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="68dp"
         android:layout_gravity="bottom"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         app:cardCornerRadius="36dp"
-        app:cardElevation="6dp"
+        app:cardElevation="8dp"
         app:cardBackgroundColor="@color/white"
         app:strokeWidth="0dp">
 
@@ -35,10 +35,10 @@
             android:orientation="horizontal"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="6dp">
+            android:paddingTop="6dp"
+            android:paddingBottom="4dp">
 
-            <!-- Sensors -->
+            <!-- Home -->
             <LinearLayout
                 android:id="@+id/nav_item_sensors"
                 android:layout_width="0dp"
@@ -60,8 +60,8 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_leaf"
-                        android:contentDescription="Sensors" />
+                        android:src="@drawable/ic_nav_home"
+                        android:contentDescription="Home" />
                 </FrameLayout>
 
                 <TextView
@@ -69,13 +69,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="Sensors"
-                    android:fontFamily="@font/poppins_regular"
+                    android:text="Home"
+                    android:fontFamily="@font/inter_regular"
                     android:textSize="9sp"
                     android:textColor="@color/sap_green" />
             </LinearLayout>
 
-            <!-- Controls -->
+            <!-- Control -->
             <LinearLayout
                 android:id="@+id/nav_item_controls"
                 android:layout_width="0dp"
@@ -96,8 +96,8 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_controls"
-                        android:contentDescription="Controls" />
+                        android:src="@drawable/ic_nav_control"
+                        android:contentDescription="Control" />
                 </FrameLayout>
 
                 <TextView
@@ -105,13 +105,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="Controls"
-                    android:fontFamily="@font/poppins_regular"
+                    android:text="Control"
+                    android:fontFamily="@font/inter_regular"
                     android:textSize="9sp"
                     android:textColor="@color/nav_inactive" />
             </LinearLayout>
 
-            <!-- Gemini AI — circular mic button inside the bar -->
+            <!-- Explore -->
             <LinearLayout
                 android:id="@+id/nav_item_gemini"
                 android:layout_width="0dp"
@@ -124,17 +124,16 @@
                 android:background="?attr/selectableItemBackgroundBorderless">
 
                 <FrameLayout
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:background="@drawable/bg_circle_green">
+                    android:id="@+id/nav_bg_gemini"
+                    android:layout_width="48dp"
+                    android:layout_height="28dp">
                     <ImageView
                         android:id="@+id/fab_voice_guide"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_mic"
-                        android:contentDescription="Gemini AI"
-                        app:tint="@color/white" />
+                        android:src="@drawable/ic_nav_explore"
+                        android:contentDescription="Explore" />
                 </FrameLayout>
 
                 <TextView
@@ -142,13 +141,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="Gemini AI"
-                    android:fontFamily="@font/poppins_regular"
+                    android:text="Explore"
+                    android:fontFamily="@font/inter_regular"
                     android:textSize="9sp"
-                    android:textColor="@color/sap_green" />
+                    android:textColor="@color/nav_inactive" />
             </LinearLayout>
 
-            <!-- RGB Light -->
+            <!-- Lights -->
             <LinearLayout
                 android:id="@+id/nav_item_rgb"
                 android:layout_width="0dp"
@@ -169,8 +168,8 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_rgb_light"
-                        android:contentDescription="RGB Light" />
+                        android:src="@drawable/ic_nav_lights"
+                        android:contentDescription="Lights" />
                 </FrameLayout>
 
                 <TextView
@@ -178,13 +177,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="RGB Light"
-                    android:fontFamily="@font/poppins_regular"
+                    android:text="Lights"
+                    android:fontFamily="@font/inter_regular"
                     android:textSize="9sp"
                     android:textColor="@color/nav_inactive" />
             </LinearLayout>
 
-            <!-- Logs -->
+            <!-- Activity -->
             <LinearLayout
                 android:id="@+id/nav_item_logs"
                 android:layout_width="0dp"
@@ -205,8 +204,8 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_history"
-                        android:contentDescription="Logs" />
+                        android:src="@drawable/ic_nav_activity"
+                        android:contentDescription="Activity" />
                 </FrameLayout>
 
                 <TextView
@@ -214,8 +213,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="Logs"
-                    android:fontFamily="@font/poppins_regular"
+                    android:text="Activity"
+                    android:fontFamily="@font/inter_regular"
                     android:textSize="9sp"
                     android:textColor="@color/nav_inactive" />
             </LinearLayout>
@@ -223,5 +222,38 @@
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+    <!-- ===== GLOBAL ASK SANLO FLOATING BUTTON ===== -->
+    <LinearLayout
+        android:id="@+id/btn_ask_sanlo_global"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/bg_ask_sanlo_fab"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:elevation="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="✦"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:layout_marginEnd="6dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ask SanLo"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_regular" />
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

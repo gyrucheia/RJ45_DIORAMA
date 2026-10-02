@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,30 +35,32 @@ public class LogsAdapter extends RecyclerView.Adapter<LogsAdapter.LogViewHolder>
         LogEntry entry = entries.get(position);
 
         holder.tvTimestamp.setText(entry.getTimestamp());
-        holder.tvDescription.setText(entry.getDescription());
         holder.tvEventType.setText(entry.getEventType());
+        holder.tvDescription.setText(entry.getDescription());
 
         switch (entry.getType()) {
-            case LogEntry.TYPE_PIR:
-                holder.accentBar.setBackgroundColor(context.getColor(R.color.celestial_blue));
-                holder.ivIcon.setImageResource(R.drawable.ic_log_pir);
-                holder.tvEventType.setBackgroundResource(R.drawable.bg_pill_blue);
-                holder.tvEventType.setTextColor(context.getColor(R.color.white));
-                break;
             case LogEntry.TYPE_ACTION:
-                holder.accentBar.setBackgroundColor(context.getColor(R.color.sap_green));
-                holder.ivIcon.setImageResource(R.drawable.ic_log_action);
-                holder.tvEventType.setBackgroundResource(R.drawable.bg_pill_green);
-                holder.tvEventType.setTextColor(context.getColor(R.color.white));
+                holder.iconFrame.setBackgroundResource(R.drawable.bg_icon_circle_orange);
+                holder.ivIcon.setImageResource(R.drawable.ic_tram);
+                holder.ivIcon.setColorFilter(context.getColor(R.color.white));
+                holder.tvNewBadge.setVisibility(View.GONE);
+                break;
+            case LogEntry.TYPE_PIR:
+                holder.iconFrame.setBackgroundResource(R.drawable.bg_icon_circle_salmon);
+                holder.ivIcon.setImageResource(R.drawable.ic_sensor_visitors);
+                holder.ivIcon.setColorFilter(context.getColor(R.color.white));
+                holder.tvNewBadge.setVisibility(position == 1 ? View.VISIBLE : View.GONE);
                 break;
             case LogEntry.TYPE_ALERT:
-                holder.accentBar.setBackgroundColor(context.getColor(R.color.alert_red));
-                holder.ivIcon.setImageResource(R.drawable.ic_log_alert);
-                holder.tvEventType.setBackgroundResource(R.drawable.bg_pill_red);
-                holder.tvEventType.setTextColor(context.getColor(R.color.white));
+                holder.iconFrame.setBackgroundResource(R.drawable.bg_icon_circle_teal);
+                holder.ivIcon.setImageResource(R.drawable.ic_sensor_water);
+                holder.ivIcon.setColorFilter(context.getColor(R.color.white));
+                holder.tvNewBadge.setVisibility(View.GONE);
                 break;
             default:
-                holder.accentBar.setBackgroundColor(context.getColor(R.color.nav_inactive));
+                holder.iconFrame.setBackgroundResource(R.drawable.bg_icon_circle_gray);
+                holder.ivIcon.setColorFilter(context.getColor(R.color.nav_inactive));
+                holder.tvNewBadge.setVisibility(View.GONE);
                 break;
         }
     }
@@ -73,19 +76,26 @@ public class LogsAdapter extends RecyclerView.Adapter<LogsAdapter.LogViewHolder>
     }
 
     static class LogViewHolder extends RecyclerView.ViewHolder {
-        View accentBar;
+        FrameLayout iconFrame;
         ImageView ivIcon;
         TextView tvTimestamp;
-        TextView tvDescription;
         TextView tvEventType;
+        TextView tvDescription;
+        TextView tvNewBadge;
 
         LogViewHolder(@NonNull View itemView) {
             super(itemView);
-            accentBar = itemView.findViewById(R.id.view_accent_bar);
-            ivIcon = itemView.findViewById(R.id.iv_log_icon);
+            iconFrame   = itemView.findViewById(R.id.iv_log_icon).getParent() instanceof FrameLayout
+                    ? (FrameLayout) itemView.findViewById(R.id.iv_log_icon).getParent() : null;
+            ivIcon      = itemView.findViewById(R.id.iv_log_icon);
             tvTimestamp = itemView.findViewById(R.id.tv_log_timestamp);
-            tvDescription = itemView.findViewById(R.id.tv_log_description);
             tvEventType = itemView.findViewById(R.id.tv_log_event_type);
+            tvDescription = itemView.findViewById(R.id.tv_log_description);
+            tvNewBadge  = itemView.findViewById(R.id.tv_log_new_badge);
+
+            if (iconFrame == null && ivIcon != null && ivIcon.getParent() != null) {
+                iconFrame = (FrameLayout) ivIcon.getParent();
+            }
         }
     }
 }

@@ -4,904 +4,936 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tea_green"
+    android:background="@color/card_bg"
     android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:paddingTop="20dp"
         android:paddingBottom="32dp">
 
-        <!-- ===== HEADER ROW ===== -->
-        <ImageView
-            android:id="@+id/iv_controls_logo"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_leaf"
-            android:contentDescription="SanLo Logo"
-            app:tint="@color/sap_green"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <!-- ===== HEADER ===== -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_controls_header"
-            style="@style/SanLo.Text.Header"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="SanLo Diorama"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/iv_controls_logo"
-            app:layout_constraintTop_toTopOf="@id/iv_controls_logo"
-            app:layout_constraintBottom_toBottomOf="@id/iv_controls_logo"
-            app:layout_constraintEnd_toStartOf="@id/tv_status_online" />
-
-        <!-- ONLINE status chip -->
-        <TextView
-            android:id="@+id/tv_status_online"
-            style="@style/SanLo.Text.StatusChip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
-            android:background="@drawable/bg_status_chip_green"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"
-            android:text="● ONLINE"
-            android:textColor="@color/sap_green"
-            app:layout_constraintEnd_toStartOf="@id/tv_status_ble"
-            app:layout_constraintTop_toTopOf="@id/iv_controls_logo"
-            app:layout_constraintBottom_toBottomOf="@id/iv_controls_logo" />
-
-        <!-- BLE LINKED chip -->
-        <TextView
-            android:id="@+id/tv_status_ble"
-            style="@style/SanLo.Text.StatusChip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_status_chip_blue"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"
-            android:text="BLE LINKED"
-            android:textColor="@color/celestial_blue"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/iv_controls_logo"
-            app:layout_constraintBottom_toBottomOf="@id/iv_controls_logo" />
-
-        <!-- ===== LOCATION BAR ===== -->
-        <LinearLayout
-            android:id="@+id/layout_location_bar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_location_bar"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_controls_logo">
-
-            <TextView
+            <LinearLayout
+                android:id="@+id/layout_controls_header_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="📍  Sector 01 · Colgante Station"
-                android:fontFamily="@font/inter_regular"
-                android:textColor="@color/text_dark"
-                android:textSize="11sp" />
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_controls_avatar"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SANLO DIORAMA"
+                    android:textColor="@color/sap_green"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.08"
+                    android:fontFamily="@font/inter_regular"
+                    android:textAllCaps="true" />
+
+                <TextView
+                    android:id="@+id/tv_controls_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diorama Controls"
+                    android:textColor="@color/text_dark"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_regular" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bring the miniature world to life."
+                    android:textColor="@color/text_muted"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/inter_regular" />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_console_sync"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_channel_badge"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
-                android:text="CONSOLE RT SYNC"
-                android:fontFamily="@font/roboto_mono_regular"
-                android:textColor="@color/channel_badge_text"
-                android:textSize="9sp" />
-        </LinearLayout>
+                android:id="@+id/tv_controls_avatar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="SL"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/inter_regular"
+                android:gravity="center"
+                android:background="@drawable/bg_circle_green"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- ===== LIVE CAMERA FEED CARD ===== -->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- ===== TRAM TRACK CARD ===== -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_camera_feed"
-            android:layout_width="0dp"
-            android:layout_height="180dp"
-            android:layout_marginTop="12dp"
+            android:id="@+id/card_tram_track"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginTop="16dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="2dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_location_bar">
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#1E4620">
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <!-- Placeholder river image — tinted green -->
-                <ImageView
-                    android:id="@+id/iv_camera_feed"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="Live Camera Feed"
-                    android:background="@color/myrtle_green" />
-
-                <!-- CAM badge top-right -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|end"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/bg_channel_badge"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
-                    android:paddingTop="3dp"
-                    android:paddingBottom="3dp"
-                    android:text="CAM 01"
-                    android:fontFamily="@font/roboto_mono_regular"
-                    android:textColor="@color/channel_badge_text"
-                    android:textSize="9sp" />
-
-                <!-- Bottom overlay bar -->
+                <!-- Station labels row -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:background="@color/cam_overlay_bg"
+                    android:layout_gravity="top"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp">
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="14dp">
 
                     <TextView
-                        android:id="@+id/tv_cam_depth"
-                        style="@style/SanLo.Text.CamOverlay"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Bed Depth: --.- cm" />
-
-                    <TextView
-                        android:id="@+id/tv_cam_speed"
-                        style="@style/SanLo.Text.CamOverlay"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Speed: -.- m/s" />
-
-                    <TextView
-                        android:id="@+id/tv_cam_fps"
-                        style="@style/SanLo.Text.CamOverlay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="FPS --" />
+                        android:background="@drawable/bg_pill_white"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:text="Start Station"
+                        android:textColor="@color/text_dark"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/inter_regular" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_pill_white"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:text="Colgante Station"
+                        android:textColor="@color/text_dark"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/inter_regular" />
+                </LinearLayout>
+
+                <!-- Track + tram row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:layout_marginBottom="40dp">
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:background="@drawable/bg_circle_orange" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_weight="1"
+                        android:background="#4A7A50" />
+
+                    <ImageView
+                        android:id="@+id/iv_tram_on_track"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_tram"
+                        android:contentDescription="Tram" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_weight="2"
+                        android:background="#4A7A50" />
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:background="@drawable/bg_circle_orange" />
+
+                </LinearLayout>
+
+                <!-- River strip at bottom -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_gravity="bottom"
+                    android:background="#26A69A"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="COLGANTE RIVER"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="9sp"
+                        android:letterSpacing="0.12"
+                        android:fontFamily="@font/roboto_mono_regular" />
                 </LinearLayout>
 
             </FrameLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Subtitle under cam -->
-        <TextView
-            android:id="@+id/tv_cam_subtitle"
-            style="@style/SanLo.Text.SubHeader"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Colgante River — Live Diorama Feed"
-            android:textSize="11sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_camera_feed" />
-
-        <!-- ===== QUICK ACTIONS ROW ===== -->
-        <LinearLayout
-            android:id="@+id/layout_quick_actions"
-            android:layout_width="0dp"
+        <!-- ===== TRAM CONTROL CARD ===== -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_tram_control"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_cam_subtitle">
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/card_white">
 
-            <Button
-                android:id="@+id/btn_rgb_preset"
-                style="@style/Widget.Material3.Button"
-                android:layout_width="0dp"
-                android:layout_height="38dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/bg_quick_pill"
-                android:text="🌈  RGB Glow Preset"
-                android:textColor="@color/text_dark"
-                android:fontFamily="@font/inter_regular"
-                android:textSize="11sp"
-                android:stateListAnimator="@null"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:minHeight="0dp" />
-
-            <Button
-                android:id="@+id/btn_gemini_speaker"
-                style="@style/Widget.Material3.Button"
-                android:layout_width="0dp"
-                android:layout_height="38dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_quick_pill"
-                android:text="🔊  Gemini Speaker"
-                android:textColor="@color/text_dark"
-                android:fontFamily="@font/inter_regular"
-                android:textSize="11sp"
-                android:stateListAnimator="@null"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:minHeight="0dp" />
-        </LinearLayout>
-
-        <!-- ===== GESTURE SENSOR CARD ===== -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/card_gesture"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/bg_gesture_card_orange"
-            android:padding="14dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_quick_actions">
-
-            <!-- Sensor label -->
-            <TextView
-                android:id="@+id/tv_gesture_sensor_label"
-                style="@style/SanLo.Text.ChannelBadge"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="GESTURE SENSOR APDS-9960"
-                android:textColor="@color/gesture_orange"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_gesture_active_badge"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- ACTIVE badge -->
-            <TextView
-                android:id="@+id/tv_gesture_active_badge"
-                style="@style/SanLo.Text.StatusChip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_status_chip_green"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:paddingTop="3dp"
-                android:paddingBottom="3dp"
-                android:text="● ACTIVE"
-                android:textColor="@color/sap_green"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- Gesture arrow + name row -->
             <LinearLayout
-                android:id="@+id/layout_gesture_main"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_gesture_sensor_label">
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <TextView
-                    android:id="@+id/tv_gesture_arrow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="→"
-                    android:textSize="28sp"
-                    android:textColor="@color/gesture_orange"
-                    android:fontFamily="@font/poppins_regular"
-                    android:layout_marginEnd="8dp" />
-
+                <!-- Tram status row -->
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
-                    <TextView
-                        android:id="@+id/tv_gesture_label"
-                        android:layout_width="wrap_content"
+                    <FrameLayout
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_icon_circle_orange">
+
+                        <ImageView
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_tram"
+                            android:tint="@color/white"
+                            android:contentDescription="Tram" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="RIGHT detected"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TRAM CONTROL"
+                            android:textColor="@color/text_muted"
+                            android:textSize="10sp"
+                            android:letterSpacing="0.08"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:id="@+id/tv_tram_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="At Start Station"
+                            android:textColor="@color/text_dark"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_regular" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:background="@drawable/bg_circle_green" />
+
+                </LinearLayout>
+
+                <!-- Action buttons -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical">
+
+                    <Button
+                        android:id="@+id/btn_start_tram"
+                        style="@style/Widget.Material3.Button"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="3"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_pill_green"
+                        android:text="→  Start Tram"
+                        android:textColor="@color/white"
                         android:fontFamily="@font/poppins_regular"
-                        android:textColor="@color/text_dark" />
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:stateListAnimator="@null"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:minHeight="0dp" />
 
-                    <TextView
-                        android:id="@+id/tv_gesture_action"
-                        style="@style/SanLo.Text.ActuatorSubtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tram is currently in transit across span" />
+                    <Button
+                        android:id="@+id/btn_return_tram"
+                        style="@style/Widget.Material3.Button"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/bg_tram_return_btn"
+                        android:text="❮  Return"
+                        android:textColor="@color/text_dark"
+                        android:fontFamily="@font/inter_regular"
+                        android:textSize="13sp"
+                        android:stateListAnimator="@null"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:minHeight="0dp" />
+
                 </LinearLayout>
             </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- ===== DIORAMA ACTUATORS HEADER ===== -->
-        <TextView
-            android:id="@+id/tv_section_actuators"
-            style="@style/SanLo.Text.SectionLabel"
-            android:layout_width="0dp"
+        <!-- ===== ENVIRONMENT SECTION HEADER ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Diorama Actuators"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tv_console_channels"
-            app:layout_constraintTop_toBottomOf="@id/card_gesture" />
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/tv_console_channels"
-            style="@style/SanLo.Text.ChannelBadge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/bg_channel_badge"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"
-            android:text="Console 06 Channels"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_gesture"
-            app:layout_constraintBottom_toBottomOf="@id/tv_section_actuators" />
-
-        <!-- ===== ACTUATOR GRID ===== -->
-        <!-- Row 1: Zipline Start + River Pump -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/card_zipline"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="6dp"
-            android:background="@drawable/bg_actuator_card"
-            android:padding="14dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/card_pump"
-            app:layout_constraintTop_toBottomOf="@id/tv_section_actuators"
-            app:layout_constraintWidth_percent="0.48">
-
-            <!-- Channel badge -->
             <TextView
-                android:id="@+id/tv_zipline_ch"
-                style="@style/SanLo.Text.ChannelBadge"
+                android:id="@+id/tv_section_environment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ENVIRONMENT"
+                android:textColor="@color/text_dark"
+                android:textSize="12sp"
+                android:letterSpacing="0.08"
+                android:fontFamily="@font/inter_regular"
+                android:textStyle="bold" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_channel_badge"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
-                android:text="CH 01"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="Shape the scene"
+                android:textColor="@color/text_muted"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter_regular" />
 
-            <ImageView
-                android:id="@+id/iv_zipline_icon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_zipline"
-                android:contentDescription="Zipline"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_zipline_ch" />
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_zipline_title"
-                style="@style/SanLo.Text.ActuatorTitle"
-                android:layout_width="0dp"
+        <!-- ===== ENVIRONMENT CARD ===== -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_environment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/card_white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Zipline Start"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_zipline_icon" />
+                android:orientation="vertical"
+                android:padding="4dp">
 
-            <TextView
-                android:id="@+id/tv_zipline_subtitle"
-                style="@style/SanLo.Text.ActuatorSubtitle"
-                android:layout_width="0dp"
+                <!-- River Flow row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="12dp">
+
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_icon_circle_teal">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_sensor_water"
+                            android:tint="#00796B"
+                            android:contentDescription="River Flow" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="River Flow"
+                            android:textColor="@color/text_dark"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Miniature water pump"
+                            android:textColor="@color/text_muted"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                    <Switch
+                        android:id="@+id/switch_river_flow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:showText="false"
+                        android:thumbTint="@color/white"
+                        android:trackTint="@color/sap_green" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="64dp"
+                    android:background="@color/divider_line" />
+
+                <!-- Wind Effect row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <FrameLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_icon_circle_teal">
+
+                            <ImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_fog"
+                                android:tint="#00796B"
+                                android:contentDescription="Wind Effect" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Wind Effect"
+                                android:textColor="@color/text_dark"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/inter_regular" />
+
+                            <TextView
+                                android:id="@+id/tv_wind_level"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Low"
+                                android:textColor="@color/text_muted"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/inter_regular" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <SeekBar
+                        android:id="@+id/seekbar_wind"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="52dp"
+                        android:progress="30"
+                        android:max="100"
+                        android:progressTint="@color/sap_green"
+                        android:thumbTint="@color/sap_green" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="64dp"
+                    android:background="@color/divider_line" />
+
+                <!-- Nature Sounds row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="12dp">
+
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_icon_circle_salmon">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_audio"
+                            android:tint="#E57373"
+                            android:contentDescription="Nature Sounds" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nature Sounds"
+                            android:textColor="@color/text_dark"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="River and forest ambience"
+                            android:textColor="@color/text_muted"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                    <Switch
+                        android:id="@+id/switch_nature_sounds"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:showText="false"
+                        android:thumbTint="@color/white"
+                        android:trackTint="@color/sap_green" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="64dp"
+                    android:background="@color/divider_line" />
+
+                <!-- Ambient Lights row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="12dp">
+
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_icon_circle_amber">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_onboard_sun"
+                            android:tint="#FF8F00"
+                            android:contentDescription="Ambient Lights" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ambient Lights"
+                            android:textColor="@color/text_dark"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Warm scene lighting"
+                            android:textColor="@color/text_muted"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                    <Switch
+                        android:id="@+id/switch_ambient_lights"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:showText="false"
+                        android:thumbTint="@color/white"
+                        android:trackTint="@color/sap_green" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ===== GESTURE CONTROL CARD ===== -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_gesture_control"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/card_white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Engage Pulley Link"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_zipline_title" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <Button
-                android:id="@+id/btn_deploy_zipline"
-                style="@style/SanLo.Button.Actuator.Green"
-                android:layout_width="0dp"
+                <!-- Gesture header row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <FrameLayout
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_icon_circle_gray">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_sensor_visitors"
+                            android:tint="#616161"
+                            android:contentDescription="Gesture Sensor" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="GESTURE CONTROL"
+                            android:textColor="@color/text_muted"
+                            android:textSize="10sp"
+                            android:letterSpacing="0.08"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Control with a wave"
+                            android:textColor="@color/text_dark"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_regular" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Wave your hand near the gesture sensor."
+                    android:textColor="@color/text_muted"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/inter_regular" />
+
+                <!-- Gesture direction pills -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/gesture_pill_right"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_gesture_dir_pill"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:layout_marginEnd="4dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="→"
+                            android:textColor="@color/text_dark"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Start"
+                            android:textColor="@color/text_muted"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/inter_regular"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+
+                    <!-- ← Left / Return -->
+                    <LinearLayout
+                        android:id="@+id/gesture_pill_left"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_gesture_dir_pill"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="←"
+                            android:textColor="@color/text_dark"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Return"
+                            android:textColor="@color/text_muted"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/inter_regular"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+
+                    <!-- ↑ Up / Lights -->
+                    <LinearLayout
+                        android:id="@+id/gesture_pill_up"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_gesture_dir_pill"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="↑"
+                            android:textColor="@color/text_dark"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lights"
+                            android:textColor="@color/text_muted"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/inter_regular"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+
+                    <!-- ↓ Down / Pump -->
+                    <LinearLayout
+                        android:id="@+id/gesture_pill_down"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_gesture_dir_pill"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:layout_marginStart="4dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="↓"
+                            android:textColor="@color/text_dark"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pump"
+                            android:textColor="@color/text_muted"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/inter_regular"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Try a gesture button -->
+                <LinearLayout
+                    android:id="@+id/btn_try_gesture"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_try_gesture"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_sensor_visitors"
+                        android:tint="@color/sap_green"
+                        android:contentDescription="Try Gesture"
+                        android:layout_marginEnd="10dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Try a gesture"
+                            android:textColor="@color/text_dark"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tap to preview detection"
+                            android:textColor="@color/text_muted"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ===== EMERGENCY STOP CARD ===== -->
+        <LinearLayout
+            android:id="@+id/layout_emergency_stop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_emergency_stop"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+
+            <FrameLayout
+                android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:layout_marginTop="10dp"
-                android:text="▶  Deploy Zipline"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_zipline_subtitle" />
+                android:background="@drawable/bg_icon_circle_salmon">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_log_alert"
+                    android:tint="@color/kill_switch_red"
+                    android:contentDescription="Emergency" />
+            </FrameLayout>
 
-        <!-- River Pump Card -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/card_pump"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="6dp"
-            android:background="@drawable/bg_actuator_card"
-            android:padding="14dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/card_zipline"
-            app:layout_constraintTop_toBottomOf="@id/tv_section_actuators"
-            app:layout_constraintWidth_percent="0.48">
-
-            <!-- Channel badge + % label row -->
-            <TextView
-                android:id="@+id/tv_pump_ch"
-                style="@style/SanLo.Text.ChannelBadge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_channel_badge"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
-                android:text="CH 08"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_pump_percent"
-                style="@style/SanLo.Text.StatusChip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="62%"
-                android:textColor="@color/teal_pump"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/iv_pump_icon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_pump"
-                android:contentDescription="River Pump"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_pump_ch" />
-
-            <TextView
-                android:id="@+id/tv_pump_title"
-                style="@style/SanLo.Text.ActuatorTitle"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="River Pump"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_pump_icon" />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="12dp">
 
-            <TextView
-                android:id="@+id/tv_pump_subtitle"
-                style="@style/SanLo.Text.ActuatorSubtitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Colgante Flow Surge"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_pump_title" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Emergency Stop"
+                    android:textColor="@color/kill_switch_red"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/inter_regular" />
 
-            <!-- Progress bar -->
-            <ProgressBar
-                android:id="@+id/progress_pump"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:layout_height="6dp"
-                android:layout_marginTop="8dp"
-                android:progress="62"
-                android:max="100"
-                android:progressTint="@color/teal_pump"
-                android:progressBackgroundTint="@color/divider_line"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_pump_subtitle" />
-
-            <Button
-                android:id="@+id/btn_modulate_pump"
-                style="@style/SanLo.Button.Actuator.Teal"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_marginTop="10dp"
-                android:text="≈  Modulate 62%"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/progress_pump" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Row 2: Cable Car + Canopy Mist -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/card_cable_car"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="6dp"
-            android:background="@drawable/bg_actuator_card"
-            android:padding="14dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/card_mist"
-            app:layout_constraintTop_toBottomOf="@id/card_zipline"
-            app:layout_constraintWidth_percent="0.48">
-
-            <TextView
-                android:id="@+id/tv_cablecar_ch"
-                style="@style/SanLo.Text.ChannelBadge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_channel_badge"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
-                android:text="CH 03"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/iv_cablecar_icon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_cable_car"
-                android:contentDescription="Cable Car"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_cablecar_ch" />
-
-            <TextView
-                android:id="@+id/tv_cablecar_title"
-                style="@style/SanLo.Text.ActuatorTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Cable Car"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_cablecar_icon" />
-
-            <TextView
-                android:id="@+id/tv_cablecar_subtitle"
-                style="@style/SanLo.Text.ActuatorSubtitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Nipa to Start Traverse"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_cablecar_title" />
-
-            <Button
-                android:id="@+id/btn_traverse_span"
-                style="@style/SanLo.Button.Actuator.Green"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_marginTop="10dp"
-                android:text="↔  Traverse Span"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_cablecar_subtitle" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Canopy Mist Card -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/card_mist"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="6dp"
-            android:background="@drawable/bg_actuator_card"
-            android:padding="14dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/card_cable_car"
-            app:layout_constraintTop_toBottomOf="@id/card_pump"
-            app:layout_constraintWidth_percent="0.48">
-
-            <TextView
-                android:id="@+id/tv_mist_ch"
-                style="@style/SanLo.Text.ChannelBadge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_channel_badge"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
-                android:text="AUX 1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/iv_mist_icon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_fog"
-                android:contentDescription="Canopy Mist"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_mist_ch" />
-
-            <TextView
-                android:id="@+id/tv_mist_title"
-                style="@style/SanLo.Text.ActuatorTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Canopy Mist"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_mist_icon" />
-
-            <TextView
-                android:id="@+id/tv_mist_subtitle"
-                style="@style/SanLo.Text.ActuatorSubtitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Ultrasonic Vaporizer"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_mist_title" />
-
-            <Button
-                android:id="@+id/btn_puff_fog"
-                style="@style/SanLo.Button.Actuator.Blue"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_marginTop="10dp"
-                android:text="💧  Puff Fog"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_mist_subtitle" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Row 3: Forest Audio + Kill Switch -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/card_audio"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="6dp"
-            android:background="@drawable/bg_actuator_card"
-            android:padding="14dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/card_kill_switch"
-            app:layout_constraintTop_toBottomOf="@id/card_cable_car"
-            app:layout_constraintWidth_percent="0.48">
-
-            <TextView
-                android:id="@+id/tv_audio_ch"
-                style="@style/SanLo.Text.ChannelBadge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_channel_badge"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
-                android:text="AUX 5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/iv_audio_icon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_audio"
-                android:contentDescription="Forest Audio"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_audio_ch" />
-
-            <TextView
-                android:id="@+id/tv_audio_title"
-                style="@style/SanLo.Text.ActuatorTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Forest Audio"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_audio_icon" />
-
-            <TextView
-                android:id="@+id/tv_audio_subtitle"
-                style="@style/SanLo.Text.ActuatorSubtitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Soundscape &amp; Speaker"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_audio_title" />
-
-            <Button
-                android:id="@+id/btn_chirp_stream"
-                style="@style/SanLo.Button.Actuator.Orange"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_marginTop="10dp"
-                android:text="♪  Chirp Stream"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_audio_subtitle" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Kill Switch Card -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/card_kill_switch"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="6dp"
-            android:background="@drawable/bg_kill_switch_card"
-            android:padding="14dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/card_audio"
-            app:layout_constraintTop_toBottomOf="@id/card_mist"
-            app:layout_constraintWidth_percent="0.48">
-
-            <TextView
-                android:id="@+id/tv_kill_safety_badge"
-                style="@style/SanLo.Text.StatusChip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_pill_red"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:paddingTop="3dp"
-                android:paddingBottom="3dp"
-                android:text="SAFETY"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/iv_kill_icon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_kill_switch"
-                android:contentDescription="Kill Switch"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_kill_safety_badge" />
-
-            <TextView
-                android:id="@+id/tv_kill_title"
-                style="@style/SanLo.Text.ActuatorTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="KILL SWITCH"
-                android:textColor="@color/kill_switch_red"
-                android:letterSpacing="0.05"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_kill_icon" />
-
-            <TextView
-                android:id="@+id/tv_kill_subtitle"
-                style="@style/SanLo.Text.ActuatorSubtitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Immediate Motor Halt"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_kill_title" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Immediately stop all moving parts"
+                    android:textColor="@color/text_muted"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/inter_regular" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btn_emergency_stop"
-                style="@style/SanLo.Button.Actuator.Red"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_marginTop="10dp"
-                android:text="⏹  EMERGENCY STOP"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_kill_subtitle" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- ===== FOOTER BAR ===== -->
-        <LinearLayout
-            android:id="@+id/layout_footer_bar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bg_footer_bar"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="14dp"
-            android:paddingEnd="14dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_audio">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ESP32-S3 Bus 04"
-                    android:fontFamily="@font/roboto_mono_regular"
-                    android:textColor="@color/text_dark"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="I2C · 400KHz · Relays Latched"
-                    android:fontFamily="@font/roboto_mono_regular"
-                    android:textColor="@color/text_muted"
-                    android:textSize="9sp" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btn_self_test"
                 style="@style/Widget.Material3.Button"
                 android:layout_width="wrap_content"
-                android:layout_height="34dp"
-                android:background="@drawable/bg_pill_white"
-                android:text="Self Test"
-                android:textColor="@color/sap_green"
-                android:fontFamily="@font/poppins_regular"
-                android:textSize="11sp"
-                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="›"
+                android:textColor="@color/text_muted"
+                android:textSize="24sp"
                 android:stateListAnimator="@null"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:minHeight="0dp"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp" />
+                android:minWidth="0dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="0dp" />
+
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </ScrollView>
