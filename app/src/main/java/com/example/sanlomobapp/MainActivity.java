@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
             loadFragment(new ControlsFragment());
             setActiveNav("controls");
         });
-        if (btnAskSanLo != null) btnAskSan0Lo.setOnClickListener(v -> openGuide());
+        if (btnAskSanLo != null) btnAskSanLo.setOnClickListener(v -> openGuide());
 
         LinearLayout btnAskSanLoGlobal = btnAskSanLoGlobalView;
         if (btnAskSanLoGlobal != null) btnAskSanLoGlobal.setOnClickListener(v -> openGuide());
