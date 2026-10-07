@@ -1,119 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/card_bg">
 
+    <!-- ===== PINNED TOP APP BAR ===== -->
+    <LinearLayout
+        android:id="@+id/layout_sim_pinned_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/card_bg"
+        android:paddingTop="16dp"
+        android:paddingBottom="12dp">
+
+        <!-- Title Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/screen_horizontal_margin"
+            android:paddingEnd="@dimen/screen_horizontal_margin">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RJ45 DIORAMA"
+                    android:textColor="@color/sap_green"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.08"
+                    android:fontFamily="@font/inter_regular"
+                    android:textStyle="bold"
+                    android:textAllCaps="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Diorama Simulation"
+                    android:textColor="@color/text_dark"
+                    android:textSize="@dimen/title_text_size"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_regular" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Watch the miniature world come alive"
+                    android:textColor="@color/text_muted"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/inter_regular" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_sim_sync_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_status_chip_green"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:text="Checking…"
+                android:textColor="@color/sap_green"
+                android:textSize="11sp"
+                android:fontFamily="@font/inter_regular" />
+        </LinearLayout>
+
+        <!-- Mode Selector: Individual vs Full System (Pinned like Facebook Tabs) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/screen_horizontal_margin"
+            android:layout_marginEnd="@dimen/screen_horizontal_margin"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_gesture_dir_pill"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/tab_sim_individual"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tram_status_card"
+                android:gravity="center"
+                android:text="Individual Simulation"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular" />
+
+            <TextView
+                android:id="@+id/tab_sim_full"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="Full System Simulation"
+                android:textColor="@color/text_muted"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Hairline Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#12000000" />
+
+    <!-- ===== SCROLLABLE CONTENT BODY ===== -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="@color/card_bg"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="20dp"
-            android:paddingBottom="120dp">
-
-            <!-- Header -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/screen_horizontal_margin"
-                android:paddingEnd="@dimen/screen_horizontal_margin">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="RJ45 DIORAMA"
-                        android:textColor="@color/sap_green"
-                        android:textSize="11sp"
-                        android:letterSpacing="0.08"
-                        android:fontFamily="@font/inter_regular"
-                        android:textStyle="bold"
-                        android:textAllCaps="true" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Diorama Simulation"
-                        android:textColor="@color/text_dark"
-                        android:textSize="@dimen/title_text_size"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/poppins_regular" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Watch the miniature world come alive"
-                        android:textColor="@color/text_muted"
-                        android:textSize="13sp"
-                        android:fontFamily="@font/inter_regular" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/tv_sim_sync_badge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_status_chip_green"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:text="Checking…"
-                    android:textColor="@color/sap_green"
-                    android:textSize="11sp"
-                    android:fontFamily="@font/inter_regular" />
-            </LinearLayout>
-
-            <!-- Mode Selector: Individual vs Full System -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginStart="@dimen/screen_horizontal_margin"
-                android:layout_marginEnd="@dimen/screen_horizontal_margin"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_gesture_dir_pill"
-                android:padding="4dp">
-
-                <TextView
-                    android:id="@+id/tab_sim_individual"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_tram_status_card"
-                    android:gravity="center"
-                    android:text="Individual Simulation"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/poppins_regular" />
-
-                <TextView
-                    android:id="@+id/tab_sim_full"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:gravity="center"
-                    android:text="Full System Simulation"
-                    android:textColor="@color/text_muted"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/poppins_regular" />
-            </LinearLayout>
+            android:paddingTop="14dp"
+            android:paddingBottom="40dp">
 
             <!-- Active Simulation Status Card -->
             <androidx.cardview.widget.CardView
@@ -121,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/screen_horizontal_margin"
                 android:layout_marginEnd="@dimen/screen_horizontal_margin"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="4dp"
                 app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="0dp"
                 app:cardBackgroundColor="@color/card_white">
@@ -896,4 +920,4 @@
 
         </LinearLayout>
     </ScrollView>
-</FrameLayout>
+</LinearLayout>

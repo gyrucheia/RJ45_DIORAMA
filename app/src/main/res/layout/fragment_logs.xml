@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/card_bg">
 
+    <!-- ===== PINNED TOP APP BAR ===== -->
     <LinearLayout
+        android:id="@+id/layout_logs_pinned_header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="20dp"
-        android:paddingBottom="100dp">
+        android:background="@color/card_bg"
+        android:paddingTop="16dp"
+        android:paddingBottom="10dp">
 
-        <!-- ===== HEADER ===== -->
+        <!-- Title Row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,13 +38,15 @@
                     android:text="RJ45 DIORAMA"
                     android:textColor="@color/sap_green"
                     android:textSize="11sp"
-                    android:letterSpacing="0.06"
+                    android:letterSpacing="0.08"
                     android:fontFamily="@font/inter_regular"
+                    android:textStyle="bold"
                     android:textAllCaps="true" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="Activity"
                     android:textColor="@color/text_dark"
                     android:textSize="@dimen/title_text_size"
@@ -68,11 +74,11 @@
                 android:fontFamily="@font/inter_regular" />
         </LinearLayout>
 
-        <!-- ===== FILTER CHIPS ROW ===== -->
+        <!-- ===== FILTER CHIPS ROW (Pinned like Facebook Tabs) ===== -->
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="12dp"
             android:paddingStart="@dimen/screen_horizontal_margin"
             android:paddingEnd="@dimen/screen_horizontal_margin"
             android:scrollbars="none"
@@ -185,6 +191,22 @@
 
             </LinearLayout>
         </HorizontalScrollView>
+    </LinearLayout>
+
+    <!-- Hairline Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#12000000" />
+
+    <!-- ===== BODY AREA ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingTop="12dp"
+        android:paddingBottom="24dp">
 
         <!-- ===== ACTIVITY LOG CARD ===== -->
         <androidx.cardview.widget.CardView
@@ -193,7 +215,6 @@
             android:layout_weight="1"
             android:layout_marginStart="@dimen/screen_horizontal_margin"
             android:layout_marginEnd="@dimen/screen_horizontal_margin"
-            android:layout_marginTop="12dp"
             app:cardCornerRadius="@dimen/card_corner_radius"
             app:cardElevation="0dp"
             app:cardBackgroundColor="@color/card_white">
@@ -280,4 +301,5 @@
 
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>
+

@@ -5,86 +5,108 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/card_bg"
-        android:fillViewport="true">
+        android:orientation="vertical"
+        android:background="@color/card_bg">
 
+        <!-- ===== PINNED TOP APP BAR ===== -->
         <LinearLayout
+            android:id="@+id/layout_rgb_pinned_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="20dp"
-            android:paddingBottom="120dp">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/screen_horizontal_margin"
+            android:paddingEnd="@dimen/screen_horizontal_margin"
+            android:paddingTop="16dp"
+            android:paddingBottom="12dp"
+            android:background="@color/card_bg">
 
-            <!-- ===== HEADER ===== -->
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="SANLO DIORAMA"
-                        android:textColor="@color/sap_green"
-                        android:textSize="11sp"
-                        android:letterSpacing="0.06"
-                        android:fontFamily="@font/inter_regular"
-                        android:textAllCaps="true" />
-
-                    <TextView
-                        android:id="@+id/tv_rgb_header"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="River Light Studio"
-                        android:textColor="@color/text_dark"
-                        android:textSize="28sp"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/poppins_regular" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Change the mood of your miniature world."
-                        android:textColor="@color/text_muted"
-                        android:textSize="13sp"
-                        android:fontFamily="@font/inter_regular" />
-                </LinearLayout>
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:text="SL"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RJ45 DIORAMA"
+                    android:textColor="@color/sap_green"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.08"
+                    android:fontFamily="@font/inter_regular"
                     android:textStyle="bold"
-                    android:gravity="center"
-                    android:background="@drawable/bg_circle_green"
+                    android:textAllCaps="true" />
+
+                <TextView
+                    android:id="@+id/tv_rgb_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="River Light Studio"
+                    android:textColor="@color/text_dark"
+                    android:textSize="@dimen/title_text_size"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_regular" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Change the mood of your miniature world."
+                    android:textColor="@color/text_muted"
+                    android:textSize="13sp"
                     android:fontFamily="@font/inter_regular" />
             </LinearLayout>
 
-            <!-- ===== HERO CARD (landscape preview) ===== -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_rgb_hero"
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="RJ"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="@drawable/bg_circle_green"
+                android:fontFamily="@font/inter_regular" />
+        </LinearLayout>
+
+        <!-- Hairline Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#12000000" />
+
+        <!-- ===== SCROLLABLE CONTENT BODY ===== -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/card_bg"
+            android:fillViewport="true"
+            android:clipToPadding="false"
+            android:scrollbars="none">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="16dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="#C8DFC8">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="14dp"
+                android:paddingBottom="120dp">
+
+                <!-- ===== HERO CARD (landscape preview) ===== -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_rgb_hero"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:layout_marginStart="@dimen/screen_horizontal_margin"
+                    android:layout_marginEnd="@dimen/screen_horizontal_margin"
+                    android:layout_marginTop="4dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#C8DFC8">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -585,6 +607,7 @@
         </LinearLayout>
 
     </ScrollView>
+    </LinearLayout>
 
     <!-- ===== ASK SANLO FLOATING BUTTON ===== -->
     <LinearLayout

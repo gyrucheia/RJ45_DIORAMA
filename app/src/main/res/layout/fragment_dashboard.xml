@@ -1,86 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/card_bg">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
-
+    <!-- ===== PINNED TOP APP BAR ===== -->
     <LinearLayout
+        android:id="@+id/layout_dashboard_pinned_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="20dp"
-        android:paddingBottom="32dp">
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/screen_horizontal_margin"
+        android:paddingEnd="@dimen/screen_horizontal_margin"
+        android:paddingTop="16dp"
+        android:paddingBottom="12dp"
+        android:background="@color/card_bg">
 
-        <!-- ===== HEADER ===== -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SAN LORENZO RUIZ"
+                android:textColor="#C0392B"
+                android:textSize="11sp"
+                android:letterSpacing="0.08"
+                android:fontFamily="@font/inter_regular"
+                android:textStyle="bold"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:id="@+id/tv_dashboard_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="RJ45 Diorama"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/title_text_size"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_dash_status_online"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_status_chip_coral"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:text="Offline"
+            android:textColor="@color/alert_red"
+            android:textSize="11sp"
+            android:fontFamily="@font/inter_regular"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+
+    <!-- Hairline Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#12000000" />
+
+    <!-- ===== SCROLLABLE CONTENT BODY ===== -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:scrollbars="none">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="@dimen/screen_horizontal_margin"
-            android:paddingEnd="@dimen/screen_horizontal_margin">
+            android:orientation="vertical"
+            android:paddingTop="16dp"
+            android:paddingBottom="32dp">
 
-            <LinearLayout
-                android:layout_width="0dp"
+            <!-- ===== ACTIVE SIMULATION STATUS ===== -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_active_simulation"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SAN LORENZO RUIZ"
-                    android:textColor="#C0392B"
-                    android:textSize="11sp"
-                    android:letterSpacing="0.06"
-                    android:fontFamily="@font/inter_regular"
-                    android:textAllCaps="true" />
-
-                <TextView
-                    android:id="@+id/tv_dashboard_header"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="RJ45 Diorama"
-                    android:textColor="@color/text_dark"
-                    android:textSize="@dimen/title_text_size"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/poppins_regular" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_dash_status_online"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_status_chip_coral"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="Offline"
-                android:textColor="@color/alert_red"
-                android:textSize="11sp"
-                android:fontFamily="@font/inter_regular" />
-        </LinearLayout>
-
-        <!-- ===== ACTIVE SIMULATION STATUS ===== -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_active_simulation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/screen_horizontal_margin"
-            android:layout_marginEnd="@dimen/screen_horizontal_margin"
-            android:layout_marginTop="24dp"
-            app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="0dp"
-            app:cardBackgroundColor="@color/card_white"
-            android:foreground="?attr/selectableItemBackground">
+                android:layout_marginStart="@dimen/screen_horizontal_margin"
+                android:layout_marginEnd="@dimen/screen_horizontal_margin"
+                android:layout_marginTop="4dp"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/card_white"
+                android:foreground="?attr/selectableItemBackground">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -464,4 +483,4 @@
 
     </LinearLayout>
 </ScrollView>
-</FrameLayout>
+</LinearLayout>

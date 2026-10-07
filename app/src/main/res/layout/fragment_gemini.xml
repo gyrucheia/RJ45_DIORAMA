@@ -15,7 +15,9 @@
         android:gravity="center_vertical"
         android:paddingStart="@dimen/screen_horizontal_margin"
         android:paddingEnd="@dimen/screen_horizontal_margin"
-        android:paddingTop="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="12dp"
+        android:background="@color/card_bg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -49,13 +51,15 @@
                 android:text="RJ45 DIORAMA"
                 android:textColor="@color/sap_green"
                 android:textSize="11sp"
-                android:letterSpacing="0.06"
+                android:letterSpacing="0.08"
                 android:fontFamily="@font/inter_regular"
+                android:textStyle="bold"
                 android:textAllCaps="true" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="RJ45 Guide"
                 android:textColor="@color/text_dark"
                 android:textSize="@dimen/title_text_size"
@@ -86,6 +90,16 @@
 
     </LinearLayout>
 
+    <!-- Hairline Divider -->
+    <View
+        android:id="@+id/guide_header_divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#12000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_guide_header" />
+
     <!-- ===== GUIDE INTRO CARD ===== -->
     <LinearLayout
         android:id="@+id/layout_guide_intro"
@@ -98,7 +112,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_guide_header">
+        app:layout_constraintTop_toBottomOf="@id/guide_header_divider">
 
         <!-- Green icon square -->
         <FrameLayout
