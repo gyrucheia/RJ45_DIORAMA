@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/card_bg"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="120dp">
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/screen_horizontal_margin"
+                android:paddingEnd="@dimen/screen_horizontal_margin">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RJ45 DIORAMA"
+                        android:textColor="@color/sap_green"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.08"
+                        android:fontFamily="@font/inter_regular"
+                        android:textStyle="bold"
+                        android:textAllCaps="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Diorama Simulation"
+                        android:textColor="@color/text_dark"
+                        android:textSize="@dimen/title_text_size"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_regular" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Watch the miniature world come alive"
+                        android:textColor="@color/text_muted"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_regular" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_sim_sync_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_status_chip_green"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="Checking…"
+                    android:textColor="@color/sap_green"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/inter_regular" />
+            </LinearLayout>
+
+            <!-- Mode Selector: Individual vs Full System -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/screen_horizontal_margin"
+                android:layout_marginEnd="@dimen/screen_horizontal_margin"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_gesture_dir_pill"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/tab_sim_individual"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_tram_status_card"
+                    android:gravity="center"
+                    android:text="Individual Simulation"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_regular" />
+
+                <TextView
+                    android:id="@+id/tab_sim_full"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="Full System Simulation"
+                    android:textColor="@color/text_muted"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_regular" />
+            </LinearLayout>
+
+            <!-- Active Simulation Status Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_horizontal_margin"
+                android:layout_marginEnd="@dimen/screen_horizontal_margin"
+                android:layout_marginTop="14dp"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/card_white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="NOW ON THE DIORAMA"
+                            android:textColor="@color/text_muted"
+                            android:textSize="10sp"
+                            android:letterSpacing="0.08"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:id="@+id/tv_active_sim_indicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="● IDLE"
+                            android:textColor="@color/offline_gray"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_sim_active_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="No Simulation Running"
+                        android:textColor="@color/text_dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_regular" />
+
+                    <TextView
+                        android:id="@+id/tv_sim_active_step"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Choose a demonstration below to start it on the diorama."
+                        android:textColor="@color/text_muted"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular" />
+
+                    <!-- Stop current simulation button (visible when running) -->
+                    <Button
+                        android:id="@+id/btn_stop_simulation"
+                        style="@style/Widget.Material3.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/action_button_height"
+                        android:minHeight="@dimen/action_button_height"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_action_btn_emergency"
+                        android:text="⏹  Stop Active Simulation"
+                        android:textColor="@color/alert_red"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_regular"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ======================================================= -->
+            <!-- SECTION 1: INDIVIDUAL SIMULATION (5 OPERATIONS)         -->
+            <!-- ======================================================= -->
+            <LinearLayout
+                android:id="@+id/layout_individual_sim"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_horizontal_margin"
+                    android:layout_marginEnd="@dimen/screen_horizontal_margin"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="CHOOSE A DEMONSTRATION"
+                    android:textColor="@color/text_dark"
+                    android:textSize="12sp"
+                    android:letterSpacing="0.08"
+                    android:fontFamily="@font/inter_regular"
+                    android:textStyle="bold" />
+
+                <!-- OP 1: TRAM -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_op_tram"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_horizontal_margin"
+                    android:layout_marginEnd="@dimen/screen_horizontal_margin"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/card_white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <FrameLayout
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                android:background="@drawable/bg_icon_circle_orange">
+                                <ImageView
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_tram"
+                                    android:tint="@color/white"
+                                    android:contentDescription="Tram" />
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:layout_marginStart="12dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="OPERATION 1"
+                                    android:textColor="@color/gesture_orange"
+                                    android:textSize="10sp"
+                                    android:letterSpacing="0.06"
+                                    android:fontFamily="@font/inter_regular"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tram Ride"
+                                    android:textColor="@color/text_dark"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:fontFamily="@font/poppins_regular" />
+                            </LinearLayout>
+
+                            <Button
+                                android:id="@+id/btn_run_op_tram"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/action_button_height"
+                                android:minHeight="@dimen/action_button_height"
+                                android:background="@drawable/bg_action_btn_primary"
+                                android:text="Start"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_regular"
+                                android:insetTop="0dp"
+                                android:insetBottom="0dp"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp" />
+                        </LinearLayout>
+
+                        <!-- Chain explanation pill -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_gesture_dir_pill"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="6dp"
+                            android:paddingBottom="6dp"
+                            android:text="A hand wave at the station sends the tram on its way. It stops by itself when it reaches the station marker."
+                            android:textColor="@color/text_dark"
+                            android:textSize="12sp"
+                            android:lineSpacingExtra="2dp"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:id="@+id/tv_status_op_tram"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_pill_gray"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:text="Offline"
+                            android:textColor="@color/offline_gray"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- OP 2: STREET LIGHTS -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_op_lights"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_horizontal_margin"
+                    android:layout_marginEnd="@dimen/screen_horizontal_margin"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/card_white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <FrameLayout
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                android:background="@drawable/bg_icon_circle_amber">
+                                <ImageView
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_nav_lights"
+                                    android:tint="@color/white"
+                                    android:contentDescription="Lights" />
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:layout_marginStart="12dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="OPERATION 2"
+                                    android:textColor="#E65100"
+                                    android:textSize="10sp"
+                                    android:letterSpacing="0.06"
+                                    android:fontFamily="@font/inter_regular"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Day to Night"
+                                    android:textColor="@color/text_dark"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:fontFamily="@font/poppins_regular" />
+                            </LinearLayout>
+
+                            <Button
+                                android:id="@+id/btn_run_op_lights"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/action_button_height"
+                                android:minHeight="@dimen/action_button_height"
+                                android:background="@drawable/bg_action_btn_primary"
+                                android:text="Start"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_regular"
+                                android:insetTop="0dp"
+                                android:insetBottom="0dp"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_gesture_dir_pill"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="6dp"
+                            android:paddingBottom="6dp"
+                            android:text="See the town's street lamps follow the time of day, switching on as evening falls over the diorama."
+                            android:textColor="@color/text_dark"
+                            android:textSize="12sp"
+                            android:lineSpacingExtra="2dp"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:id="@+id/tv_status_op_lights"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_pill_gray"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:text="Offline"
+                            android:textColor="@color/offline_gray"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- OP 3: RGB LIGHTING -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_op_rgb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_horizontal_margin"
+                    android:layout_marginEnd="@dimen/screen_horizontal_margin"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/card_white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <FrameLayout
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                android:background="@drawable/bg_icon_circle_teal">
+                                <ImageView
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_rgb_light"
+                                    android:tint="@color/white"
+                                    android:contentDescription="RGB" />
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:layout_marginStart="12dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="OPERATION 3"
+                                    android:textColor="#00796B"
+                                    android:textSize="10sp"
+                                    android:letterSpacing="0.06"
+                                    android:fontFamily="@font/inter_regular"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="River RGB Lights"
+                                    android:textColor="@color/text_dark"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:fontFamily="@font/poppins_regular" />
+                            </LinearLayout>
+
+                            <Button
+                                android:id="@+id/btn_run_op_rgb"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/action_button_height"
+                                android:minHeight="@dimen/action_button_height"
+                                android:background="@drawable/bg_action_btn_primary"
+                                android:text="Start"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_regular"
+                                android:insetTop="0dp"
+                                android:insetBottom="0dp"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_gesture_dir_pill"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="6dp"
+                            android:paddingBottom="6dp"
+                            android:text="Show a color to the sensor, or pick one, and watch the river glow in that color."
+                            android:textColor="@color/text_dark"
+                            android:textSize="12sp"
+                            android:lineSpacingExtra="2dp"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:id="@+id/tv_status_op_rgb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_pill_gray"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:text="Offline"
+                            android:textColor="@color/offline_gray"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- OP 4: WIND -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_op_wind"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_horizontal_margin"
+                    android:layout_marginEnd="@dimen/screen_horizontal_margin"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/card_white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <FrameLayout
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                android:background="@drawable/bg_explore_card_green">
+                                <ImageView
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_onboard_waves"
+                                    android:tint="@color/white"
+                                    android:contentDescription="Wind" />
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:layout_marginStart="12dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="OPERATION 4"
+                                    android:textColor="@color/sap_green"
+                                    android:textSize="10sp"
+                                    android:letterSpacing="0.06"
+                                    android:fontFamily="@font/inter_regular"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Wind and Breeze"
+                                    android:textColor="@color/text_dark"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:fontFamily="@font/poppins_regular" />
+                            </LinearLayout>
+
+                            <Button
+                                android:id="@+id/btn_run_op_wind"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/action_button_height"
+                                android:minHeight="@dimen/action_button_height"
+                                android:background="@drawable/bg_action_btn_primary"
+                                android:text="Start"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_regular"
+                                android:insetTop="0dp"
+                                android:insetBottom="0dp"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_gesture_dir_pill"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="6dp"
+                            android:paddingBottom="6dp"
+                            android:text="A fan creates a breeze across the diorama, and the moving air bends a small sensor so you can see the wind's effect."
+                            android:textColor="@color/text_dark"
+                            android:textSize="12sp"
+                            android:lineSpacingExtra="2dp"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:id="@+id/tv_status_op_wind"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_pill_gray"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:text="Offline"
+                            android:textColor="@color/offline_gray"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- OP 5: DRAINAGE -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_op_drainage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_horizontal_margin"
+                    android:layout_marginEnd="@dimen/screen_horizontal_margin"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/card_white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <FrameLayout
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                android:background="@drawable/bg_icon_circle_salmon">
+                                <ImageView
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_pump"
+                                    android:tint="@color/white"
+                                    android:contentDescription="Drainage" />
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:layout_marginStart="12dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="OPERATION 5"
+                                    android:textColor="@color/alert_red"
+                                    android:textSize="10sp"
+                                    android:letterSpacing="0.06"
+                                    android:fontFamily="@font/inter_regular"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Flood Warning &amp; Drainage"
+                                    android:textColor="@color/text_dark"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:fontFamily="@font/poppins_regular" />
+                            </LinearLayout>
+
+                            <Button
+                                android:id="@+id/btn_run_op_drainage"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/action_button_height"
+                                android:minHeight="@dimen/action_button_height"
+                                android:background="@drawable/bg_action_btn_primary"
+                                android:text="Start"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_regular"
+                                android:insetTop="0dp"
+                                android:insetBottom="0dp"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_gesture_dir_pill"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="6dp"
+                            android:paddingBottom="6dp"
+                            android:text="When the water level reaches the configured warning level, the diorama activates its flood-warning and drainage response."
+                            android:textColor="@color/text_dark"
+                            android:textSize="12sp"
+                            android:lineSpacingExtra="2dp"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:id="@+id/tv_status_op_drainage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_pill_gray"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:text="Offline"
+                            android:textColor="@color/offline_gray"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <!-- ======================================================= -->
+            <!-- SECTION 2: FULL SYSTEM SIMULATION                       -->
+            <!-- ======================================================= -->
+            <LinearLayout
+                android:id="@+id/layout_full_sim"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_horizontal_margin"
+                    android:layout_marginEnd="@dimen/screen_horizontal_margin"
+                    android:layout_marginTop="20dp"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/card_white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="COORDINATED EXHIBIT"
+                            android:textColor="@color/sap_green"
+                            android:textSize="10sp"
+                            android:letterSpacing="0.08"
+                            android:fontFamily="@font/inter_regular"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Full System Simulation"
+                            android:textColor="@color/text_dark"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_regular" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Experience the whole diorama together: the tram, street lights, river RGB lights, breeze, and flood warning. [Final sequence requires firmware confirmation]"
+                            android:textColor="@color/text_muted"
+                            android:textSize="12sp"
+                            android:lineSpacingExtra="2dp"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <TextView
+                            android:id="@+id/tv_status_full"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:background="@drawable/bg_pill_gray"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:text="Offline"
+                            android:textColor="@color/offline_gray"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/inter_regular" />
+
+                        <Button
+                            android:id="@+id/btn_run_full_system"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/action_button_height"
+                            android:minHeight="@dimen/action_button_height"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/bg_action_btn_primary"
+                            android:text="▶  Start Full System Simulation"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_regular"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

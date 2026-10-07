@@ -97,7 +97,7 @@
                         android:scaleType="centerCrop"
                         android:contentDescription="Diorama preview" />
 
-                    <!-- LIVE PREVIEW chip at bottom -->
+                    <!-- Status chip at bottom -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -108,21 +108,10 @@
                         android:paddingEnd="14dp"
                         android:paddingBottom="12dp">
 
-                        <TextView
+                        <View
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="● LIVE PREVIEW"
-                            android:textColor="@color/sap_green"
-                            android:textSize="10sp"
-                            android:textStyle="bold"
-                            android:letterSpacing="0.06"
-                            android:fontFamily="@font/inter_regular"
-                            android:background="@drawable/bg_pill_white"
-                            android:paddingStart="8dp"
-                            android:paddingEnd="8dp"
-                            android:paddingTop="4dp"
-                            android:paddingBottom="4dp" />
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
 
                         <TextView
                             android:layout_width="wrap_content"

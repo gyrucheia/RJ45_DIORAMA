@@ -24,8 +24,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp">
+                android:paddingStart="@dimen/screen_horizontal_margin"
+                android:paddingEnd="@dimen/screen_horizontal_margin">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -48,7 +48,7 @@
                         android:layout_height="wrap_content"
                         android:text="Live Environment"
                         android:textColor="@color/text_dark"
-                        android:textSize="28sp"
+                        android:textSize="@dimen/title_text_size"
                         android:textStyle="bold"
                         android:fontFamily="@font/poppins_regular" />
 
@@ -73,12 +73,81 @@
                     android:fontFamily="@font/inter_regular" />
             </LinearLayout>
 
+            <!-- ===== ASK SANLO GUIDE PROMINENT ENTRY CARD ===== -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_ask_sanlo_guide_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_horizontal_margin"
+                android:layout_marginEnd="@dimen/screen_horizontal_margin"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/card_white"
+                android:foreground="?attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✦"
+                            android:textColor="@color/sap_green"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="6dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ASK SANLO GUIDE"
+                            android:textColor="@color/sap_green"
+                            android:textSize="11sp"
+                            android:letterSpacing="0.08"
+                            android:fontFamily="@font/inter_regular"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Ask about the tram, river, sensors, lighting, wind, drainage, or what the diorama is currently doing."
+                        android:textColor="@color/text_dark"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_regular" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_ask_guide_explore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/action_button_height"
+                        android:minHeight="@dimen/action_button_height"
+                        android:layout_marginTop="12dp"
+                        android:backgroundTint="@color/forest_primary"
+                        android:text="Ask the Guide  →"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textAllCaps="false"
+                        android:fontFamily="@font/poppins_regular"
+                        app:cornerRadius="@dimen/action_button_corner_radius" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <!-- ===== HERO CARD (Temperature + Water visual) ===== -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/screen_horizontal_margin"
+                android:layout_marginEnd="@dimen/screen_horizontal_margin"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_hero_explore">
 
@@ -102,7 +171,7 @@
                         android:id="@+id/tv_explore_temp_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="29°c"
+                        android:text="--"
                         android:textColor="@color/text_dark"
                         android:textSize="36sp"
                         android:textStyle="bold"
@@ -165,10 +234,10 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/screen_horizontal_margin"
+                android:layout_marginEnd="@dimen/screen_horizontal_margin"
                 android:layout_marginTop="12dp"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="0dp"
                 app:cardBackgroundColor="@color/card_white">
 
@@ -392,19 +461,6 @@
                             android:alpha="0.5" />
                     </FrameLayout>
 
-                    <!-- Preview high-water alert link -->
-                    <TextView
-                        android:id="@+id/btn_preview_alert"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="4dp"
-                        android:gravity="center"
-                        android:text="Preview high-water safety alert"
-                        android:textColor="#E53935"
-                        android:textSize="13sp"
-                        android:fontFamily="@font/inter_regular" />
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -413,8 +469,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
+                android:paddingStart="@dimen/screen_horizontal_margin"
+                android:paddingEnd="@dimen/screen_horizontal_margin"
                 android:layout_marginTop="10dp">
 
                 <!-- Wind Activity -->
@@ -423,7 +479,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginEnd="6dp"
-                    app:cardCornerRadius="14dp"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
                     app:cardElevation="0dp"
                     app:cardBackgroundColor="@color/card_white">
 
@@ -491,7 +547,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginStart="6dp"
-                    app:cardCornerRadius="14dp"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
                     app:cardElevation="0dp"
                     app:cardBackgroundColor="@color/card_white">
 
@@ -557,10 +613,10 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/screen_horizontal_margin"
+                android:layout_marginEnd="@dimen/screen_horizontal_margin"
                 android:layout_marginTop="10dp"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="0dp"
                 app:cardBackgroundColor="@color/card_white">
 
@@ -695,7 +751,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Visitors"
+                                android:text="Motion events"
                                 android:textColor="@color/text_dark"
                                 android:textSize="12sp"
                                 android:textStyle="bold"
@@ -738,6 +794,85 @@
                         </LinearLayout>
                     </LinearLayout>
 
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ===== QUICK APP TUTORIAL CARD ===== -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_open_voice_guide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/screen_horizontal_margin"
+                android:layout_marginEnd="@dimen/screen_horizontal_margin"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/card_white"
+                android:foreground="?attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="16dp">
+
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_circle_green"
+                        android:layout_marginEnd="14dp">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_onboard_sliders"
+                            android:tint="@color/white"
+                            android:contentDescription="Quick App Tutorial" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="QUICK APP TUTORIAL"
+                            android:textColor="@color/sap_green"
+                            android:textSize="10sp"
+                            android:letterSpacing="0.08"
+                            android:fontFamily="@font/inter_regular"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="How to Use SanLo App"
+                            android:textColor="@color/text_dark"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_regular" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Learn how to monitor live sensors, trigger simulations, and operate the diorama."
+                            android:textColor="@color/text_muted"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="@color/sap_green"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />                     
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

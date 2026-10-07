@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="@color/card_white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Top Header: Title + Setup badge -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Connect Diorama"
+                android:textColor="@color/text_dark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular" />
+
+            <TextView
+                android:id="@+id/tv_setup_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_gesture_dir_pill"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:text="Setup"
+                android:textColor="@color/text_muted"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/inter_regular" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Set this up once. After that the app connects over the internet."
+            android:textColor="@color/text_muted"
+            android:textSize="12sp"
+            android:fontFamily="@font/inter_regular" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="1  Find the diorama"
+            android:textColor="@color/text_dark"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_regular" />
+
+        <!-- BLE Device Discovery Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_ble_device"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#F5F7F5">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="14dp">
+
+                <ImageView
+                    android:id="@+id/iv_ble_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_bluetooth"
+                    android:contentDescription="Bluetooth" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="14dp">
+
+                    <TextView
+                        android:id="@+id/tv_ble_device_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RJ45-MASTER"
+                        android:textColor="@color/text_dark"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_regular" />
+
+                    <TextView
+                        android:id="@+id/tv_ble_device_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Keep your phone near the diorama"
+                        android:textColor="@color/text_muted"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_ble_status_chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_status_chip_blue"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:text="Scanning..."
+                    android:textColor="@color/celestial_blue"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/inter_regular" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Wi-Fi Network Section Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_wifi_network"
+                android:tint="@color/text_muted"
+                android:contentDescription="Wi-Fi" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2  Wi-Fi details"
+                    android:textColor="@color/text_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_regular" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Type the name of a 2.4 GHz Wi-Fi or phone hotspot"
+                    android:textColor="@color/text_muted"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/inter_regular" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- SSID Input Field Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_gesture_dir_pill"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Network SSID"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp"
+                android:fontFamily="@font/inter_regular" />
+
+            <EditText
+                android:id="@+id/et_wifi_ssid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="Wi-Fi or Hotspot SSID"
+                android:textColor="@color/text_dark"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <!-- Password Input Field Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_gesture_dir_pill"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wi-Fi password"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp"
+                android:fontFamily="@font/inter_regular" />
+
+            <EditText
+                android:id="@+id/et_wifi_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="Enter Wi-Fi password"
+                android:textColor="@color/text_dark"
+                android:textSize="14sp"
+                android:inputType="textPassword"
+                android:fontFamily="@font/poppins_regular"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="3  Confirm online"
+            android:textColor="@color/text_dark"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_regular" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="The app shows Connected only after the diorama itself reports that it is online."
+            android:textColor="@color/text_muted"
+            android:textSize="12sp"
+            android:fontFamily="@font/inter_regular" />
+
+        <!-- Status Message / Feedback -->
+        <TextView
+            android:id="@+id/tv_provision_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text=""
+            android:textColor="@color/sap_green"
+            android:textSize="12sp"
+            android:visibility="gone"
+            android:fontFamily="@font/inter_regular" />
+
+        <!-- Primary Action Button: Connect MASTER to Wi-Fi -->
+        <Button
+            android:id="@+id/btn_connect_master"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_tram_status_card"
+            android:text="Connect MASTER to Wi-Fi"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_regular"
+            android:insetTop="0dp"
+            android:insetBottom="0dp" />
+
+        <!-- Dismiss / Cancel -->
+        <Button
+            android:id="@+id/btn_cancel_setup"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:text="Close Setup"
+            android:textColor="@color/text_muted"
+            android:textSize="12sp"
+            android:fontFamily="@font/inter_regular" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_gesture_dir_pill"
+            android:padding="10dp"
+            android:text="Prototype: Bluetooth setup has not been tested with the diorama's controller yet."
+            android:textColor="@color/text_muted"
+            android:textSize="11sp"
+            android:fontFamily="@font/inter_regular" />
+
+    </LinearLayout>
+    </ScrollView>
+</androidx.cardview.widget.CardView>

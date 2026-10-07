@@ -38,7 +38,7 @@
             android:paddingTop="6dp"
             android:paddingBottom="4dp">
 
-            <!-- Home -->
+            <!-- Overview / Dashboard -->
             <LinearLayout
                 android:id="@+id/nav_item_sensors"
                 android:layout_width="0dp"
@@ -61,7 +61,7 @@
                         android:layout_height="18dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_nav_home"
-                        android:contentDescription="Home" />
+                        android:contentDescription="Overview" />
                 </FrameLayout>
 
                 <TextView
@@ -69,13 +69,49 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="Home"
+                    android:text="Overview"
                     android:fontFamily="@font/inter_regular"
                     android:textSize="9sp"
                     android:textColor="@color/sap_green" />
             </LinearLayout>
 
-            <!-- Control -->
+            <!-- Simulation (Main Feature) -->
+            <LinearLayout
+                android:id="@+id/nav_item_simulation"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless">
+
+                <FrameLayout
+                    android:id="@+id/nav_bg_simulation"
+                    android:layout_width="48dp"
+                    android:layout_height="28dp">
+                    <ImageView
+                        android:id="@+id/nav_icon_simulation"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_nav_simulation"
+                        android:contentDescription="Simulation" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/nav_label_simulation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Simulation"
+                    android:fontFamily="@font/inter_regular"
+                    android:textSize="9sp"
+                    android:textColor="@color/nav_inactive" />
+            </LinearLayout>
+
+            <!-- Controls -->
             <LinearLayout
                 android:id="@+id/nav_item_controls"
                 android:layout_width="0dp"
@@ -97,7 +133,7 @@
                         android:layout_height="18dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_nav_control"
-                        android:contentDescription="Control" />
+                        android:contentDescription="Controls" />
                 </FrameLayout>
 
                 <TextView
@@ -105,15 +141,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="Control"
+                    android:text="Controls"
                     android:fontFamily="@font/inter_regular"
                     android:textSize="9sp"
                     android:textColor="@color/nav_inactive" />
             </LinearLayout>
 
-            <!-- Explore -->
+            <!-- Explore AI -->
             <LinearLayout
-                android:id="@+id/nav_item_gemini"
+                android:id="@+id/nav_item_explore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -124,11 +160,11 @@
                 android:background="?attr/selectableItemBackgroundBorderless">
 
                 <FrameLayout
-                    android:id="@+id/nav_bg_gemini"
+                    android:id="@+id/nav_bg_explore"
                     android:layout_width="48dp"
                     android:layout_height="28dp">
                     <ImageView
-                        android:id="@+id/fab_voice_guide"
+                        android:id="@+id/nav_icon_explore"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="center"
@@ -137,7 +173,7 @@
                 </FrameLayout>
 
                 <TextView
-                    android:id="@+id/nav_label_gemini"
+                    android:id="@+id/nav_label_explore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
@@ -147,43 +183,7 @@
                     android:textColor="@color/nav_inactive" />
             </LinearLayout>
 
-            <!-- Lights -->
-            <LinearLayout
-                android:id="@+id/nav_item_rgb"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackgroundBorderless">
-
-                <FrameLayout
-                    android:id="@+id/nav_bg_rgb"
-                    android:layout_width="48dp"
-                    android:layout_height="28dp">
-                    <ImageView
-                        android:id="@+id/nav_icon_rgb"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_nav_lights"
-                        android:contentDescription="Lights" />
-                </FrameLayout>
-
-                <TextView
-                    android:id="@+id/nav_label_rgb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="Lights"
-                    android:fontFamily="@font/inter_regular"
-                    android:textSize="9sp"
-                    android:textColor="@color/nav_inactive" />
-            </LinearLayout>
-
-            <!-- Activity -->
+            <!-- Logs / Activity -->
             <LinearLayout
                 android:id="@+id/nav_item_logs"
                 android:layout_width="0dp"
@@ -205,7 +205,7 @@
                         android:layout_height="18dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_nav_activity"
-                        android:contentDescription="Activity" />
+                        android:contentDescription="Logs" />
                 </FrameLayout>
 
                 <TextView
@@ -213,7 +213,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="Activity"
+                    android:text="Logs"
                     android:fontFamily="@font/inter_regular"
                     android:textSize="9sp"
                     android:textColor="@color/nav_inactive" />

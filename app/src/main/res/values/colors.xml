@@ -4,40 +4,57 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
 
-    <!-- SanLo MobApp Palette -->
-    <color name="tea_green">#A8C8AA</color>
-    <color name="sap_green">#1E6B18</color>
+    <!-- Nature & Museum Exhibit Palette Tokens -->
+    <color name="museum_cream">#FBF9F1</color>
+    <color name="forest_primary">#1E3F20</color>
+    <color name="moss_accent">#2D5A27</color>
+    <color name="walnut_brown">#705335</color>
+    <color name="river_blue">#2563EB</color>
+    <color name="amber_warning">#D97706</color>
+    <color name="emergency_red">#DC2626</color>
+    <color name="text_primary">#1F2937</color>
+    <color name="text_secondary">#6B7280</color>
+
+    <!-- Legacy / Semantic Mappings for Compatibility -->
+    <color name="tea_green">#FBF9F1</color>
+    <color name="sap_green">#1E3F20</color>
     <color name="myrtle_green">#0F2B0E</color>
     <color name="bitter_lemon">#C6D600</color>
-    <color name="celestial_blue">#2E86C1</color>
-    <color name="alert_red">#C62828</color>
+    <color name="celestial_blue">#2563EB</color>
+    <color name="alert_red">#DC2626</color>
 
     <!-- Utility Colors -->
     <color name="card_white">#FFFFFF</color>
-    <color name="text_dark">#0F2B0E</color>
-    <color name="text_muted">#3D6B3D</color>
-    <color name="divider_line">#8FBF91</color>
-    <color name="nav_inactive">#5E8F5E</color>
-    <color name="card_bg">#EEF7EE</color>
-    <color name="status_ok">#1E6B18</color>
-    <color name="status_warn">#E65100</color>
-    <color name="status_alert">#C62828</color>
+    <color name="text_dark">#1F2937</color>
+    <color name="text_muted">#6B7280</color>
+    <color name="divider_line">#D1D5DB</color>
+    <color name="nav_inactive">#6B7280</color>
+    <color name="card_bg">#FBF9F1</color>
+    <color name="status_ok">#1E3F20</color>
+    <color name="status_warn">#D97706</color>
+    <color name="status_alert">#DC2626</color>
     <color name="bitter_lemon_text">#4A5000</color>
 
-    <!-- Reference Design — New Tokens -->
+    <!-- Reference Design — Tokens -->
     <color name="gesture_orange">#E65100</color>
     <color name="gesture_orange_bg">#FFF3E0</color>
     <color name="gesture_orange_border">#FFCC80</color>
-    <color name="kill_switch_red">#B71C1C</color>
-    <color name="kill_switch_red_bg">#FFEBEE</color>
+    <color name="kill_switch_red">#705335</color>
+    <color name="kill_switch_red_bg">#EFEBE9</color>
     <color name="status_chip_online">#D4EDD5</color>
     <color name="status_chip_ble">#DDEEF8</color>
-    <color name="location_bar_bg">#C8E8CA</color>
+    <color name="location_bar_bg">#FBF9F1</color>
     <color name="cam_overlay_bg">#99000000</color>
-    <color name="channel_badge_bg">#C8E8CA</color>
-    <color name="channel_badge_text">#1A5C1A</color>
-    <color name="footer_bar_bg">#C8E8CA</color>
+    <color name="channel_badge_bg">#E8F5E9</color>
+    <color name="channel_badge_text">#1E3F20</color>
+    <color name="footer_bar_bg">#FBF9F1</color>
     <color name="quick_pill_bg">#FFFFFF</color>
-    <color name="teal_pump">#00796B</color>
-    <color name="orange_audio">#E65100</color>
+    <color name="teal_pump">#2563EB</color>
+    <color name="orange_audio">#705335</color>
+    <color name="offline_gray">#757575</color>
+    <color name="offline_bg">#E0E0E0</color>
+    <color name="earthy_brown">#705335</color>
+    <color name="earthy_brown_light">#EFEBE9</color>
+    <color name="sim_badge_bg">#E8F5E9</color>
+    <color name="sim_badge_active">#1E3F20</color>
 </resources>

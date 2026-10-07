@@ -1,8 +1,6 @@
 package com.example.sanlomobapp;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,29 +12,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.util.Locale;
-import java.util.Random;
+import com.example.sanlomobapp.data.FirebaseRepository;
+import com.example.sanlomobapp.model.DioramaTelemetry;
+import com.example.sanlomobapp.model.SystemStatus;
 
-public class ExploreFragment extends Fragment {
+import java.util.Locale;
+
+public class ExploreFragment extends Fragment implements
+        FirebaseRepository.TelemetryListener,
+        FirebaseRepository.SystemStatusListener {
 
     private TextView tvTemp, tvTempStatus, tvRiverLevel, tvWindValue, tvVisitors;
-    private final Handler handler = new Handler(Looper.getMainLooper());
-    private final Random random = new Random();
-
-    private double temp = 29.0;
-    private double riverLevel = 1.2;
-    private int wind = 34;
-    private int visitors = 14;
     private boolean sensorGridVisible = true;
 
-    private final Runnable updater = new Runnable() {
-        @Override
-        public void run() {
-            if (!isAdded()) return;
-            updateValues();
-            handler.postDelayed(this, 3000);
-        }
-    };
+    private final FirebaseRepository repository = FirebaseRepository.getInstance();
 
     @Nullable
     @Override
@@ -56,57 +45,136 @@ public class ExploreFragment extends Fragment {
         tvWindValue  = view.findViewById(R.id.tv_wind_value);
         tvVisitors   = view.findViewById(R.id.tv_visitors_value);
 
-        LinearLayout sensorGrid   = view.findViewById(R.id.sensor_detail_grid);
-        TextView tvSensorToggle   = view.findViewById(R.id.tv_sensor_toggle);
+        LinearLayout sensorGrid = view.findViewById(R.id.sensor_detail_grid);
+        TextView tvSensorToggle = view.findViewById(R.id.tv_sensor_toggle);
 
         if (tvSensorToggle != null && sensorGrid != null) {
             tvSensorToggle.setOnClickListener(v -> {
+                if (view instanceof ViewGroup) {
+                    android.transition.TransitionManager.beginDelayedTransition((ViewGroup) view);
+                }
                 sensorGridVisible = !sensorGridVisible;
                 sensorGrid.setVisibility(sensorGridVisible ? View.VISIBLE : View.GONE);
                 tvSensorToggle.setText(sensorGridVisible ? "Hide  ›" : "Show  ›");
             });
         }
 
-        view.findViewById(R.id.btn_preview_alert).setOnClickListener(v ->
-                Toast.makeText(requireContext(),
-                        "High-water safety alert preview — coming soon", Toast.LENGTH_SHORT).show());
-
-        renderValues();
-        handler.postDelayed(updater, 3000);
-    }
-
-    private void updateValues() {
-        temp += (random.nextDouble() - 0.5) * 0.8;
-        temp = Math.max(15.0, Math.min(45.0, temp));
-        riverLevel += (random.nextDouble() - 0.5) * 0.1;
-        riverLevel = Math.max(0.1, Math.min(5.0, riverLevel));
-        wind += (int) ((random.nextDouble() - 0.5) * 8);
-        wind = Math.max(0, Math.min(100, wind));
-        visitors += (int) ((random.nextDouble() - 0.5) * 3);
-        visitors = Math.max(0, Math.min(200, visitors));
-        renderValues();
-    }
-
-    private void renderValues() {
-        if (tvTemp != null)
-            tvTemp.setText(String.format(Locale.US, "%.0f°c", temp));
-        if (tvTempStatus != null) {
-            if (temp < 20) tvTempStatus.setText("Cool");
-            else if (temp < 30) tvTempStatus.setText("Comfortably warm");
-            else if (temp < 36) tvTempStatus.setText("Warm");
-            else tvTempStatus.setText("Very hot");
+        View cardOpenVoiceGuide = view.findViewById(R.id.card_open_voice_guide);
+        if (cardOpenVoiceGuide != null) {
+            cardOpenVoiceGuide.setOnClickListener(v -> showAppTutorialDialog());
         }
-        if (tvRiverLevel != null)
-            tvRiverLevel.setText(String.format(Locale.US, "%.1f", riverLevel));
-        if (tvWindValue != null)
-            tvWindValue.setText(String.format(Locale.US, "%d%%", wind));
-        if (tvVisitors != null)
-            tvVisitors.setText(String.valueOf(visitors));
+
+
+        View cardAskSanLoGuide = view.findViewById(R.id.card_ask_sanlo_guide_entry);
+        if (cardAskSanLoGuide != null) {
+            cardAskSanLoGuide.setOnClickListener(v -> {
+                if (getActivity() instanceof MainActivity) {
+                    ((MainActivity) getActivity()).loadFragment(new GeminiFragment());
+                }
+            });
+        }
+
+        View btnAskGuideExplore = view.findViewById(R.id.btn_ask_guide_explore);
+        if (btnAskGuideExplore != null) {
+            btnAskGuideExplore.setOnClickListener(v -> {
+                if (getActivity() instanceof MainActivity) {
+                    ((MainActivity) getActivity()).loadFragment(new GeminiFragment());
+                }
+            });
+        }
+
+        renderDisconnected();
+        repository.addTelemetryListener(this);
+        repository.addSystemStatusListener(this);
+    }
+
+    private void renderDisconnected() {
+        if (tvTemp != null) tvTemp.setText("--");
+        if (tvTempStatus != null) tvTempStatus.setText("Awaiting Telemetry");
+        if (tvRiverLevel != null) tvRiverLevel.setText("--");
+        if (tvWindValue != null) tvWindValue.setText("--");
+        if (tvVisitors != null) tvVisitors.setText("--");
+    }
+
+    @Override
+    public void onTelemetryUpdated(DioramaTelemetry telemetry) {
+        if (!isAdded()) return;
+        requireActivity().runOnUiThread(() -> {
+            boolean isOnline = repository.getCurrentSystemStatus().isMasterActive();
+            if (!isOnline && !telemetry.hasData()) {
+                renderDisconnected();
+                return;
+            }
+
+            if (tvTemp != null) {
+                if (telemetry.getTemperature() != null) {
+                    double t = telemetry.getTemperature();
+                    tvTemp.setText(String.format(Locale.US, "%.0f°c", t));
+                    if (tvTempStatus != null) {
+                        if (t < 22) tvTempStatus.setText("Cool");
+                        else if (t < 31) tvTempStatus.setText("Comfortable");
+                        else tvTempStatus.setText("Warm / Hot");
+                    }
+                } else {
+                    tvTemp.setText("--");
+                    if (tvTempStatus != null) tvTempStatus.setText("--");
+                }
+            }
+
+            if (tvRiverLevel != null) {
+                if (telemetry.getWater_level_pct() != null) {
+                    tvRiverLevel.setText(telemetry.getWater_level_pct() + "%");
+                } else {
+                    tvRiverLevel.setText("--");
+                }
+            }
+
+            if (tvWindValue != null) {
+                if (telemetry.getFlex_raw() != null) {
+                    boolean bent = Boolean.TRUE.equals(telemetry.getFlex_bent());
+                    tvWindValue.setText(bent ? "Bent · Active" : "Normal · Calm");
+                } else {
+                    tvWindValue.setText("--");
+                }
+            }
+
+            if (tvVisitors != null) {
+                if (telemetry.getVisitor_count_today() != null) {
+                    tvVisitors.setText(telemetry.getVisitor_count_today() + " events");
+                } else if (Boolean.TRUE.equals(telemetry.getPir_active())) {
+                    tvVisitors.setText("Active");
+                } else {
+                    tvVisitors.setText("--");
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onSystemStatusUpdated(SystemStatus status, boolean isOnline) {
+        if (!isAdded()) return;
+        if (!isOnline) {
+            requireActivity().runOnUiThread(this::renderDisconnected);
+        }
+    }
+
+    private void showAppTutorialDialog() {
+        if (!isAdded()) return;
+        new com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Quick App Tutorial")
+                .setMessage("Welcome to the SanLo Diorama interactive companion!\n\n"
+                        + "1. Home & Explore: Observe live telemetry including microclimate temperature, river water level, valley wind, and visitor motion.\n\n"
+                        + "2. Simulation: Run coordinated diorama exhibits (Tram Ride, Street Lights, River RGB, Wind Breeze, Flood Warning & Drainage) or Full System simulation.\n\n"
+                        + "3. Manual Controls: Manually control tram movement, adjust lighting modes, test fan speeds, and manage the drainage pump.\n\n"
+                        + "4. Ask SanLo Guide: Tap the Ask SanLo Guide card anytime to converse with the AI Guide about the exhibit history, sensors, and engineering.")
+                .setPositiveButton("Got It", (dialog, which) -> dialog.dismiss())
+                .show();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        handler.removeCallbacks(updater);
+        repository.removeTelemetryListener(this);
+        repository.removeSystemStatusListener(this);
     }
 }

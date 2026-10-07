@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:paddingStart="@dimen/screen_horizontal_margin"
+        android:paddingEnd="@dimen/screen_horizontal_margin"
         android:paddingTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:text="SanLo Guide"
                 android:textColor="@color/text_dark"
-                android:textSize="26sp"
+                android:textSize="@dimen/title_text_size"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppins_regular" />
 
@@ -71,8 +71,9 @@
                 android:fontFamily="@font/inter_regular" />
         </LinearLayout>
 
-        <!-- SL Avatar -->
+        <!-- SL Avatar / TTS Voice Toggle -->
         <TextView
+            android:id="@+id/btn_tts_toggle"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:text="SL"
@@ -92,8 +93,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="top"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:paddingStart="@dimen/screen_horizontal_margin"
+        android:paddingEnd="@dimen/screen_horizontal_margin"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -180,10 +181,10 @@
         android:id="@+id/card_try_asking"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/screen_horizontal_margin"
+        android:layout_marginEnd="@dimen/screen_horizontal_margin"
         android:layout_marginTop="14dp"
-        app:cardCornerRadius="16dp"
+        app:cardCornerRadius="@dimen/card_corner_radius"
         app:cardElevation="0dp"
         app:cardBackgroundColor="@color/card_white"
         app:layout_constraintStart_toStartOf="parent"
@@ -340,8 +341,8 @@
         android:id="@+id/layout_voice_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/screen_horizontal_margin"
+        android:layout_marginEnd="@dimen/screen_horizontal_margin"
         android:layout_marginBottom="8dp"
         android:background="@drawable/bg_tram_status_card"
         android:orientation="horizontal"
@@ -376,7 +377,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="VOICE-ACTIVATED MOMENT"
+                android:text="VOICE ASSISTANT"
                 android:textColor="@color/gesture_orange"
                 android:textSize="9sp"
                 android:letterSpacing="0.08"
@@ -386,7 +387,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="Ready for the tram?"
+                android:text="Ask SanLo Voice Guide"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -396,7 +397,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text='Ask "Are you ready?" and a "Yes" can begin the tram sequence.'
+                android:text="Tap the microphone to ask questions about the diorama using voice input."
                 android:textColor="#80FFFFFF"
                 android:textSize="11sp"
                 android:fontFamily="@font/inter_regular" />
@@ -425,8 +426,8 @@
         android:id="@+id/layout_chat_input_row"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/screen_horizontal_margin"
+        android:layout_marginEnd="@dimen/screen_horizontal_margin"
         android:layout_marginBottom="16dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
@@ -455,11 +456,13 @@
 
         <!-- Mic icon button -->
         <FrameLayout
+            android:id="@+id/btn_chat_mic_container"
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:layout_marginEnd="6dp"
             android:background="@drawable/bg_circle_white">
             <ImageView
+                android:id="@+id/btn_chat_mic"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center"

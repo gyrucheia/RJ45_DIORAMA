@@ -1,16 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Base.Theme.SanLoMobApp" parent="Theme.Material3.Light.NoActionBar">
-        <item name="colorPrimary">@color/sap_green</item>
+        <item name="colorPrimary">@color/forest_primary</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorPrimaryContainer">@color/tea_green</item>
-        <item name="colorOnPrimaryContainer">@color/myrtle_green</item>
-        <item name="colorSecondary">@color/celestial_blue</item>
+        <item name="colorPrimaryContainer">@color/moss_accent</item>
+        <item name="colorOnPrimaryContainer">@color/white</item>
+        <item name="colorSecondary">@color/river_blue</item>
         <item name="colorOnSecondary">@color/white</item>
-        <item name="colorTertiary">@color/bitter_lemon</item>
-        <item name="colorSurface">@color/white</item>
+        <item name="colorTertiary">@color/walnut_brown</item>
+        <item name="colorSurface">@color/card_white</item>
         <item name="colorOnSurface">@color/text_dark</item>
         <item name="colorError">@color/alert_red</item>
-        <item name="android:colorBackground">@color/tea_green</item>
+        <item name="android:colorBackground">@color/museum_cream</item>
         <item name="bottomNavigationStyle">@style/Widget.SanLo.BottomNavigation</item>
         <item name="floatingActionButtonStyle">@style/Widget.SanLo.FAB</item>
     </style>

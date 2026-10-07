@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:paddingStart="@dimen/screen_horizontal_margin"
+            android:paddingEnd="@dimen/screen_horizontal_margin">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:text="Activity"
                     android:textColor="@color/text_dark"
-                    android:textSize="28sp"
+                    android:textSize="@dimen/title_text_size"
                     android:textStyle="bold"
                     android:fontFamily="@font/poppins_regular" />
 
@@ -73,8 +73,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
+            android:paddingStart="@dimen/screen_horizontal_margin"
+            android:paddingEnd="@dimen/screen_horizontal_margin"
             android:scrollbars="none"
             android:clipToPadding="false">
 
@@ -109,6 +109,21 @@
                     android:textStyle="bold"
                     android:fontFamily="@font/inter_regular" />
 
+                <!-- Simulation chip -->
+                <TextView
+                    android:id="@+id/chip_simulation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_tram_return_btn"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:gravity="center"
+                    android:text="Simulation"
+                    android:textColor="@color/text_dark"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/inter_regular" />
+
                 <!-- Tram chip -->
                 <TextView
                     android:id="@+id/chip_tram"
@@ -139,9 +154,9 @@
                     android:textSize="12sp"
                     android:fontFamily="@font/inter_regular" />
 
-                <!-- Visitors chip -->
+                <!-- System chip -->
                 <TextView
-                    android:id="@+id/chip_visitors"
+                    android:id="@+id/chip_system"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:layout_marginEnd="6dp"
@@ -149,36 +164,21 @@
                     android:paddingStart="14dp"
                     android:paddingEnd="14dp"
                     android:gravity="center"
-                    android:text="Visitors"
+                    android:text="System"
                     android:textColor="@color/text_dark"
                     android:textSize="12sp"
                     android:fontFamily="@font/inter_regular" />
 
-                <!-- Gestures chip -->
+                <!-- Errors chip -->
                 <TextView
-                    android:id="@+id/chip_gestures"
-                    android:layout_width="wrap_content"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="6dp"
-                    android:background="@drawable/bg_tram_return_btn"
-                    android:paddingStart="14dp"
-                    android:paddingEnd="14dp"
-                    android:gravity="center"
-                    android:text="Gestures"
-                    android:textColor="@color/text_dark"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/inter_regular" />
-
-                <!-- Alerts chip -->
-                <TextView
-                    android:id="@+id/chip_alerts"
+                    android:id="@+id/chip_errors"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:background="@drawable/bg_tram_return_btn"
                     android:paddingStart="14dp"
                     android:paddingEnd="14dp"
                     android:gravity="center"
-                    android:text="Alerts"
+                    android:text="Errors"
                     android:textColor="@color/text_dark"
                     android:textSize="12sp"
                     android:fontFamily="@font/inter_regular" />
@@ -191,10 +191,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/screen_horizontal_margin"
+            android:layout_marginEnd="@dimen/screen_horizontal_margin"
             android:layout_marginTop="12dp"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="@dimen/card_corner_radius"
             app:cardElevation="0dp"
             app:cardBackgroundColor="@color/card_white">
 
@@ -250,8 +250,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/screen_horizontal_margin"
+            android:layout_marginEnd="@dimen/screen_horizontal_margin"
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_sync_banner"
             android:orientation="horizontal"

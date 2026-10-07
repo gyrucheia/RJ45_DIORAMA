@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  Controls — optional manual overrides, separate from Simulation.
+  Six expandable cards. Each card shows a status chip driven by MASTER
+  acknowledgments (Offline / Ready / Requested / Accepted / Running / Completed / Failed).
+  Visual theme intentionally matches the rest of SanLoMobApp.
+-->
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,24 +17,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:paddingStart="@dimen/screen_horizontal_margin"
+        android:paddingEnd="@dimen/screen_horizontal_margin"
         android:paddingTop="20dp"
-        android:paddingBottom="32dp">
+        android:paddingBottom="120dp">
 
         <!-- ===== HEADER ===== -->
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <LinearLayout
-                android:id="@+id/layout_controls_header_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_controls_avatar"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -44,191 +49,83 @@
                     android:id="@+id/tv_controls_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Diorama Controls"
+                    android:text="Manual Controls"
                     android:textColor="@color/text_dark"
-                    android:textSize="26sp"
+                    android:textSize="@dimen/title_text_size"
                     android:textStyle="bold"
                     android:fontFamily="@font/poppins_regular" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bring the miniature world to life."
+                    android:text="Optional. The diorama checks every request for safety."
                     android:textColor="@color/text_muted"
                     android:textSize="13sp"
                     android:fontFamily="@font/inter_regular" />
-
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_controls_avatar"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:text="SL"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/inter_regular"
-                android:gravity="center"
-                android:background="@drawable/bg_circle_green"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/tv_controls_online"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_status_chip_coral"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="○ Offline"
+                android:textColor="@color/alert_red"
+                android:textSize="11sp"
+                android:fontFamily="@font/inter_regular" />
+        </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- ===== TRAM TRACK CARD ===== -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_tram_track"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:layout_marginTop="16dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
-            app:cardBackgroundColor="#1E4620">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <!-- Station labels row -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:orientation="horizontal"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingTop="14dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_pill_white"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:text="Start Station"
-                        android:textColor="@color/text_dark"
-                        android:textSize="10sp"
-                        android:fontFamily="@font/inter_regular" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_pill_white"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:text="Colgante Station"
-                        android:textColor="@color/text_dark"
-                        android:textSize="10sp"
-                        android:fontFamily="@font/inter_regular" />
-                </LinearLayout>
-
-                <!-- Track + tram row -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:layout_marginBottom="40dp">
-
-                    <View
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:background="@drawable/bg_circle_orange" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="2dp"
-                        android:layout_weight="1"
-                        android:background="#4A7A50" />
-
-                    <ImageView
-                        android:id="@+id/iv_tram_on_track"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_tram"
-                        android:contentDescription="Tram" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="2dp"
-                        android:layout_weight="2"
-                        android:background="#4A7A50" />
-
-                    <View
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:background="@drawable/bg_circle_orange" />
-
-                </LinearLayout>
-
-                <!-- River strip at bottom -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="44dp"
-                    android:layout_gravity="bottom"
-                    android:background="#26A69A"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="COLGANTE RIVER"
-                        android:textColor="#80FFFFFF"
-                        android:textSize="9sp"
-                        android:letterSpacing="0.12"
-                        android:fontFamily="@font/roboto_mono_regular" />
-                </LinearLayout>
-
-            </FrameLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- ===== TRAM CONTROL CARD ===== -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_tram_control"
+        <!-- Offline notice -->
+        <TextView
+            android:id="@+id/tv_controls_offline_note"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:cardCornerRadius="16dp"
+            android:background="@drawable/bg_gesture_dir_pill"
+            android:padding="12dp"
+            android:text="Controls are paused while the diorama is offline."
+            android:textColor="@color/text_muted"
+            android:textSize="12sp"
+            android:fontFamily="@font/inter_regular" />
+
+        <!-- ================= 1. TRAM ================= -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="@dimen/card_corner_radius"
             app:cardElevation="0dp"
             app:cardBackgroundColor="@color/card_white">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="vertical">
 
-                <!-- Tram status row -->
                 <LinearLayout
+                    android:id="@+id/header_tram"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:padding="14dp"
+                    android:background="?attr/selectableItemBackground">
 
                     <FrameLayout
-                        android:layout_width="44dp"
-                        android:layout_height="44dp"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
                         android:background="@drawable/bg_icon_circle_orange">
-
                         <ImageView
-                            android:layout_width="26dp"
-                            android:layout_height="26dp"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_tram"
-                            android:tint="@color/white"
+                            app:tint="@color/white"
                             android:contentDescription="Tram" />
                     </FrameLayout>
 
@@ -236,704 +133,634 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_marginStart="12dp">
-
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TRAM CONTROL"
-                            android:textColor="@color/text_muted"
-                            android:textSize="10sp"
-                            android:letterSpacing="0.08"
-                            android:fontFamily="@font/inter_regular" />
-
-                        <TextView
-                            android:id="@+id/tv_tram_status"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="At Start Station"
+                            android:text="Tram"
                             android:textColor="@color/text_dark"
-                            android:textSize="17sp"
+                            android:textSize="16sp"
                             android:textStyle="bold"
                             android:fontFamily="@font/poppins_regular" />
+                        <TextView
+                            android:id="@+id/tv_summary_tram"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textColor="@color/text_muted"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_regular" />
                     </LinearLayout>
 
-                    <View
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:background="@drawable/bg_circle_green" />
+                    <TextView
+                        android:id="@+id/chip_tram"
+                        style="@style/ControlStatusChip" />
 
+                    <TextView
+                        android:id="@+id/chevron_tram"
+                        style="@style/ControlChevron" />
                 </LinearLayout>
 
-                <!-- Action buttons -->
                 <LinearLayout
+                    android:id="@+id/body_tram"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="12dp"
-                    android:gravity="center_vertical">
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="14dp"
+                    android:visibility="gone">
 
                     <Button
-                        android:id="@+id/btn_start_tram"
-                        style="@style/Widget.Material3.Button"
+                        android:id="@+id/btn_tram_reverse"
+                        style="@style/ControlActionButton"
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
-                        android:layout_weight="3"
+                        android:layout_weight="1"
+                        android:text="◀ Back" />
+                    <Button
+                        android:id="@+id/btn_tram_stop"
+                        style="@style/ControlActionButton.Secondary"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
-                        android:background="@drawable/bg_pill_green"
-                        android:text="→  Start Tram"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:stateListAnimator="@null"
-                        android:insetTop="0dp"
-                        android:insetBottom="0dp"
-                        android:minHeight="0dp" />
-
+                        android:text="■ Stop" />
                     <Button
-                        android:id="@+id/btn_return_tram"
-                        style="@style/Widget.Material3.Button"
+                        android:id="@+id/btn_tram_forward"
+                        style="@style/ControlActionButton"
                         android:layout_width="0dp"
-                        android:layout_height="44dp"
-                        android:layout_weight="2"
-                        android:background="@drawable/bg_tram_return_btn"
-                        android:text="❮  Return"
-                        android:textColor="@color/text_dark"
-                        android:fontFamily="@font/inter_regular"
-                        android:textSize="13sp"
-                        android:stateListAnimator="@null"
-                        android:insetTop="0dp"
-                        android:insetBottom="0dp"
-                        android:minHeight="0dp" />
-
+                        android:layout_weight="1"
+                        android:text="Go ▶" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- ===== ENVIRONMENT SECTION HEADER ===== -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/tv_section_environment"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="ENVIRONMENT"
-                android:textColor="@color/text_dark"
-                android:textSize="12sp"
-                android:letterSpacing="0.08"
-                android:fontFamily="@font/inter_regular"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Shape the scene"
-                android:textColor="@color/text_muted"
-                android:textSize="12sp"
-                android:fontFamily="@font/inter_regular" />
-
-        </LinearLayout>
-
-        <!-- ===== ENVIRONMENT CARD ===== -->
+        <!-- ================= 2. STREET LIGHTS ================= -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_environment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="@dimen/card_corner_radius"
             app:cardElevation="0dp"
             app:cardBackgroundColor="@color/card_white">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="4dp">
+                android:orientation="vertical">
 
-                <!-- River Flow row -->
                 <LinearLayout
+                    android:id="@+id/header_lights"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
-                    android:padding="12dp">
+                    android:padding="14dp"
+                    android:background="?attr/selectableItemBackground">
 
                     <FrameLayout
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bg_icon_circle_teal">
-
-                        <ImageView
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_sensor_water"
-                            android:tint="#00796B"
-                            android:contentDescription="River Flow" />
-                    </FrameLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_marginStart="12dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="River Flow"
-                            android:textColor="@color/text_dark"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/inter_regular" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Miniature water pump"
-                            android:textColor="@color/text_muted"
-                            android:textSize="12sp"
-                            android:fontFamily="@font/inter_regular" />
-                    </LinearLayout>
-
-                    <Switch
-                        android:id="@+id/switch_river_flow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:showText="false"
-                        android:thumbTint="@color/white"
-                        android:trackTint="@color/sap_green" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="64dp"
-                    android:background="@color/divider_line" />
-
-                <!-- Wind Effect row -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="12dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-
-                        <FrameLayout
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="@drawable/bg_icon_circle_teal">
-
-                            <ImageView
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/ic_fog"
-                                android:tint="#00796B"
-                                android:contentDescription="Wind Effect" />
-                        </FrameLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:layout_marginStart="12dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Wind Effect"
-                                android:textColor="@color/text_dark"
-                                android:textSize="14sp"
-                                android:textStyle="bold"
-                                android:fontFamily="@font/inter_regular" />
-
-                            <TextView
-                                android:id="@+id/tv_wind_level"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Low"
-                                android:textColor="@color/text_muted"
-                                android:textSize="12sp"
-                                android:fontFamily="@font/inter_regular" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <SeekBar
-                        android:id="@+id/seekbar_wind"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginStart="52dp"
-                        android:progress="30"
-                        android:max="100"
-                        android:progressTint="@color/sap_green"
-                        android:thumbTint="@color/sap_green" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="64dp"
-                    android:background="@color/divider_line" />
-
-                <!-- Nature Sounds row -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="12dp">
-
-                    <FrameLayout
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bg_icon_circle_salmon">
-
-                        <ImageView
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_audio"
-                            android:tint="#E57373"
-                            android:contentDescription="Nature Sounds" />
-                    </FrameLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_marginStart="12dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Nature Sounds"
-                            android:textColor="@color/text_dark"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/inter_regular" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="River and forest ambience"
-                            android:textColor="@color/text_muted"
-                            android:textSize="12sp"
-                            android:fontFamily="@font/inter_regular" />
-                    </LinearLayout>
-
-                    <Switch
-                        android:id="@+id/switch_nature_sounds"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:showText="false"
-                        android:thumbTint="@color/white"
-                        android:trackTint="@color/sap_green" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="64dp"
-                    android:background="@color/divider_line" />
-
-                <!-- Ambient Lights row -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="12dp">
-
-                    <FrameLayout
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
                         android:background="@drawable/bg_icon_circle_amber">
-
                         <ImageView
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_onboard_sun"
-                            android:tint="#FF8F00"
-                            android:contentDescription="Ambient Lights" />
+                            app:tint="@color/white"
+                            android:contentDescription="Street lights" />
                     </FrameLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_marginStart="12dp">
-
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ambient Lights"
+                            android:text="Street Lights"
                             android:textColor="@color/text_dark"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:textStyle="bold"
-                            android:fontFamily="@font/inter_regular" />
-
+                            android:fontFamily="@font/poppins_regular" />
                         <TextView
+                            android:id="@+id/tv_summary_lights"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Warm scene lighting"
+                            android:text="--"
                             android:textColor="@color/text_muted"
                             android:textSize="12sp"
                             android:fontFamily="@font/inter_regular" />
                     </LinearLayout>
 
-                    <Switch
-                        android:id="@+id/switch_ambient_lights"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:showText="false"
-                        android:thumbTint="@color/white"
-                        android:trackTint="@color/sap_green" />
+                    <TextView
+                        android:id="@+id/chip_lights"
+                        style="@style/ControlStatusChip" />
 
+                    <TextView
+                        android:id="@+id/chevron_lights"
+                        style="@style/ControlChevron" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/body_lights"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="14dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Show the diorama at a different time of day"
+                        android:textColor="@color/text_muted"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btn_time_day"
+                            style="@style/ControlActionButton.Secondary"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="Day" />
+                        <Button
+                            android:id="@+id/btn_time_evening"
+                            style="@style/ControlActionButton.Secondary"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="Evening" />
+                        <Button
+                            android:id="@+id/btn_time_night"
+                            style="@style/ControlActionButton.Secondary"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="Night" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btn_time_real"
+                        style="@style/ControlActionButton"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:text="Use real clock" />
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- ===== GESTURE CONTROL CARD ===== -->
+        <!-- ================= 3. RIVER LIGHTS (RGB) ================= -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_gesture_control"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardCornerRadius="16dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="@dimen/card_corner_radius"
             app:cardElevation="0dp"
             app:cardBackgroundColor="@color/card_white">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="vertical">
 
-                <!-- Gesture header row -->
                 <LinearLayout
+                    android:id="@+id/header_rgb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:padding="14dp"
+                    android:background="?attr/selectableItemBackground">
 
                     <FrameLayout
-                        android:layout_width="44dp"
-                        android:layout_height="44dp"
-                        android:background="@drawable/bg_icon_circle_gray">
-
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_icon_circle_lights">
                         <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_sensor_visitors"
-                            android:tint="#616161"
-                            android:contentDescription="Gesture Sensor" />
+                            android:src="@drawable/ic_rgb_light"
+                            app:tint="@color/white"
+                            android:contentDescription="River lights" />
                     </FrameLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_marginStart="12dp">
-
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="GESTURE CONTROL"
-                            android:textColor="@color/text_muted"
-                            android:textSize="10sp"
-                            android:letterSpacing="0.08"
-                            android:fontFamily="@font/inter_regular" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Control with a wave"
+                            android:text="River Lights"
                             android:textColor="@color/text_dark"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:textStyle="bold"
                             android:fontFamily="@font/poppins_regular" />
+                        <TextView
+                            android:id="@+id/tv_summary_rgb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textColor="@color/text_muted"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_regular" />
                     </LinearLayout>
 
+                    <TextView
+                        android:id="@+id/chip_rgb"
+                        style="@style/ControlStatusChip" />
+
+                    <TextView
+                        android:id="@+id/chevron_rgb"
+                        style="@style/ControlChevron" />
                 </LinearLayout>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/body_rgb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Wave your hand near the gesture sensor."
-                    android:textColor="@color/text_muted"
-                    android:textSize="13sp"
-                    android:fontFamily="@font/inter_regular" />
+                    android:orientation="vertical"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="14dp"
+                    android:visibility="gone">
 
-                <!-- Gesture direction pills -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/btn_rgb_sensor"
+                        style="@style/ControlActionButton"
+                        android:layout_width="match_parent"
+                        android:text="Follow the color sensor" />
 
-                    <LinearLayout
-                        android:id="@+id/gesture_pill_right"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="@drawable/bg_gesture_dir_pill"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:layout_marginEnd="4dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="→"
-                            android:textColor="@color/text_dark"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Start"
-                            android:textColor="@color/text_muted"
-                            android:textSize="10sp"
-                            android:fontFamily="@font/inter_regular"
-                            android:layout_marginTop="2dp" />
-                    </LinearLayout>
-
-                    <!-- ← Left / Return -->
-                    <LinearLayout
-                        android:id="@+id/gesture_pill_left"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="@drawable/bg_gesture_dir_pill"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="4dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="←"
-                            android:textColor="@color/text_dark"
-                            android:textSize="16sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Return"
-                            android:textColor="@color/text_muted"
-                            android:textSize="10sp"
-                            android:fontFamily="@font/inter_regular"
-                            android:layout_marginTop="2dp" />
-                    </LinearLayout>
-
-                    <!-- ↑ Up / Lights -->
-                    <LinearLayout
-                        android:id="@+id/gesture_pill_up"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="@drawable/bg_gesture_dir_pill"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="4dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="↑"
-                            android:textColor="@color/text_dark"
-                            android:textSize="16sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Lights"
-                            android:textColor="@color/text_muted"
-                            android:textSize="10sp"
-                            android:fontFamily="@font/inter_regular"
-                            android:layout_marginTop="2dp" />
-                    </LinearLayout>
-
-                    <!-- ↓ Down / Pump -->
-                    <LinearLayout
-                        android:id="@+id/gesture_pill_down"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="@drawable/bg_gesture_dir_pill"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:layout_marginStart="4dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="↓"
-                            android:textColor="@color/text_dark"
-                            android:textSize="16sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Pump"
-                            android:textColor="@color/text_muted"
-                            android:textSize="10sp"
-                            android:fontFamily="@font/inter_regular"
-                            android:layout_marginTop="2dp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <!-- Try a gesture button -->
-                <LinearLayout
-                    android:id="@+id/btn_try_gesture"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_try_gesture"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/ic_sensor_visitors"
-                        android:tint="@color/sap_green"
-                        android:contentDescription="Try Gesture"
-                        android:layout_marginEnd="10dp" />
-
-                    <LinearLayout
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_marginTop="10dp"
+                        android:text="Or choose a color"
+                        android:textColor="@color/text_muted"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Try a gesture"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/inter_regular" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tap to preview detection"
-                            android:textColor="@color/text_muted"
-                            android:textSize="11sp"
-                            android:fontFamily="@font/inter_regular" />
-                    </LinearLayout>
-
+                    <LinearLayout
+                        android:id="@+id/row_rgb_swatches"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical" />
                 </LinearLayout>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- ===== EMERGENCY STOP CARD ===== -->
-        <LinearLayout
-            android:id="@+id/layout_emergency_stop"
+        <!-- ================= 4. WIND ================= -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/bg_emergency_stop"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:padding="16dp">
-
-            <FrameLayout
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/bg_icon_circle_salmon">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_log_alert"
-                    android:tint="@color/kill_switch_red"
-                    android:contentDescription="Emergency" />
-            </FrameLayout>
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/card_white">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="12dp">
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/header_wind"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Emergency Stop"
-                    android:textColor="@color/kill_switch_red"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/inter_regular" />
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="14dp"
+                    android:background="?attr/selectableItemBackground">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_icon_circle_teal">
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_fog"
+                            app:tint="@color/white"
+                            android:contentDescription="Wind" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Wind"
+                            android:textColor="@color/text_dark"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_regular" />
+                        <TextView
+                            android:id="@+id/tv_summary_wind"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textColor="@color/text_muted"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/chip_wind"
+                        style="@style/ControlStatusChip" />
+
+                    <TextView
+                        android:id="@+id/chevron_wind"
+                        style="@style/ControlChevron" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/body_wind"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Immediately stop all moving parts"
-                    android:textColor="@color/text_muted"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/inter_regular" />
+                    android:orientation="vertical"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="14dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="The fan makes a breeze that bends the wind sensor."
+                        android:textColor="@color/text_muted"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter_regular" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btn_fan_on"
+                            style="@style/ControlActionButton"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="8dp"
+                            android:text="Fan on" />
+                        <Button
+                            android:id="@+id/btn_fan_off"
+                            style="@style/ControlActionButton.Secondary"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="Fan off" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <Button
-                android:id="@+id/btn_emergency_stop"
-                style="@style/Widget.Material3.Button"
-                android:layout_width="wrap_content"
+        <!-- ================= 5. DRAINAGE ================= -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/card_white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:text="›"
-                android:textColor="@color/text_muted"
-                android:textSize="24sp"
-                android:stateListAnimator="@null"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:minHeight="0dp"
-                android:minWidth="0dp"
-                android:paddingStart="4dp"
-                android:paddingEnd="0dp" />
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/header_drainage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="14dp"
+                    android:background="?attr/selectableItemBackground">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_icon_circle_coral">
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_pump"
+                            app:tint="@color/white"
+                            android:contentDescription="Drainage" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Drainage"
+                            android:textColor="@color/text_dark"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_regular" />
+                        <TextView
+                            android:id="@+id/tv_summary_drainage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textColor="@color/text_muted"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/chip_drainage"
+                        style="@style/ControlStatusChip" />
+
+                    <TextView
+                        android:id="@+id/chevron_drainage"
+                        style="@style/ControlChevron" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/body_drainage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="14dp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btn_pump_on"
+                            style="@style/ControlActionButton"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="8dp"
+                            android:text="Pump on" />
+                        <Button
+                            android:id="@+id/btn_pump_off"
+                            style="@style/ControlActionButton.Secondary"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="Pump off" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_gesture_dir_pill"
+                        android:padding="10dp"
+                        android:text="Safety Interlock: Verify water level before manual activation to prevent pump dry-run damage. The flood warning signal (SG90 45°) is controlled automatically by the MASTER safety supervisor."
+                        android:textColor="@color/text_muted"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/inter_regular" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ================= 6. AUDIO ================= -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/card_white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/header_audio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="14dp"
+                    android:background="?attr/selectableItemBackground">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_icon_circle_salmon">
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_audio"
+                            app:tint="@color/white"
+                            android:contentDescription="Narration" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Narration"
+                            android:textColor="@color/text_dark"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_regular" />
+                        <TextView
+                            android:id="@+id/tv_summary_audio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textColor="@color/text_muted"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/inter_regular" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/chip_audio"
+                        style="@style/ControlStatusChip" />
+
+                    <TextView
+                        android:id="@+id/chevron_audio"
+                        style="@style/ControlChevron" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/body_audio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="14dp"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btn_play_narration"
+                        style="@style/ControlActionButton"
+                        android:layout_width="match_parent"
+                        android:text="▶ Play diorama narration" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ================= STOP EVERYTHING ================= -->
+        <Button
+            android:id="@+id/btn_emergency_stop"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/action_button_height"
+            android:minHeight="@dimen/action_button_height"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_action_btn_emergency"
+            android:text="⏹  Stop tram, fan and pump"
+            android:textColor="@color/alert_red"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_regular"
+            android:insetTop="0dp"
+            android:insetBottom="0dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="[PROPOSED — Requires command verification on MASTER]"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:fontFamily="@font/inter_regular" />
 
     </LinearLayout>
-
 </ScrollView>
