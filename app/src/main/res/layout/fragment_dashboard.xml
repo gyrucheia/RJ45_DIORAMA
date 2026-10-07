@@ -47,7 +47,7 @@
                     android:id="@+id/tv_dashboard_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SanLo Diorama"
+                    android:text="RJ45 Diorama"
                     android:textColor="@color/text_dark"
                     android:textSize="@dimen/title_text_size"
                     android:textStyle="bold"

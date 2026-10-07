@@ -36,7 +36,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="SANLO DIORAMA"
+                        android:text="RJ45 DIORAMA"
                         android:textColor="@color/sap_green"
                         android:textSize="11sp"
                         android:letterSpacing="0.06"
@@ -64,7 +64,7 @@
                 <TextView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:text="SL"
+                    android:text="RJ"
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -102,7 +102,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ASK SANLO GUIDE"
+                            android:text="ASK RJ45 GUIDE"
                             android:textColor="@color/sap_green"
                             android:textSize="11sp"
                             android:letterSpacing="0.08"

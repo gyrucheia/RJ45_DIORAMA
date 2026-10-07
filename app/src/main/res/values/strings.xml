@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">SanLo MobApp</string>
+    <string name="app_name">RJ45</string>
     <string name="nav_sensors">Sensors</string>
     <string name="nav_controls">Controls</string>
     <string name="nav_logs">Logs</string>
     <string name="fab_voice_guide">Ask Ready?</string>
-    <string name="dashboard_header">SanLo Diorama</string>
+    <string name="dashboard_header">RJ45 Diorama</string>
     <string name="dashboard_subtitle">Live Sensor Readings</string>
     <string name="label_temperature">TEMPERATURE</string>
     <string name="label_humidity">HUMIDITY</string>

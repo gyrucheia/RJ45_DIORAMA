@@ -68,7 +68,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome to SanLo"
+            android:text="Welcome to RJ45"
             android:textColor="#1A3D1A"
             android:textSize="28sp"
             android:textStyle="bold"
