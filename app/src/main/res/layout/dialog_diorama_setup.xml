@@ -26,6 +26,14 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/rj45_logo"
+                android:scaleType="fitCenter"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="RJ45 Logo" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

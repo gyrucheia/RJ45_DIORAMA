@@ -39,7 +39,7 @@ public class GeminiFragment extends Fragment {
     private RecyclerView recyclerChat;
     private ChatAdapter chatAdapter;
     private LinearLayout layoutSuggestions;
-    private TextView btnTtsToggle;
+    private View btnTtsToggle;
 
     private final FirebaseRepository repository = FirebaseRepository.getInstance();
     private final Handler handler = new Handler(Looper.getMainLooper());
