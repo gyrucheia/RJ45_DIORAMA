@@ -1,5 +1,6 @@
 package com.example.sanlomobapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -86,6 +87,15 @@ public class DashboardFragment extends Fragment implements
             cardTramStatus.setOnClickListener(v -> navigateToTab("controls"));
         }
 
+        View btnHomeTutorial = view.findViewById(R.id.btn_home_tutorial);
+        if (btnHomeTutorial != null) {
+            btnHomeTutorial.setOnClickListener(v -> {
+                Intent intent = new Intent(requireContext(), OnboardingActivity.class);
+                intent.putExtra(OnboardingActivity.EXTRA_REPLAY, true);
+                startActivity(intent);
+            });
+        }
+
         // Initialize with unavailable/loading placeholder states until live telemetry is received
         renderDisconnectedState();
 
@@ -122,7 +132,7 @@ public class DashboardFragment extends Fragment implements
 
     private void renderDisconnectedState() {
         if (tvOnlineStatus != null) {
-            tvOnlineStatus.setText("○ Offline");
+            tvOnlineStatus.setText("Offline");
             tvOnlineStatus.setBackgroundResource(R.drawable.bg_status_chip_coral);
             tvOnlineStatus.setTextColor(requireContext().getColor(R.color.alert_red));
         }
@@ -166,7 +176,7 @@ public class DashboardFragment extends Fragment implements
                     } else {
                         tvWaterValue.setTextColor(requireContext().getColor(R.color.river_blue));
                         if (tvSafetyStatus != null) {
-                            tvSafetyStatus.setText("✓  System ready");
+                            tvSafetyStatus.setText("System ready");
                             tvSafetyStatus.setTextColor(requireContext().getColor(R.color.sap_green));
                         }
                     }
@@ -197,15 +207,15 @@ public class DashboardFragment extends Fragment implements
         requireActivity().runOnUiThread(() -> {
             if (tvOnlineStatus != null) {
                 if (isOnline) {
-                    tvOnlineStatus.setText("● Connected");
+                    tvOnlineStatus.setText("Connected");
                     tvOnlineStatus.setBackgroundResource(R.drawable.bg_status_chip_green);
                     tvOnlineStatus.setTextColor(requireContext().getColor(R.color.sap_green));
                     if (tvSafetyStatus != null && "Diorama offline — Awaiting connection".equals(tvSafetyStatus.getText().toString())) {
-                        tvSafetyStatus.setText("✓  Diorama Online — Ready");
+                        tvSafetyStatus.setText("Diorama Online — Ready");
                         tvSafetyStatus.setTextColor(requireContext().getColor(R.color.sap_green));
                     }
                 } else {
-                    tvOnlineStatus.setText("○ Offline");
+                    tvOnlineStatus.setText("Offline");
                     tvOnlineStatus.setBackgroundResource(R.drawable.bg_status_chip_coral);
                     tvOnlineStatus.setTextColor(requireContext().getColor(R.color.alert_red));
                     if (tvSafetyStatus != null) {

@@ -63,7 +63,7 @@
                 android:paddingEnd="10dp"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:text="○ Offline"
+                android:text="Offline"
                 android:textColor="@color/alert_red"
                 android:textSize="11sp"
                 android:fontFamily="@font/inter_regular" />
@@ -167,13 +167,14 @@
                 android:layout_marginEnd="8dp"
                 app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="@color/card_white">
+                app:cardBackgroundColor="@android:color/transparent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center"
+                    android:background="@drawable/bg_card_temperature"
                     android:padding="16dp">
 
                     <TextView
@@ -205,13 +206,14 @@
                 android:layout_marginStart="8dp"
                 app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="@color/card_white">
+                app:cardBackgroundColor="@android:color/transparent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center"
+                    android:background="@drawable/bg_card_river"
                     android:padding="16dp">
 
                     <TextView
@@ -340,12 +342,13 @@
                 android:gravity="center_vertical"
                 android:padding="14dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="🛡️"
-                    android:textSize="18sp"
-                    android:layout_marginEnd="10dp" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_nav_home"
+                    android:tint="@color/sap_green"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="Status" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -367,7 +370,7 @@
                         android:id="@+id/tv_safety_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="✓  System ready"
+                        android:text="System ready"
                         android:textColor="@color/text_dark"
                         android:textSize="12sp"
                         android:fontFamily="@font/inter_regular" />
@@ -439,6 +442,25 @@
                 android:textSize="13sp"
                 android:fontFamily="@font/inter_regular" />
         </LinearLayout>
+
+        <!-- ===== QUICK APP TUTORIAL REPLAY BUTTON ===== -->
+        <TextView
+            android:id="@+id/btn_home_tutorial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_horizontal_margin"
+            android:layout_marginEnd="@dimen/screen_horizontal_margin"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="Quick App Tutorial"
+            android:textColor="@color/sap_green"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/inter_regular"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true" />
 
     </LinearLayout>
 </ScrollView>

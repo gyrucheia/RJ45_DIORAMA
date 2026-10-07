@@ -1,5 +1,6 @@
 package com.example.sanlomobapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +62,11 @@ public class ExploreFragment extends Fragment implements
 
         View cardOpenVoiceGuide = view.findViewById(R.id.card_open_voice_guide);
         if (cardOpenVoiceGuide != null) {
-            cardOpenVoiceGuide.setOnClickListener(v -> showAppTutorialDialog());
+            cardOpenVoiceGuide.setOnClickListener(v -> {
+                Intent intent = new Intent(requireContext(), OnboardingActivity.class);
+                intent.putExtra(OnboardingActivity.EXTRA_REPLAY, true);
+                startActivity(intent);
+            });
         }
 
 

@@ -20,7 +20,9 @@ public class OnboardingActivity extends AppCompatActivity {
 
     private static final String PREFS_NAME = "sanlo_prefs";
     private static final String KEY_ONBOARDING_DONE = "onboarding_done";
+    public static final String EXTRA_REPLAY = "replay_tutorial";
 
+    private boolean isReplay = false;
     private ViewPager2 viewPager;
     private LinearLayout dotsContainer;
     private Button btnNext;
@@ -37,8 +39,9 @@ public class OnboardingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        isReplay = getIntent().getBooleanExtra(EXTRA_REPLAY, false);
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        if (prefs.getBoolean(KEY_ONBOARDING_DONE, false)) {
+        if (!isReplay && prefs.getBoolean(KEY_ONBOARDING_DONE, false)) {
             goToMain();
             return;
         }
@@ -58,9 +61,9 @@ public class OnboardingActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 setupDots(position);
                 if (position == slideLayouts.length - 1) {
-                    btnNext.setText("Start Exploring ✓");
+                    btnNext.setText(isReplay ? "Close Tutorial" : "Start Exploring");
                 } else {
-                    btnNext.setText("Next →");
+                    btnNext.setText("Next");
                 }
             }
         });
@@ -75,6 +78,16 @@ public class OnboardingActivity extends AppCompatActivity {
         });
 
         btnSkip.setOnClickListener(v -> finishOnboarding());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        isReplay = intent.getBooleanExtra(EXTRA_REPLAY, false);
+        if (viewPager != null) {
+            viewPager.setCurrentItem(0, false);
+        }
     }
 
     private void setupDots(int activeIndex) {
@@ -93,9 +106,13 @@ public class OnboardingActivity extends AppCompatActivity {
     }
 
     private void finishOnboarding() {
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        prefs.edit().putBoolean(KEY_ONBOARDING_DONE, true).apply();
-        goToMain();
+        if (isReplay) {
+            finish();
+        } else {
+            SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+            prefs.edit().putBoolean(KEY_ONBOARDING_DONE, true).apply();
+            goToMain();
+        }
     }
 
     private void goToMain() {

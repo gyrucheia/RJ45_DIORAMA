@@ -98,13 +98,6 @@
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="✦"
-                            android:textColor="@color/sap_green"
-                            android:textSize="14sp"
-                            android:layout_marginEnd="6dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -196,38 +189,6 @@
                         android:fontFamily="@font/inter_regular" />
                 </LinearLayout>
 
-                <!-- Water drop + river level (bottom left) -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|start"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginBottom="14dp">
-
-                    <FrameLayout
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:background="@drawable/bg_circle_white">
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_sensor_water"
-                            android:tint="#26A69A"
-                            android:contentDescription="Water level" />
-                    </FrameLayout>
-                </LinearLayout>
-
-                <!-- Teal water fill at bottom right -->
-                <View
-                    android:layout_width="140dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="bottom|end"
-                    android:background="@drawable/bg_river_card"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginBottom="0dp" />
             </FrameLayout>
 
             <!-- ===== RIVER STATUS CARD ===== -->
@@ -290,7 +251,7 @@
                             android:paddingEnd="10dp"
                             android:paddingTop="5dp"
                             android:paddingBottom="5dp"
-                            android:text="✓  SAFE"
+                            android:text="SAFE"
                             android:textColor="@color/sap_green"
                             android:textSize="11sp"
                             android:textStyle="bold"
@@ -372,7 +333,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Normal · 0.5 m"
-                                    android:textColor="#B2DFDB"
+                                    android:textColor="#BEE3F8"
                                     android:textSize="10sp"
                                     android:fontFamily="@font/inter_regular" />
                             </LinearLayout>

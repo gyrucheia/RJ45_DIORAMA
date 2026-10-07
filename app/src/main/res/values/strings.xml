@@ -12,11 +12,11 @@
     <string name="label_visitors">AI VISITORS</string>
     <string name="controls_header">Controls</string>
     <string name="controls_subtitle">Diorama Actuators</string>
-    <string name="btn_start_tram">▶  Start Tram</string>
-    <string name="btn_return_tram">◀  Return Tram</string>
-    <string name="btn_lights">☀  Lights</string>
-    <string name="btn_sound">♪  Sound</string>
-    <string name="btn_reset">⚠  Reset All</string>
+    <string name="btn_start_tram">Start Tram</string>
+    <string name="btn_return_tram">Return Tram</string>
+    <string name="btn_lights">Lights</string>
+    <string name="btn_sound">Sound</string>
+    <string name="btn_reset">Reset All</string>
     <string name="logs_header">Event Logs</string>
     <string name="logs_subtitle">PIR Events &amp; Automated Actions</string>
     <string name="btn_clear">Clear</string>

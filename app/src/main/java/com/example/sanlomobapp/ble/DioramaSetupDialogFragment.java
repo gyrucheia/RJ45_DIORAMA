@@ -215,7 +215,7 @@ public class DioramaSetupDialogFragment extends DialogFragment implements
         if (isAwaitingHeartbeat && isOnline && isAdded()) {
             isAwaitingHeartbeat = false;
             requireActivity().runOnUiThread(() -> {
-                tvFeedback.setText("✔ Diorama is online.");
+                tvFeedback.setText("Diorama is online.");
                 tvFeedback.setTextColor(requireContext().getColor(R.color.sap_green));
                 btnConnectMaster.setText("Connected");
                 Toast.makeText(requireContext(), "Diorama connected.", Toast.LENGTH_SHORT).show();

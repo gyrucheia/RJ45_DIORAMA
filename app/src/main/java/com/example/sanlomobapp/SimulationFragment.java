@@ -217,7 +217,7 @@ public class SimulationFragment extends Fragment implements
 
     private void renderNowPlaying(int running) {
         if (!masterOnline) {
-            tvActiveSimIndicator.setText("● OFFLINE");
+            tvActiveSimIndicator.setText("OFFLINE");
             tvActiveSimIndicator.setTextColor(requireContext().getColor(R.color.offline_gray));
             tvSimActiveTitle.setText("Diorama not connected");
             tvSimActiveStep.setText("Demonstrations become available when the diorama is online.");
@@ -226,14 +226,14 @@ public class SimulationFragment extends Fragment implements
         }
         if (running >= 0) {
             SimulationState sim = lastReported.getSimulation();
-            tvActiveSimIndicator.setText("● RUNNING");
+            tvActiveSimIndicator.setText("RUNNING");
             tvActiveSimIndicator.setTextColor(requireContext().getColor(R.color.teal_pump));
             tvSimActiveTitle.setText(titleFor(running));
             String step = sim.getStep_description();
             tvSimActiveStep.setText(step.isEmpty() ? "Reported by the diorama" : step);
             btnStopSimulation.setVisibility(View.VISIBLE);
         } else {
-            tvActiveSimIndicator.setText("● READY");
+            tvActiveSimIndicator.setText("READY");
             tvActiveSimIndicator.setTextColor(requireContext().getColor(R.color.sap_green));
             tvSimActiveTitle.setText("Nothing running");
             tvSimActiveStep.setText("Choose a demonstration below to start it on the diorama.");
@@ -263,11 +263,11 @@ public class SimulationFragment extends Fragment implements
         requireActivity().runOnUiThread(() -> {
             masterOnline = isOnline;
             if (isOnline) {
-                tvSyncBadge.setText("● Diorama Online");
+                tvSyncBadge.setText("Diorama Online");
                 tvSyncBadge.setBackgroundResource(R.drawable.bg_status_chip_green);
                 tvSyncBadge.setTextColor(requireContext().getColor(R.color.sap_green));
             } else {
-                tvSyncBadge.setText("○ Offline");
+                tvSyncBadge.setText("Offline");
                 tvSyncBadge.setBackgroundResource(R.drawable.bg_status_chip_coral);
                 tvSyncBadge.setTextColor(requireContext().getColor(R.color.alert_red));
             }

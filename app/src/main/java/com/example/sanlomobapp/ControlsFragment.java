@@ -273,12 +273,12 @@ public class ControlsFragment extends Fragment implements
 
     private void renderOnline() {
         if (masterOnline) {
-            tvOnline.setText("● Online");
+            tvOnline.setText("Online");
             tvOnline.setBackgroundResource(R.drawable.bg_status_chip_green);
             tvOnline.setTextColor(requireContext().getColor(R.color.sap_green));
             tvOfflineNote.setVisibility(View.GONE);
         } else {
-            tvOnline.setText("○ Offline");
+            tvOnline.setText("Offline");
             tvOnline.setBackgroundResource(R.drawable.bg_status_chip_coral);
             tvOnline.setTextColor(requireContext().getColor(R.color.alert_red));
             tvOfflineNote.setVisibility(View.VISIBLE);

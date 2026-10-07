@@ -73,7 +73,7 @@
                 android:paddingEnd="10dp"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:text="○ Offline"
+                android:text="Offline"
                 android:textColor="@color/alert_red"
                 android:textSize="11sp"
                 android:fontFamily="@font/inter_regular" />
@@ -177,7 +177,7 @@
                         style="@style/ControlActionButton"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:text="◀ Back" />
+                        android:text="Reverse" />
                     <Button
                         android:id="@+id/btn_tram_stop"
                         style="@style/ControlActionButton.Secondary"
@@ -185,13 +185,13 @@
                         android:layout_weight="1"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
-                        android:text="■ Stop" />
+                        android:text="Stop" />
                     <Button
                         android:id="@+id/btn_tram_forward"
                         style="@style/ControlActionButton"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:text="Go ▶" />
+                        android:text="Forward" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -730,7 +730,7 @@
                         android:id="@+id/btn_play_narration"
                         style="@style/ControlActionButton"
                         android:layout_width="match_parent"
-                        android:text="▶ Play diorama narration" />
+                        android:text="Play diorama narration" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -744,7 +744,7 @@
             android:minHeight="@dimen/action_button_height"
             android:layout_marginTop="20dp"
             android:background="@drawable/bg_action_btn_emergency"
-            android:text="⏹  Stop tram, fan and pump"
+            android:text="Stop tram, fan and pump"
             android:textColor="@color/alert_red"
             android:textSize="14sp"
             android:textStyle="bold"

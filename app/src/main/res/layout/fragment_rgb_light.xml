@@ -572,7 +572,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_tram_status_card"
-                android:text="☀  Apply to Diorama"
+                android:text="Apply to Diorama"
                 android:textColor="@color/white"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="15sp"
@@ -601,13 +601,6 @@
         android:paddingEnd="18dp"
         android:elevation="8dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="✦"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:layout_marginEnd="6dp" />
 
         <TextView
             android:layout_width="wrap_content"
