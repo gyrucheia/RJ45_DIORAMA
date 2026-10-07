@@ -28,7 +28,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:background="@drawable/bg_tram_return_btn"
-            android:layout_marginEnd="12dp">
+            android:layout_marginEnd="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,6 +37,15 @@
                 android:textColor="@color/text_dark"
                 android:textSize="22sp" />
         </FrameLayout>
+
+        <!-- Consistent RJ45 Logo on Left -->
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/rj45_logo"
+            android:scaleType="fitCenter"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="RJ45 Logo" />
 
         <!-- Title + subtitle -->
         <LinearLayout
@@ -75,14 +84,20 @@
                 android:fontFamily="@font/inter_regular" />
         </LinearLayout>
 
-        <!-- RJ45 Avatar / TTS Voice Toggle -->
-        <ImageView
+        <!-- TTS Voice Narration Toggle Button -->
+        <FrameLayout
             android:id="@+id/btn_tts_toggle"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/rj45_logo"
-            android:scaleType="fitCenter"
-            android:contentDescription="RJ45 Guide Voice Toggle" />
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_tram_return_btn">
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_audio"
+                app:tint="@color/sap_green"
+                android:contentDescription="Voice Narration Toggle" />
+        </FrameLayout>
 
     </LinearLayout>
 

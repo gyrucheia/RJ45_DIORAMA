@@ -24,6 +24,14 @@
             android:paddingBottom="12dp"
             android:background="@color/card_bg">
 
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/rj45_logo"
+                android:scaleType="fitCenter"
+                android:layout_marginEnd="12dp"
+                android:contentDescription="RJ45 Logo" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -62,14 +70,16 @@
             </LinearLayout>
 
             <TextView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:text="RJ"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:background="@drawable/bg_circle_green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_status_chip_green"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:text="Studio"
+                android:textColor="@color/sap_green"
+                android:textSize="11sp"
                 android:fontFamily="@font/inter_regular" />
         </LinearLayout>
 
@@ -620,10 +630,23 @@
         android:background="@drawable/bg_ask_sanlo_fab"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingStart="18dp"
+        android:paddingStart="10dp"
         android:paddingEnd="18dp"
         android:elevation="8dp">
 
+        <FrameLayout
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_circle_white"
+            android:layout_marginEnd="8dp">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/rj45_logo"
+                android:scaleType="fitCenter"
+                android:contentDescription="RJ45 Logo" />
+        </FrameLayout>
 
         <TextView
             android:layout_width="wrap_content"

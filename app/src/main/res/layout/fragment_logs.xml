@@ -26,6 +26,14 @@
             android:paddingStart="@dimen/screen_horizontal_margin"
             android:paddingEnd="@dimen/screen_horizontal_margin">
 
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/rj45_logo"
+                android:scaleType="fitCenter"
+                android:layout_marginEnd="12dp"
+                android:contentDescription="RJ45 Logo" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -62,12 +70,18 @@
                     android:fontFamily="@font/inter_regular" />
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/rj45_logo"
-                android:scaleType="fitCenter"
-                android:contentDescription="RJ45 Logo" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_status_chip_green"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:text="Live Sync"
+                android:textColor="@color/sap_green"
+                android:textSize="11sp"
+                android:fontFamily="@font/inter_regular" />
         </LinearLayout>
 
         <!-- ===== FILTER CHIPS ROW (Pinned like Facebook Tabs) ===== -->
